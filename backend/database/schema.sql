@@ -38,25 +38,28 @@ CREATE TABLE user (
   isAdmin boolean NULL
 );
 
+
 CREATE TABLE car (
   id INT PRIMARY KEY AUTO_INCREMENT,
   licensePlate varchar(255) NULL,
   brand varchar(255) NULL,
   model varchar(255) NULL,
   connectic_id INT,
+  CONSTRAINT fk_car_connectic FOREIGN KEY (connectic_id) REFERENCES connectic(id),
   user_id INT,
-    FOREIGN KEY (user_id) REFERENCES user (id),
-  FOREIGN KEY (connectic_id) REFERENCES connectic (id)
+  CONSTRAINT fk_car_user FOREIGN KEY (user_id) REFERENCES user(id)
 );
+
 
 CREATE TABLE reservations (
   id INT PRIMARY KEY AUTO_INCREMENT,
-  car_id INT,
-  terminal_id INT,
   startTime datetime NULL,
-   FOREIGN KEY (car_id) REFERENCES car (id),
-  FOREIGN KEY (terminal_id) REFERENCES terminal (id)
+  car_id INT,
+   CONSTRAINT fk_reservations_car FOREIGN KEY (car_id) REFERENCES car(id),
+  terminal_id INT,
+ CONSTRAINT fk_reservations_terminal FOREIGN KEY (terminal_id) REFERENCES terminal(id)
 );
+
 
 CREATE TABLE profil (
   id INT PRIMARY KEY AUTO_INCREMENT,
@@ -64,10 +67,11 @@ CREATE TABLE profil (
   lastname varchar(255),
   birthdate varchar(255),
   car_id INT,
-    FOREIGN KEY (car_id) REFERENCES car (id)
+   CONSTRAINT fk_profil_car FOREIGN KEY (car_id) REFERENCES car(id)
 );
 
 
+-- ..........TERMINAL ..........................................................
 
 INSERT INTO terminal(city,adresseStation,xlongitude,ylatitude,power,acces_recharge,access,localisation,region, connectic_id, state_id) VALUES ('Parking Quintaou','1 allée de Quintaou, Anglet',-1.5127680638813583,43.48396450961844,'18',NULL,NULL,'43.48396450961844,-1.5127680638813583',NULL,1,2);
 INSERT INTO terminal(city,adresseStation,xlongitude,ylatitude,power,acces_recharge,access,localisation,region, connectic_id, state_id) VALUES ('Parking des Dauphins','Place des Docteurs Gentilhe, Anglet',-1.5124430186266826,43.49989725773917,'18',NULL,NULL,'43.49989725773917,-1.5124430186266826',NULL,1,2);
@@ -172,3 +176,18 @@ INSERT INTO terminal(city,adresseStation,xlongitude,ylatitude,power,acces_rechar
 INSERT INTO terminal(city,adresseStation,xlongitude,ylatitude,power,acces_recharge,access,localisation,region, connectic_id, state_id) VALUES ('MARSEILLE-14E - 9 Boulevard Gay Lussac','9 Boulevard Gay Lussac 0 MARSEILLE-14E',5.374552,43.332198,'22','payant','24h/24 7j/7','43.332198,5.374552',NULL,1,2);
 INSERT INTO terminal(city,adresseStation,xlongitude,ylatitude,power,acces_recharge,access,localisation,region, connectic_id, state_id) VALUES ('MARSEILLE-8E - Place Théo Lombard','Place Théo Lombard 13008 MARSEILLE-8E',5.383026,43.27085,'22','payant','24h/24 7j/7','43.27085,5.383026',NULL,1,2);
 INSERT INTO terminal(city,adresseStation,xlongitude,ylatitude,power,acces_recharge,access,localisation,region, connectic_id, state_id) VALUES ('AIX-EN-PROVENCE - Avenue François Argo - Parking Annexe Mairie','Avenue François Argo - Parking Annexe Mairie 13100 AIX-EN-PROVENCE',5.354437,43.491323,'22','payant','24h/24 7j/7','43.491323,5.354437',NULL,1,2);
+
+
+-- ............user.................................................................
+
+INSERT INTO user (mail, password, isAdmin) VALUES ('EMAIL@GMAIL.com', 'password1!', false);
+
+-- .................car......................................
+INSERT INTO car (licensePlate, brand, model, connectic_id, user_id) VALUES ('NM-190-ZX', 'Peugeot', '5008', 1, 1);
+
+-- ................reservation..............................
+
+INSERT INTO reservations (startTime, car_id, terminal_id) VALUES ('1925-12-25 14:30:00', 1, 103);
+
+-- ..................Profil.......................................
+INSERT INTO profil (name, lastname, birthdate, car_id) VALUES ('chibrus', 'jean-michel', '32-14-1900', 1);
