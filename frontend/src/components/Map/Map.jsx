@@ -9,7 +9,6 @@ function Map() {
   const terminalsData = useLoaderData();
   return (
     <div>
-      <h1>Test</h1>
       <MapContainer center={[43.3, 5.4]} zoom={13}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
