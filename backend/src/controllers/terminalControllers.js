@@ -38,21 +38,21 @@ const read = async (req, res, next) => {
 // This operation is not yet implemented
 
 // The A of BREAD - Add (Create) operation
-const add = async (req, res, next) => {
-  // Extract the terminal data from the request body
-  const terminal = req.body;
+// const add = async (req, res, next) => {
+// Extract the terminal data from the request body
+// const terminal = req.body;
 
-  try {
-    // Insert the terminal into the database
-    const insertId = await tables.terminal.create(terminal);
+// try {
+// Insert the terminal into the database
+// const insertId = await tables.terminal.create(terminal);
 
-    // Respond with HTTP 201 (Created) and the ID of the newly inserted terminal
-    res.status(201).json({ insertId });
-  } catch (err) {
-    // Pass any errors to the error-handling middleware
-    next(err);
-  }
-};
+// Respond with HTTP 201 (Created) and the ID of the newly inserted terminal
+// res.status(201).json({ insertId });
+// } catch (err) {
+// Pass any errors to the error-handling middleware
+//     next(err);
+//   }
+// };
 
 // The D of BREAD - Destroy (Delete) operation
 // This operation is not yet implemented
@@ -62,6 +62,6 @@ module.exports = {
   browse,
   read,
   // edit,
-  add,
+  // add,
   // destroy,
 };
