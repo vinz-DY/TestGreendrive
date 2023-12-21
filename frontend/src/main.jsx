@@ -2,13 +2,25 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import connexion from "./services/connexion";
 
 import App from "./App";
+import Map from "./components/Map/Map";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+  },
+  {
+    path: "/map",
+    element: <Map />,
+    loader: () => {
+      return connexion
+        .get(`${import.meta.env.VITE_BACKEND_URL}/api/terminals`)
+        .then((response) => response.data)
+        .catch((err) => console.error(err));
+    },
   },
 ]);
 
