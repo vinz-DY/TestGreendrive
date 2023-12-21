@@ -1,9 +1,10 @@
 import React from "react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer } from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-cluster";
 import { useLoaderData } from "react-router-dom";
 import "leaflet/dist/leaflet.css";
 import "./Map.css";
+import MarkerComponent from "./MarkerComponent";
 
 function Map() {
   const terminalsData = useLoaderData();
@@ -15,21 +16,7 @@ function Map() {
       />
       <MarkerClusterGroup chunkedLoading>
         {terminalsData.map((marker) => (
-          <Marker
-            position={[marker.ylatitude, marker.xlongitude]}
-            key={marker.id}
-          >
-            <Popup>
-              <h2>Informations sur la borne</h2>
-              <ul>
-                <li>Adresse: {marker.city}</li>
-                <li>Acessibilité: {marker.access}</li>
-                <li>Type de prise: {marker.connectic_id}</li>
-                <li>Puissance maximale: {marker.power}</li>
-                <li>Accès à la borne: {marker.acces_recharge}</li>
-              </ul>
-            </Popup>
-          </Marker>
+          <MarkerComponent marker={marker} />
         ))}
       </MarkerClusterGroup>
     </MapContainer>
