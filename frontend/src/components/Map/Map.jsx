@@ -1,9 +1,9 @@
 import React from "react";
-import "leaflet/dist/leaflet.css";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-cluster";
-import "./Map.css";
 import { useLoaderData } from "react-router-dom";
+import "leaflet/dist/leaflet.css";
+import "./Map.css";
 
 function Map() {
   const terminalsData = useLoaderData();
