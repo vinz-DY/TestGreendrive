@@ -26,7 +26,7 @@ const read = async (req, res, next) => {
     if (terminal == null) {
       res.sendStatus(404);
     } else {
-      res.json(terminal);
+      res.status(200).json(terminal);
     }
   } catch (err) {
     // Pass any errors to the error-handling middleware
