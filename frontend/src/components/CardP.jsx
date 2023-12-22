@@ -2,29 +2,27 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-function CardP({ terminal }) {
+function CardP({ data, basePath }) {
   return (
     <div>
-      <Link to={`/terminals/${terminal.id}`}>
+      <Link to={`${basePath}/${data.id}`}>
         <img
           src="https://tse1.mm.bing.net/th?id=OIP.ljF9ZSVOYHja42J1kivhcgHaHa&pid=Api&P=0&h=180"
           alt="borne"
           style={{ cursor: "pointer" }}
         />
       </Link>
-      <p>City: {terminal.city}</p>
-      <p>AdresseStation: {terminal.adresseStation}</p>
-      <p>Power: {terminal.power}</p>
-      <p>Acces Recharge: {terminal.acces_recharge}</p>
-      <p>Access: {terminal.access}</p>
-      <p>Localisation: {terminal.localisation}</p>
-      <p>Region: {terminal.region}</p>
+      {Object.keys(data).map((key) => (
+        <p key={key}>
+          {key.charAt(0).toUpperCase() + key.slice(1)}: {data[key]}
+        </p>
+      ))}
     </div>
   );
 }
 
 CardP.propTypes = {
-  terminal: PropTypes.shape({
+  data: PropTypes.shape({
     id: PropTypes.number.isRequired,
     city: PropTypes.string.isRequired,
     adresseStation: PropTypes.string.isRequired,
@@ -34,6 +32,7 @@ CardP.propTypes = {
     localisation: PropTypes.string.isRequired,
     region: PropTypes.string.isRequired,
   }).isRequired,
+  basePath: PropTypes.string.isRequired,
 };
 
 export default CardP;
