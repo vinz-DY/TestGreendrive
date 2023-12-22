@@ -8,7 +8,7 @@ class TerminalManager extends AbstractManager {
   }
 
   // The C of CRUD - Create operation
-  
+
   // async create(terminal) {
   // Execute the SQL INSERT query to add a new terminal to the "terminal" table
   // const [result] = await this.database.query(
