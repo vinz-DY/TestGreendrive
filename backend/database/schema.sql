@@ -1,3 +1,4 @@
+-- Active: 1698236999326@@127.0.0.1@3306@greendrive
 CREATE TABLE state (
   id INT PRIMARY KEY AUTO_INCREMENT,
   label varchar(255) NULL
