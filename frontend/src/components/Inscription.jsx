@@ -1,6 +1,7 @@
 import { useState } from "react";
 // eslint-disable-next-line spaced-comment
 /*import connexion from "../services/connexion";*/
+import "./Inscription.css";
 
 const userType = {
   lastname: "",
