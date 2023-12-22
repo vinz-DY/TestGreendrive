@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-function CardP({ data, basePath }) {
+function CardItem({ data, basePath }) {
   return (
     <div>
       <Link to={`${basePath}/${data.id}`}>
@@ -21,7 +21,7 @@ function CardP({ data, basePath }) {
   );
 }
 
-CardP.propTypes = {
+CardItem.propTypes = {
   data: PropTypes.shape({
     id: PropTypes.number.isRequired,
     city: PropTypes.string.isRequired,
@@ -35,4 +35,4 @@ CardP.propTypes = {
   basePath: PropTypes.string.isRequired,
 };
 
-export default CardP;
+export default CardItem;

@@ -1,7 +1,7 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
 import PropTypes from "prop-types";
-import CardP from "./CardP";
+import CardItem from "./CardItem";
 
 function DisplayCards({ basePath }) {
   const items = useLoaderData();
@@ -9,7 +9,7 @@ function DisplayCards({ basePath }) {
   return (
     <div>
       {items.map((item) => (
-        <CardP key={item.id} data={item} basePath={basePath} />
+        <CardItem key={item.id} data={item} basePath={basePath} />
       ))}
     </div>
   );
