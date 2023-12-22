@@ -1,5 +1,6 @@
 import { useState } from "react";
-import connexion from "../services/connexion";
+// eslint-disable-next-line spaced-comment
+/*import connexion from "../services/connexion";*/
 
 const userType = {
   lastname: "",
@@ -30,19 +31,32 @@ function Inscription() {
     setShowPassword(!showPassword);
   };
 
+  const currentDate = new Date();
+  const eighteenYears = new Date(
+    currentDate.getFullYear() - 18,
+    currentDate.getMonth(),
+    currentDate.getDate()
+  );
+  const userBirthdate = new Date(user.birthdate);
+
   const postUser = async (event) => {
     event.preventDefault();
+
+    if (userBirthdate > eighteenYears) {
+      setInscriptionSuccess(false);
+      // eslint-disable-next-line no-alert
+      alert("Vous devez avoir 18 ans ou plus pour vous inscrire !");
+      return;
+    }
 
     if (user.password !== user.passwordConfirmation) {
       setInscriptionSuccess(false);
       // eslint-disable-next-line no-alert
       alert("Les mots de passe ne correspondent pas !");
-    } else {
-      setInscriptionSuccess(true);
-      setInscriptionMessage("Félicitations !");
+      // eslint-disable-next-line no-useless-return
       return;
     }
-
+    /*
     try {
       await connexion.post("/users", user);
       setInscriptionSuccess(true);
@@ -52,6 +66,18 @@ function Inscription() {
       // eslint-disable-next-line no-restricted-syntax
       console.log(error);
       setInscriptionSuccess(false);
+    }
+    */
+
+    try {
+      setInscriptionSuccess(true);
+      setInscriptionMessage("Inscription réussie ! Félicitations!");
+      setUser(userType);
+    } catch (error) {
+      setInscriptionSuccess(false);
+      // eslint-disable-next-line no-alert
+      alert("Il y a eu une ou plusieurs erreurs pendant l'inscription !");
+      console.error(error);
     }
   };
 
