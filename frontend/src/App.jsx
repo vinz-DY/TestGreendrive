@@ -6,6 +6,7 @@ function App() {
       <DisplayCards basePath="/terminals" />
       <DisplayCards basePath="/cars" />
       <DisplayCards basePath="/users" />
+
     </div>
   );
 }

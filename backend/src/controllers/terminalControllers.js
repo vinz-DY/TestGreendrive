@@ -1,6 +1,7 @@
 // Import access to database tables
 const tables = require("../tables");
 
+// The B of BREAD - Browse (Read All) operation
 const browse = async (req, res, next) => {
   try {
     // Fetch all terminals from the database
@@ -38,17 +39,18 @@ const browse = async (req, res, next) => {
 
 // The A of BREAD - Add (Create) operation
 // const add = async (req, res, next) => {
-//   // Extract the terminal data from the request body
-//   const terminal = req.body;
 
-//   try {
-//     // Insert the terminal into the database
-//     const insertId = await tables.terminal.create(terminal);
+// Extract the terminal data from the request body
+// const terminal = req.body;
 
-//     // Respond with HTTP 201 (Created) and the ID of the newly inserted terminal
-//     res.status(201).json({ insertId });
-//   } catch (err) {
-//     // Pass any errors to the error-handling middleware
+// try {
+// Insert the terminal into the database
+// const insertId = await tables.terminal.create(terminal);
+
+// Respond with HTTP 201 (Created) and the ID of the newly inserted terminal
+// res.status(201).json({ insertId });
+// } catch (err) {
+// Pass any errors to the error-handling middleware
 //     next(err);
 //   }
 // };

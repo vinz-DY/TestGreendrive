@@ -18,7 +18,9 @@ router.get("/items/:id", itemControllers.read);
 // Route to add a new item
 router.post("/items", itemControllers.add);
 
+
 /* *******************terminal****************************************************** */
+
 const terminalControllers = require("./controllers/terminalControllers");
 
 router.get("/terminals", terminalControllers.browse);

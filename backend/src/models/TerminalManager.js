@@ -7,29 +7,29 @@ class TerminalManager extends AbstractManager {
     super({ table: "terminal" });
   }
 
-  // // The C of CRUD - Create operation
-
+  // The C of CRUD - Create operation
+  
   // async create(terminal) {
-  //   // Execute the SQL INSERT query to add a new terminal to the "terminal" table
-  //   const [result] = await this.database.query(
-  //     `insert into ${this.table} (title) values (?)`,
-  //     [terminal.title]
-  //   );
+  // Execute the SQL INSERT query to add a new terminal to the "terminal" table
+  // const [result] = await this.database.query(
+  //   `insert into ${this.table} (title) values (?)`,
+  //   [terminal.title]
+  // );
 
-  //   // Return the ID of the newly inserted terminal
+  // Return the ID of the newly inserted terminal
   //   return result.insertId;
   // }
 
-  // // The Rs of CRUD - Read operations
+  // The Rs of CRUD - Read operations
 
   // async read(id) {
-  //   // Execute the SQL SELECT query to retrieve a specific terminal by its ID
-  //   const [rows] = await this.database.query(
-  //     `select * from ${this.table} where id = ?`,
-  //     [id]
-  //   );
+  // Execute the SQL SELECT query to retrieve a specific terminal by its ID
+  // const [rows] = await this.database.query(
+  //   `select * from ${this.table} where id = ?`,
+  //   [id]
+  // );
 
-  //   // Return the first row of the result, which represents the terminal
+  // Return the first row of the result, which represents the terminal
   //   return rows[0];
   // }
 
