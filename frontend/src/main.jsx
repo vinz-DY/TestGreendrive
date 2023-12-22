@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-
+import axios from "axios";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import connexion from "./services/connexion";
 
@@ -11,6 +11,12 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    loader: () => {
+      return axios
+        .get(`${import.meta.env.VITE_BACKEND_URL}/api/terminals`)
+        .then((res) => res.data)
+        .catch((err) => console.error(err));
+    },
   },
   {
     path: "/map",

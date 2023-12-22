@@ -1,9 +1,11 @@
-import "./App.css";
+import DisplayCards from "./components/DisplayCards";
 
 function App() {
   return (
-    <div className="App">
-      <h1>GreenDrive</h1>
+    <div>
+      <DisplayCards basePath="/terminals" />
+      <DisplayCards basePath="/cars" />
+      <DisplayCards basePath="/users" />
     </div>
   );
 }
