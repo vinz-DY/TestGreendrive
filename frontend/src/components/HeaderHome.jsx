@@ -7,7 +7,7 @@ function HeaderHome() {
     <div>
       <div className="headerContainer">
         <div className="leftContainer">
-          <div className="SlogContainer">
+          <div className="slogContainer">
             <p>
               Avec <span>GreenDrive</span>
             </p>
@@ -29,7 +29,7 @@ function HeaderHome() {
           </div>
         </div>
 
-        <img className="headerCar" src={Car1} alt="header voiture" />
+        <img className="headerCar" src={Car1} alt="car header" />
       </div>
     </div>
   );
