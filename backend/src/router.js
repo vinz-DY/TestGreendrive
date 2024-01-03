@@ -24,8 +24,10 @@ const terminalControllers = require("./controllers/terminalControllers");
 
 router.get("/terminals", terminalControllers.browse);
 
-/* ************************************************************************* */
+/* ***************************Profil********************************************** */
+const profilControllers = require("./controllers/profilControllers");
 
+router.get("/profils", profilControllers.browse);
 /* ************************************************************************* */
 
 /* ************************************************************************* */
