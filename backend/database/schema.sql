@@ -26,6 +26,7 @@ CREATE TABLE terminal(
   access             VARCHAR(49) NULL,
   localisation       VARCHAR(255) NULL,
   region             VARCHAR(26) NULL,
+  image              VARCHAR(255)NULL,
   connectic_id INTEGER NOT NULL,
   CONSTRAINT fk_terminal_connectic FOREIGN KEY (connectic_id) REFERENCES connectic(id),
   state_id INTEGER NOT NULL,
@@ -38,6 +39,7 @@ CREATE TABLE car (
   licensePlate varchar(255) NULL,
   brand varchar(255) NULL,
   model varchar(255) NULL,
+  image varchar(255) NULL,
   connectic_id INT NOT NULL,
   CONSTRAINT fk_car_connectic FOREIGN KEY (connectic_id) REFERENCES connectic(id),
   user_id INT NOT NULL,
@@ -60,6 +62,7 @@ CREATE TABLE profil (
   name varchar(255),
   lastname varchar(255),
   birthdate varchar(255),
+  image varchar(255),
   user_id INT NOT NULL,
   CONSTRAINT fk_profil_user FOREIGN KEY (user_id) REFERENCES user(id)
 );

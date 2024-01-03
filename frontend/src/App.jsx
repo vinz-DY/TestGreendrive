@@ -5,7 +5,7 @@ function App() {
     <div>
       <DisplayCards basePath="/terminals" />
       <DisplayCards basePath="/cars" />
-      <DisplayCards basePath="/users" />
+      <DisplayCards basePath="/profils" />
     </div>
   );
 }

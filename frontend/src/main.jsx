@@ -3,7 +3,6 @@ import ReactDOM from "react-dom/client";
 import axios from "axios";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import connexion from "./services/connexion";
-
 import App from "./App";
 import Map from "./components/Map/Map";
 
@@ -14,6 +13,16 @@ const router = createBrowserRouter([
     loader: () => {
       return axios
         .get(`${import.meta.env.VITE_BACKEND_URL}/api/terminals`)
+        .then((res) => res.data)
+        .catch((err) => console.error(err));
+    },
+  },
+  {
+    path: "/",
+    element: <App />,
+    loader: () => {
+      return axios
+        .get(`${import.meta.env.VITE_BACKEND_URL}/api/profils`)
         .then((res) => res.data)
         .catch((err) => console.error(err));
     },

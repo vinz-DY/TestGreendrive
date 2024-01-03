@@ -3,14 +3,11 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 function CardItem({ data, basePath }) {
+  const { id, image } = data;
   return (
     <div>
-      <Link to={`${basePath}/${data.id}`}>
-        <img
-          src="https://tse1.mm.bing.net/th?id=OIP.ljF9ZSVOYHja42J1kivhcgHaHa&pid=Api&P=0&h=180"
-          alt="borne"
-          style={{ cursor: "pointer" }}
-        />
+      <Link to={`${basePath}/${id}`}>
+        <img src={image} alt="borne" style={{ cursor: "pointer" }} />
       </Link>
       {Object.keys(data).map((key) => (
         <p key={key}>
@@ -23,6 +20,7 @@ function CardItem({ data, basePath }) {
 
 CardItem.propTypes = {
   data: PropTypes.shape({
+    image: PropTypes.string,
     id: PropTypes.number.isRequired,
     city: PropTypes.string.isRequired,
     adresseStation: PropTypes.string.isRequired,
@@ -31,6 +29,10 @@ CardItem.propTypes = {
     access: PropTypes.string.isRequired,
     localisation: PropTypes.string.isRequired,
     region: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    lastname: PropTypes.string.isRequired,
+    birthdate: PropTypes.string.isRequired,
+    user_id: PropTypes.number.isRequired,
   }).isRequired,
   basePath: PropTypes.string.isRequired,
 };
