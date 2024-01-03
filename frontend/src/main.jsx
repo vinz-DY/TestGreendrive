@@ -4,24 +4,25 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import connexion from "./services/connexion";
 import App from "./App";
 import Map from "./components/Map/Map";
+import AdminUsers from "./pages/AdminUsers";
 
 const router = createBrowserRouter([
-  // {
-  //   path: "/",
-  //   element: <App />,
-  //   loader: () => {
-  //     return connexion
-  //       .get(`${import.meta.env.VITE_BACKEND_URL}/api/terminals`)
-  //       .then((res) => res.data)
-  //       .catch((err) => console.error(err));
-  //   },
-  // },
   {
     path: "/",
     element: <App />,
     loader: () => {
       return connexion
-        .get(`${import.meta.env.VITE_BACKEND_URL}/api/profils`)
+        .get("terminals")
+        .then((res) => res.data)
+        .catch((err) => console.error(err));
+    },
+  },
+  {
+    path: "/AdminUser",
+    element: <AdminUsers />,
+    loader: () => {
+      return connexion
+        .get("profils")
         .then((res) => res.data)
         .catch((err) => console.error(err));
     },
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
     element: <Map />,
     loader: () => {
       return connexion
-        .get(`${import.meta.env.VITE_BACKEND_URL}/api/terminals`)
+        .get("terminals")
         .then((response) => response.data)
         .catch((err) => console.error(err));
     },
