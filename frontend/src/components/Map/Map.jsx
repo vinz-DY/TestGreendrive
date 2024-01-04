@@ -51,7 +51,11 @@ function MarkersMap({ terminalsData }) {
         </MarkerClusterGroup>
       </MapContainer>
       <div className="geoLocationButton">
-        <button type="button" onClick={showMyLocation}>
+        <button
+          className="geolocationButton"
+          type="button"
+          onClick={showMyLocation}
+        >
           Localisez-moi
         </button>
       </div>
@@ -70,7 +74,7 @@ MarkersMap.propTypes = {
   terminalsData: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
+      name: PropTypes.string,
     })
   ).isRequired,
 };
