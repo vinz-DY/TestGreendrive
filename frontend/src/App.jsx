@@ -3,9 +3,11 @@ import HeaderHome from "./components/HeaderHome";
 import "./App.css";
 
 function App() {
-  return 
+  return
+  <div className="homeContainer">
   <HeaderHome />  
-  <DisplayCards basePath="/terminals" />;
+  <DisplayCards basePath="/terminals" />
+  </div>
 }
 
 export default App;
