@@ -2,11 +2,7 @@ import React from "react";
 import DisplayCards from "../components/DisplayCards";
 
 function AdminCars() {
-  return (
-    <div>
-      <DisplayCards basePath="/cars" />
-    </div>
-  );
+  return <DisplayCards basePath="/cars" />;
 }
 
 export default AdminCars;

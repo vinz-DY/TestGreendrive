@@ -2,11 +2,7 @@ import React from "react";
 import DisplayCards from "../components/DisplayCards";
 
 function AdminUsers() {
-  return (
-    <div>
-      <DisplayCards basePath="/profils" />
-    </div>
-  );
+  return <DisplayCards basePath="/profils" />;
 }
 
 export default AdminUsers;

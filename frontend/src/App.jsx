@@ -1,11 +1,7 @@
 import DisplayCards from "./components/DisplayCards";
 
 function App() {
-  return (
-    <div>
-      <DisplayCards basePath="/terminals" />
-    </div>
-  );
+  return <DisplayCards basePath="/terminals" />;
 }
 
 export default App;
