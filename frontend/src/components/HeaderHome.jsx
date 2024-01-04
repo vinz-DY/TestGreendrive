@@ -28,8 +28,9 @@ function HeaderHome() {
             </div>
           </div>
         </div>
-
-        <img className="headerCar" src={Car1} alt="car header" />
+        <div>
+          <img className="headerCar" src={Car1} alt="car header" />
+        </div>
       </div>
     </div>
   );
