@@ -28,7 +28,11 @@ router.get("/terminals", terminalControllers.browse);
 const profilControllers = require("./controllers/profilControllers");
 
 router.get("/profils", profilControllers.browse);
-/* ************************************************************************* */
+
+/* ***************************CAR********************************************** */
+const carControllers = require("./controllers/carControllers");
+
+router.get("/cars", carControllers.browse);
 
 /* ************************************************************************* */
 
