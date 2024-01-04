@@ -3,7 +3,6 @@ import HeaderHome from "./components/HeaderHome";
 import "./App.css";
 
 function App() {
-
   return (
     <div className="homeContainer">
       <HeaderHome />
