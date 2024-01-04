@@ -3,7 +3,9 @@ import HeaderHome from "./components/HeaderHome";
 import "./App.css";
 
 function App() {
-  return <DisplayCards basePath="/terminals" />;
+  return 
+  <HeaderHome />  
+  <DisplayCards basePath="/terminals" />;
 }
 
 export default App;
