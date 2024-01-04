@@ -4,10 +4,10 @@ import "./App.css";
 
 function App() {
   return (
-  <div className="homeContainer">
-    <HeaderHome />  
-    <DisplayCards basePath="/terminals" />
-  </div>
+    <div className="homeContainer">
+      <HeaderHome />  
+      <DisplayCards basePath="/terminals" />
+    </div>
   );
 }
 
