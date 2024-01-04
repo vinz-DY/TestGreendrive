@@ -1,0 +1,43 @@
+.menuImage {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.7rem 0.7rem 0rem 0rem;
+}
+
+.MenuMapDesc {
+  font-size: 12px;
+}
+
+.cardTextDesc {
+  margin-top: 0.4rem;
+}
+.cardTextContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #cdfee1;
+  border-top: 3px solid #062f45;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-radius: 0rem 0rem 1rem 1rem;
+  gap: 0.2rem;
+}
+
+.MenuMapTitle {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: #062f45;
+  font-size: 2.5rem;
+}
+.menuContainer {
+  display: flex;
+  flex-direction: column;
+  border: solid 4px #062f45;
+  border-radius: 1rem;
+  width: 300px;
+  height: 400px;
+  box-shadow: 0px 17px 25px 3px rgba(0, 0, 0, 0.45);
+}
+
+a {
+  text-decoration: none;
+}
