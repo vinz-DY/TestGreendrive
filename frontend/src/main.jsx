@@ -13,27 +13,27 @@ const router = createBrowserRouter([
     element: <App />,
     loader: () => {
       return connexion
-        .get("terminals")
+        .get("/terminals")
         .then((res) => res.data)
         .catch((err) => console.error(err));
     },
   },
   {
-    path: "/AdminUser",
+    path: "/admin/user",
     element: <AdminUsers />,
     loader: () => {
       return connexion
-        .get("profils")
+        .get("/profils")
         .then((res) => res.data)
         .catch((err) => console.error(err));
     },
   },
   {
-    path: "/AdminCar",
+    path: "/admin/car",
     element: <AdminCars />,
     loader: () => {
       return connexion
-        .get("cars")
+        .get("/cars")
         .then((res) => res.data)
         .catch((err) => console.error(err));
     },
@@ -43,7 +43,7 @@ const router = createBrowserRouter([
     element: <Map />,
     loader: () => {
       return connexion
-        .get("terminals")
+        .get("/terminals")
         .then((response) => response.data)
         .catch((err) => console.error(err));
     },
