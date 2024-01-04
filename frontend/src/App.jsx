@@ -7,8 +7,6 @@ function App() {
     <div className="homeContainer">
       <HeaderHome />
       <DisplayCards basePath="/terminals" />
-      <DisplayCards basePath="/cars" />
-      <DisplayCards basePath="/profils" />
     </div>
   );
 }
