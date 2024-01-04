@@ -23,8 +23,8 @@ export default MarkerComponent;
 
 MarkerComponent.propTypes = {
   marker: PropTypes.shape({
-    ylatitude: PropTypes.number,
-    xlongitude: PropTypes.number,
+    ylatitude: PropTypes.string,
+    xlongitude: PropTypes.string,
     city: PropTypes.string,
     access: PropTypes.string,
     connectic_id: PropTypes.number,
