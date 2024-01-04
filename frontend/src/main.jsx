@@ -5,6 +5,7 @@ import connexion from "./services/connexion";
 import App from "./App";
 import Map from "./components/Map/Map";
 import AdminUsers from "./pages/AdminUsers";
+import AdminCars from "./pages/AdminCars";
 
 const router = createBrowserRouter([
   {
@@ -12,17 +13,27 @@ const router = createBrowserRouter([
     element: <App />,
     loader: () => {
       return connexion
-        .get("terminals")
+        .get("/terminals")
         .then((res) => res.data)
         .catch((err) => console.error(err));
     },
   },
   {
-    path: "/AdminUser",
+    path: "/admin/user",
     element: <AdminUsers />,
     loader: () => {
       return connexion
-        .get("profils")
+        .get("/profils")
+        .then((res) => res.data)
+        .catch((err) => console.error(err));
+    },
+  },
+  {
+    path: "/admin/car",
+    element: <AdminCars />,
+    loader: () => {
+      return connexion
+        .get("/cars")
         .then((res) => res.data)
         .catch((err) => console.error(err));
     },
@@ -32,7 +43,7 @@ const router = createBrowserRouter([
     element: <Map />,
     loader: () => {
       return connexion
-        .get("terminals")
+        .get("/terminals")
         .then((response) => response.data)
         .catch((err) => console.error(err));
     },

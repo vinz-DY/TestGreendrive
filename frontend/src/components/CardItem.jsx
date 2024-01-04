@@ -33,6 +33,9 @@ CardItem.propTypes = {
     lastname: PropTypes.string.isRequired,
     birthdate: PropTypes.string.isRequired,
     user_id: PropTypes.number.isRequired,
+    brand: PropTypes.string,
+    engine: PropTypes.string,
+    fonction_id: PropTypes.string,
   }).isRequired,
   basePath: PropTypes.string.isRequired,
 };
