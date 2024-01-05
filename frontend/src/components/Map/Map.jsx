@@ -37,7 +37,7 @@ function MarkersMap({ terminalsData }) {
   };
 
   return (
-    <div className="map">
+    <div className="map-container">
       <MapContainer center={[43.3, 5.4]} zoom={13} ref={mapRef}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
