@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import DisplayCards from "./components/DisplayCards";
 import HeaderHome from "./components/HeaderHome";
 import MenuCard from "./components/MenuCard";
 import "./App.css";
@@ -13,7 +12,6 @@ function App() {
           <MenuCard />
         </Link>
       </div>
-      <DisplayCards basePath="/terminals" />
     </div>
   );
 }
