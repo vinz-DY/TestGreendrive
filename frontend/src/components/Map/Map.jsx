@@ -1,7 +1,8 @@
-/* eslint-disable no-alert */
 import { useRef } from "react";
 import { MapContainer, TileLayer, Popup, Marker } from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-cluster";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useLoaderData } from "react-router-dom";
 import "leaflet/dist/leaflet.css";
 import "./Map.css";
@@ -14,6 +15,12 @@ function MarkersMap({ terminalsData }) {
   const mapRef = useRef(null);
   const location = useGeoLocation();
 
+  const showToastErrorMessage = () => {
+    toast.error("La géolocalisation n'est pas autorisée !", {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+  };
+
   const showMyLocation = () => {
     if (location.loaded && !location.error) {
       mapRef.current.flyTo(
@@ -22,9 +29,7 @@ function MarkersMap({ terminalsData }) {
         { animate: true }
       );
     } else if (location.error) {
-      alert(location.error.message);
-    } else {
-      alert("Erreur inconnue");
+      showToastErrorMessage(location.error);
     }
   };
 
@@ -59,6 +64,7 @@ function MarkersMap({ terminalsData }) {
           Localisez-moi
         </button>
       </div>
+      <ToastContainer />
     </div>
   );
 }
