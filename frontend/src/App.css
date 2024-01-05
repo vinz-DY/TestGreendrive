@@ -7,3 +7,9 @@
 .homeContainer {
   background-color: #fdfdfb;
 }
+
+.menuCardCtn {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 8rem;
+}
