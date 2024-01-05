@@ -3,10 +3,13 @@ import { MapContainer, TileLayer, Popup, Marker } from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-cluster";
 import { ToastContainer, toast } from "react-toastify";
 import { useLoaderData } from "react-router-dom";
+import PropTypes from "prop-types";
+
 import "react-toastify/dist/ReactToastify.css";
 import "leaflet/dist/leaflet.css";
+
 import "./Map.css";
-import PropTypes from "prop-types";
+
 import MarkerComponent from "./MarkerComponent";
 import useGeoLocation from "./useGeoLocation";
 
