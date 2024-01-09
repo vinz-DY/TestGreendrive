@@ -5,10 +5,10 @@ import CardItem from "./CardItem";
 
 function DisplayCards({ basePath }) {
   const items = useLoaderData();
-
+  const itemsArray = Array.isArray(items) ? items : [items];
   return (
     <div>
-      {items.map((item) => (
+      {itemsArray.map((item) => (
         <CardItem key={item.id} data={item} basePath={basePath} />
       ))}
     </div>

@@ -2,15 +2,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-function CardItem({ data, basePath }) {
-  const { id, image } = data;
+function CardItem({ data }) {
+  const isArray = Array.isArray(data);
+  const { id, image } = isArray ? data[0] : data;
+
   return (
     <div>
-      <Link to={`${basePath}/${id}`}>
+      <Link to={`${id}`}>
         <img src={image} alt="borne" style={{ cursor: "pointer" }} />
       </Link>
       {Object.keys(data).map((key) => (
-        <p key={key}>
+        <p className={`cardItem-${key}`} key={key}>
           {key.charAt(0).toUpperCase() + key.slice(1)}: {data[key]}
         </p>
       ))}
@@ -37,7 +39,6 @@ CardItem.propTypes = {
     engine: PropTypes.string,
     fonction_id: PropTypes.string,
   }).isRequired,
-  basePath: PropTypes.string.isRequired,
 };
 
 export default CardItem;
