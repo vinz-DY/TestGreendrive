@@ -16,23 +16,23 @@ const browse = async (req, res, next) => {
 };
 
 // // The R of BREAD - Read operation
-// const read = async (req, res, next) => {
-//   try {
-//     // Fetch a specific terminal from the database based on the provided ID
-//     const terminal = await tables.terminal.read(req.params.id);
+const read = async (req, res, next) => {
+  try {
+    // Fetch a specific terminal from the database based on the provided ID
+    const terminal = await tables.terminal.read(req.params.id);
 
-//     // If the terminal is not found, respond with HTTP 404 (Not Found)
-//     // Otherwise, respond with the terminal in JSON format
-//     if (terminal == null) {
-//       res.sendStatus(404);
-//     } else {
-//       res.status(200).json(terminal);
-//     }
-//   } catch (err) {
-//     // Pass any errors to the error-handling middleware
-//     next(err);
-//   }
-// };
+    // If the terminal is not found, respond with HTTP 404 (Not Found)
+    // Otherwise, respond with the terminal in JSON format
+    if (terminal == null) {
+      res.sendStatus(404);
+    } else {
+      res.status(200).json(terminal);
+    }
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
 
 // The E of BREAD - Edit (Update) operation
 // This operation is not yet implemented
@@ -61,7 +61,7 @@ const browse = async (req, res, next) => {
 // Ready to export the controller functions
 module.exports = {
   browse,
-  // read,
+  read,
   // edit,
   // add,
   // destroy,
