@@ -11,9 +11,7 @@ function CardItem({ data }) {
       <h2>{data.id}</h2>
       <h2>{data.city}</h2>
       <h2>{data.name}</h2>
-      <h2>{data.lastname}</h2>
-      <h2>{data.birthdate}</h2>
-      <h2>{data.user_id}</h2>
+      <h2>{data.brand}</h2>
     </div>
   );
 }
@@ -21,18 +19,18 @@ function CardItem({ data }) {
 CardItem.propTypes = {
   data: PropTypes.shape({
     image: PropTypes.string,
-    id: PropTypes.number.isRequired,
-    city: PropTypes.string.isRequired,
-    adresseStation: PropTypes.string.isRequired,
-    power: PropTypes.string.isRequired,
-    acces_recharge: PropTypes.string.isRequired,
-    access: PropTypes.string.isRequired,
-    localisation: PropTypes.string.isRequired,
-    region: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    lastname: PropTypes.string.isRequired,
-    birthdate: PropTypes.string.isRequired,
-    user_id: PropTypes.number.isRequired,
+    id: PropTypes.number,
+    city: PropTypes.string,
+    adresseStation: PropTypes.string,
+    power: PropTypes.string,
+    acces_recharge: PropTypes.string,
+    access: PropTypes.string,
+    localisation: PropTypes.string,
+    region: PropTypes.string,
+    name: PropTypes.string,
+    lastname: PropTypes.string,
+    birthdate: PropTypes.string,
+    user_id: PropTypes.number,
     brand: PropTypes.string,
     engine: PropTypes.string,
     fonction_id: PropTypes.string,
