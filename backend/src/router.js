@@ -34,6 +34,7 @@ router.get("/profils", profilControllers.browse);
 const carControllers = require("./controllers/carControllers");
 
 router.get("/cars", carControllers.browse);
+router.get("/cars/:id", carControllers.read);
 
 /* ************************************************************************* */
 
