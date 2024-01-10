@@ -23,6 +23,7 @@ router.post("/items", itemControllers.add);
 const terminalControllers = require("./controllers/terminalControllers");
 
 router.get("/terminals", terminalControllers.browse);
+router.get("/terminals/:id", terminalControllers.read);
 
 /* ***************************Profil********************************************** */
 const profilControllers = require("./controllers/profilControllers");

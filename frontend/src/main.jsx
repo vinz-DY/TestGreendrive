@@ -6,8 +6,9 @@ import App from "./App";
 import Map from "./components/Map/Map";
 import AdminUsers from "./pages/AdminUsers";
 import AdminCars from "./pages/AdminCars";
-import AdminTerminals from "./pages/AdminTerminal";
 import AdminUserId from "./pages/AdminUserId";
+import AdminTerminal from "./pages/AdminTerminal";
+import AdminTerminalId from "./pages/AdminTerminalId";
 
 const router = createBrowserRouter([
   {
@@ -46,10 +47,20 @@ const router = createBrowserRouter([
   },
   {
     path: "/admin/terminal",
-    element: <AdminTerminals />,
+    element: <AdminTerminal />,
     loader: () => {
       return connexion
         .get("/terminals")
+        .then((res) => res.data)
+        .catch((err) => console.error(err));
+    },
+  },
+  {
+    path: "/admin/terminal/:id",
+    element: <AdminTerminalId />,
+    loader: ({ params }) => {
+      return connexion
+        .get(`/terminals/${params.id}`)
         .then((res) => res.data)
         .catch((err) => console.error(err));
     },
