@@ -23,7 +23,7 @@ const read = async (req, res, next) => {
 
     // If the terminal is not found, respond with HTTP 404 (Not Found)
     // Otherwise, respond with the terminal in JSON format
-    if (terminal == null) {
+    if (terminal.length === 0) {
       res.sendStatus(404);
     } else {
       res.status(200).json(terminal);
