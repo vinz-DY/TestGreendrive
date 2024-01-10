@@ -30,7 +30,7 @@ class ProfilManager extends AbstractManager {
     );
 
     // Return the first row of the result, which represents the profil
-    return rows[0];
+    return rows;
   }
 
   async readAll() {

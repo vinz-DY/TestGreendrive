@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-function CardItem({ data }) {
+function CardItemId({ data }) {
   return (
     <div>
       <Link to={`${data.id}`}>
@@ -10,13 +10,24 @@ function CardItem({ data }) {
       </Link>
       <h2>{data.id}</h2>
       <h2>{data.city}</h2>
+      <h2>{data.adresseStation}</h2>
+      <h2>{data.power}</h2>
+      <h2>{data.acces_recharge}</h2>
+      <h2>{data.access}</h2>
+      <h2>{data.localisation}</h2>
+      <h2>{data.region}</h2>
       <h2>{data.name}</h2>
+      <h2>{data.lastname}</h2>
+      <h2>{data.birthdate}</h2>
+      <h2>{data.user_id}</h2>
       <h2>{data.brand}</h2>
+      <h2>{data.engine}</h2>
+      <h2>{data.fonction_id}</h2>
     </div>
   );
 }
 
-CardItem.propTypes = {
+CardItemId.propTypes = {
   data: PropTypes.shape({
     image: PropTypes.string,
     id: PropTypes.number,
@@ -37,4 +48,4 @@ CardItem.propTypes = {
   }).isRequired,
 };
 
-export default CardItem;
+export default CardItemId;

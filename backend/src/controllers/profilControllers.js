@@ -23,7 +23,7 @@ const read = async (req, res, next) => {
 
     //     // If the profil is not found, respond with HTTP 404 (Not Found)
     //     // Otherwise, respond with the profil in JSON format
-    if (profil == null) {
+    if (profil.length === 0) {
       res.sendStatus(404);
     } else {
       res.status(200).json(profil);
