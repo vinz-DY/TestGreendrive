@@ -1,12 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import DisplayCards from "../components/DisplayCards";
+import DisplayCardsId from "../components/DisplayCardsId";
 
 function AdminTerminalId() {
   return (
     <div>
-      <DisplayCards basePath="/terminals/:id" />
-      <Link to="/admin/terminal">Retour</Link>
+      <DisplayCardsId basePath="/terminals/:id" />
+      <Link to="/admin/terminal">
+        <button type="button">retour</button>
+      </Link>
     </div>
   );
 }
