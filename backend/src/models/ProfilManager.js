@@ -22,16 +22,16 @@ class ProfilManager extends AbstractManager {
 
   // The Rs of CRUD - Read operations
 
-  // async read(id) {
-  // Execute the SQL SELECT query to retrieve a specific profil by its ID
-  // const [rows] = await this.database.query(
-  //   `select * from ${this.table} where id = ?`,
-  //   [id]
-  // );
+  async read(id) {
+    // Execute the SQL SELECT query to retrieve a specific profil by its ID
+    const [rows] = await this.database.query(
+      `select * from ${this.table} where id = ?`,
+      [id]
+    );
 
-  // Return the first row of the result, which represents the profil
-  //   return rows[0];
-  // }
+    // Return the first row of the result, which represents the profil
+    return rows;
+  }
 
   async readAll() {
     // Execute the SQL SELECT query to retrieve all profils from the "profil" table

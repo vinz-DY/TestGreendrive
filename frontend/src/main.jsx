@@ -6,6 +6,7 @@ import App from "./App";
 import Map from "./components/Map/Map";
 import AdminUsers from "./pages/AdminUsers";
 import AdminCars from "./pages/AdminCars";
+import AdminUserId from "./pages/AdminUserId";
 import AdminTerminal from "./pages/AdminTerminal";
 import AdminTerminalId from "./pages/AdminTerminalId";
 
@@ -20,6 +21,16 @@ const router = createBrowserRouter([
     loader: () => {
       return connexion
         .get("/profils")
+        .then((res) => res.data)
+        .catch((err) => console.error(err));
+    },
+  },
+  {
+    path: "/admin/user/:id",
+    element: <AdminUserId />,
+    loader: ({ params }) => {
+      return connexion
+        .get(`/profils/${params.id}`)
         .then((res) => res.data)
         .catch((err) => console.error(err));
     },

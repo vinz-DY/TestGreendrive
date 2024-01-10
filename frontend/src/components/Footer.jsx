@@ -29,7 +29,7 @@ function Footer() {
         >
           <TiSocialLinkedin className="socialIcon" />
         </a>
-        <a aria-label="logoGreen" href="/" target="_blank" rel="noreferrer">
+        <a aria-label="logoGreen" href="/" rel="noreferrer">
           <img src={LogoGreen} alt="logo du site" className=" logoGreen" />
         </a>
         <a
