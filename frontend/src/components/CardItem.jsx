@@ -3,13 +3,10 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 function CardItem({ data }) {
-  const isArray = Array.isArray(data);
-  const { id, image } = isArray ? data[0] : data;
-
   return (
     <div>
-      <Link to={`${id}`}>
-        <img src={image} alt="borne" style={{ cursor: "pointer" }} />
+      <Link to={`${data.id}`}>
+        <img src={data.image} alt="borne" style={{ cursor: "pointer" }} />
       </Link>
       {Object.keys(data).map((key) => (
         <p className={`cardItem-${key}`} key={key}>
