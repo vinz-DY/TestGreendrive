@@ -1,16 +1,13 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import { useState } from "react";
 // eslint-disable-next-line spaced-comment
 /*import connexion from "../services/connexion";*/
 import "./Inscription.css";
+import connexion from "../services/connexion";
+import Logo from "../assets/Logo GreenSave.png";
 
 const userType = {
-  lastname: "",
-  firstname: "",
-  gender: "",
-  birthdate: null,
-  email: "",
-  postalCode: "",
-  city: "",
+  mail: "",
   password: "",
   passwordConfirmation: "",
 };
@@ -32,23 +29,8 @@ function Inscription() {
     setShowPassword(!showPassword);
   };
 
-  const currentDate = new Date();
-  const eighteenYears = new Date(
-    currentDate.getFullYear() - 18,
-    currentDate.getMonth(),
-    currentDate.getDate()
-  );
-  const userBirthdate = new Date(user.birthdate);
-
   const postUser = async (event) => {
     event.preventDefault();
-
-    if (userBirthdate > eighteenYears) {
-      setInscriptionSuccess(false);
-      // eslint-disable-next-line no-alert
-      alert("Vous devez avoir 18 ans ou plus pour vous inscrire !");
-      return;
-    }
 
     if (user.password !== user.passwordConfirmation) {
       setInscriptionSuccess(false);
@@ -57,28 +39,18 @@ function Inscription() {
       // eslint-disable-next-line no-useless-return
       return;
     }
-    /*
+
     try {
-      await connexion.post("/users", user);
+      await connexion.post("/user", user);
       setInscriptionSuccess(true);
-      setInscriptionMessage("Inscription réussie ! Félicitations !");
+      setInscriptionMessage(
+        "Inscription réussie ! Passons à l'étape suivante !"
+      );
       setUser(userType);
     } catch (error) {
       // eslint-disable-next-line no-restricted-syntax
       console.log(error);
       setInscriptionSuccess(false);
-    }
-    */
-
-    try {
-      setInscriptionSuccess(true);
-      setInscriptionMessage("Inscription réussie ! Félicitations!");
-      setUser(userType);
-    } catch (error) {
-      setInscriptionSuccess(false);
-      // eslint-disable-next-line no-alert
-      alert("Il y a eu une ou plusieurs erreurs pendant l'inscription !");
-      console.error(error);
     }
   };
 
@@ -88,103 +60,41 @@ function Inscription() {
         <p>{inscriptionMessage}</p>
       ) : (
         <>
-          <h1>Administration d'un user</h1>
+          <header>
+            <h1>A toi, protecteur/protectrice de la planète</h1>
+            <img src={Logo} className="Logo" alt="GreenDrive" />
+          </header>
           <form onSubmit={postUser}>
-            Ajout d'un user
             <label>
-              Nom
               <input
-                type="text"
-                name="lastname"
+                type="email"
+                name="mail"
+                placeholder="Adresse Mail"
                 required
-                value={user.lastname}
+                value={user.mail}
                 onChange={handleUser}
               />
             </label>
             <label>
-              Prénom
-              <input
-                type="text"
-                name="firstname"
-                required
-                value={user.firstname}
-                onChange={handleUser}
-              />
-            </label>
-            <label>
-              Genre
-              <select
-                required
-                name="gender"
-                value={user.gender}
-                onChange={handleUser}
-              >
-                <option value="">Vous êtes</option>
-                <option value="homme">Homme</option>
-                <option value="femme">Femme</option>
-                <option value="non-binaire">Non-Binaire</option>
-                <option value="autre">Autre</option>
-              </select>
-            </label>
-            <label>
-              Date de naissance
-              <input
-                type="date"
-                name="birthdate"
-                required
-                value={user.birthdate}
-                onChange={handleUser}
-              />
-            </label>
-            <label>
-              E-Mail
-              <input
-                type="text"
-                name="email"
-                required
-                value={user.email}
-                onChange={handleUser}
-              />
-            </label>
-            <label>
-              Code Postal
-              <input
-                type="number"
-                required
-                name="postalCode"
-                value={user.postalCode}
-                onChange={handleUser}
-              />
-            </label>
-            <label>
-              Ville
-              <input
-                type="text"
-                required
-                name="city"
-                value={user.city}
-                onChange={handleUser}
-              />
-            </label>
-            <label>
-              Mot de passe
               <input
                 type={showPassword ? "text" : "password"}
                 required
                 name="password"
+                placeholder="Mot de passe"
                 value={user.password}
                 onChange={handleUser}
               />
             </label>
             <label>
-              Confirmation du mot de passe
               <input
                 type={showPassword ? "text" : "password"}
                 required
                 name="passwordConfirmation"
+                placeholder="Confirmation du mot de passe"
                 onChange={handleUser}
               />
             </label>
+            <p>Le mot de passe doit faire minimum 8 caractères.</p>
             <button type="button" onClick={handleTogglePassword}>
               {showPassword
                 ? "Masquer le mot de passe"

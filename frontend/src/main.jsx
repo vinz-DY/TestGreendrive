@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import App from "./App";
 import Inscription from "./components/Inscription";
+import InscriptionProfile from "./components/InscriptionProfile";
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
   {
     path: "/inscription",
     element: <Inscription />,
+  },
+  {
+    path: "/inscription_profil",
+    element: <InscriptionProfile />,
   },
 ]);
 

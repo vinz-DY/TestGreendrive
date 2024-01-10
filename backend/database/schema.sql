@@ -1,18 +1,18 @@
 -- Active: 1698236999326@@127.0.0.1@3306@greendrive
 CREATE TABLE state (
   id INT PRIMARY KEY AUTO_INCREMENT,
-  label varchar(255) NULL
+  label VARCHAR(255) NULL
 );
 
 CREATE TABLE connectic (
   id INT PRIMARY KEY AUTO_INCREMENT,
-  plugType varchar(255) NULL
+  plugType VARCHAR(255) NULL
 );
 
 CREATE TABLE user (
   id INT PRIMARY KEY AUTO_INCREMENT,
-  mail varchar(255) NULL,
-  password varchar(255) NULL,
+  mail VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL,
   isAdmin boolean NULL
 );
 
@@ -36,9 +36,9 @@ CREATE TABLE terminal(
 
 CREATE TABLE car (
   id INT PRIMARY KEY AUTO_INCREMENT,
-  licensePlate varchar(255) NULL,
-  brand varchar(255) NULL,
-  model varchar(255) NULL,
+  licensePlate VARCHAR(255) NULL,
+  brand VARCHAR(255) NULL,
+  model VARCHAR(255) NULL,
   connectic_id INT NOT NULL,
   CONSTRAINT fk_car_connectic FOREIGN KEY (connectic_id) REFERENCES connectic(id),
   user_id INT NOT NULL,
@@ -58,9 +58,12 @@ CREATE TABLE reservations (
 
 CREATE TABLE profil (
   id INT PRIMARY KEY AUTO_INCREMENT,
-  name varchar(255),
-  lastname varchar(255),
-  birthdate varchar(255),
+  lastname VARCHAR(255) NOT NULL,
+  firstname VARCHAR(255) NOT NULL,
+  birthdate VARCHAR(255) NOT NULL,
+  gender ENUM("Male", "Female", "Non-Binary", "Other") NOT NULL,
+  postalCode VARCHAR(255) NOT NULL,
+  city VARCHAR(255) NOT NULL,
   user_id INT NOT NULL,
   CONSTRAINT fk_profil_user FOREIGN KEY (user_id) REFERENCES user(id)
 );
