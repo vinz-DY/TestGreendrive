@@ -14,10 +14,12 @@ function CardItem({ data }) {
           style={{ cursor: "pointer" }}
         />
       </Link>
-      <h2 className="CardItem_id">{data.id}</h2>
-      <h2 className="CardItem_city">{data.city}</h2>
-      <h2 className="CardItem_name">{data.name}</h2>
-      <h2 className="CardItem_brand">{data.brand}</h2>
+      <div className="CardItem_text">
+        <h2 className="CardItem_h2">{data.id}</h2>
+        <h2 className="CardItem_h2">{data.city}</h2>
+        <h2 className="CardItem_h2">{data.name}</h2>
+        <h2 className="CardItem_h2">{data.brand}</h2>
+      </div>
     </div>
   );
 }
