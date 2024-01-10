@@ -65,11 +65,12 @@ const seed = async () => {
       const userId = i + 1;
       queriesProfil.push(
         database.query(
-          "insert into profil(name, lastname, birthdate, user_id) values (?,?,?,?)",
+          "insert into profil(name, lastname, birthdate,image, user_id) values (?,?,?,?,?)",
           [
             faker.person.firstName(),
             faker.person.lastName(),
             faker.date.birthdate(),
+            faker.image.avatar(),
             userId,
           ]
         )
@@ -84,11 +85,12 @@ const seed = async () => {
       const connecticId = Math.round(Math.random()) + 1;
       queriesCar.push(
         database.query(
-          "insert into car(licensePlate, brand, model, connectic_id, user_id) values (?,?,?,?,?)",
+          "insert into car(licensePlate, brand, model,image, connectic_id, user_id) values (?,?,?,?,?,?)",
           [
             faker.vehicle.vrm(),
             faker.vehicle.manufacturer(),
             faker.vehicle.model(),
+            faker.image.urlLoremFlickr({ category: "car" }),
             connecticId,
             userId,
           ]
