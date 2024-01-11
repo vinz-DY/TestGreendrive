@@ -1,14 +1,10 @@
 import React from "react";
-import NavBorne from "../components/NavBorne";
-import NavUtilisateur from "../components/NavUser";
-import NavVehicule from "../components/NavVehicule";
+import NavAdmin from "../components/NavAdmin";
 
 function Admin() {
   return (
     <div>
-      <NavBorne />
-      <NavUtilisateur />
-      <NavVehicule />
+      <NavAdmin />
     </div>
   );
 }
