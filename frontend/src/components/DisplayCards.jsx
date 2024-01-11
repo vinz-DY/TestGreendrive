@@ -10,7 +10,7 @@ function DisplayCards({ basePath }) {
   return (
     <div className="DisplayCards">
       {items.map((item) => (
-        <CardItem key={item.id} data={item} basePath={basePath} />
+        <CardItem key={item.id} data={item} basePath1={basePath} />
       ))}
     </div>
   );

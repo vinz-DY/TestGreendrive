@@ -10,11 +10,16 @@ import AdminCarsId from "./pages/AdminCarsId";
 import AdminUserId from "./pages/AdminUserId";
 import AdminTerminal from "./pages/AdminTerminal";
 import AdminTerminalId from "./pages/AdminTerminalId";
+import Admin from "./pages/Admin";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+  },
+  {
+    path: "/admin",
+    element: <Admin />,
   },
   {
     path: "/admin/user",
