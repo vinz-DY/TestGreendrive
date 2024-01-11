@@ -1,11 +1,12 @@
 import React from "react";
 import UserImage from "../assets/users.png";
+import "./NavCard.css";
 
 function NavUser() {
   return (
-    <div>
-      <img src={UserImage} alt="Borne" />
-      <p> Utilisateurs</p>
+    <div className="nav_contener">
+      <img className="nav_img" src={UserImage} alt="Borne" />
+      <p className="nav_text"> Utilisateurs</p>
     </div>
   );
 }
