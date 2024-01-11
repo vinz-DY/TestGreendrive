@@ -6,7 +6,7 @@ import "./NavCard.css";
 function NavUser() {
   return (
     <Link to="/admin/user">
-      <div className="nav_contener">
+      <div className="nav_container">
         <img className="nav_img" src={UserImage} alt="Borne" />
         <p className="nav_text"> Utilisateurs</p>
       </div>
