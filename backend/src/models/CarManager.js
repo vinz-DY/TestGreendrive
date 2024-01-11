@@ -30,7 +30,7 @@ class carManager extends AbstractManager {
     );
 
     // Return the first row of the result, which represents the car
-    return rows[0];
+    return rows;
   }
 
   async readAll() {

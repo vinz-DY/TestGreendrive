@@ -1,28 +1,37 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import "./CardItem.css";
 
 function CardItemId({ data }) {
   return (
-    <div>
-      <Link to={`${data.id}`}>
-        <img src={data.image} alt="borne" style={{ cursor: "pointer" }} />
-      </Link>
-      <h2>{data.id}</h2>
-      <h2>{data.city}</h2>
-      <h2>{data.adresseStation}</h2>
-      <h2>{data.power}</h2>
-      <h2>{data.acces_recharge}</h2>
-      <h2>{data.access}</h2>
-      <h2>{data.localisation}</h2>
-      <h2>{data.region}</h2>
-      <h2>{data.name}</h2>
-      <h2>{data.lastname}</h2>
-      <h2>{data.birthdate}</h2>
-      <h2>{data.user_id}</h2>
-      <h2>{data.brand}</h2>
-      <h2>{data.engine}</h2>
-      <h2>{data.fonction_id}</h2>
+    <div className="CardItem">
+      <div className="CardItem_card">
+        <img className="CardItem_img" src={data.image} alt="borne" />
+      </div>
+
+      <div className="CardItem_text">
+        <h2 className="CardItem_h2">{data.id}</h2>
+        <h2 className="CardItem_h2">{data.city}</h2>
+        <h2 className="CardItem_h2">{data.adresseStation}</h2>
+        <h2 className="CardItem_h2">{data.power}</h2>
+        <h2 className="CardItem_h2">{data.acces_recharge}</h2>
+        <h2 className="CardItem_h2">{data.access}</h2>
+        <h2 className="CardItem_h2">{data.localisation}</h2>
+        <h2 className="CardItem_h2">{data.region}</h2>
+        <h2 className="CardItem_h2">{data.name}</h2>
+        <h2 className="CardItem_h2">{data.lastname}</h2>
+        <h2 className="CardItem_h2">{data.birthdate}</h2>
+        <h2 className="CardItem_h2">{data.user_id}</h2>
+        <h2 className="CardItem_h2">{data.brand}</h2>
+        <h2 className="CardItem_h2">{data.engine}</h2>
+        <h2 className="CardItem_h2">{data.fonction_id}</h2>
+        <Link to="/admin/terminal">
+          <button className="CardItem_back" type="button">
+            retour
+          </button>
+        </Link>
+      </div>
     </div>
   );
 }

@@ -6,6 +6,8 @@ import App from "./App";
 import Map from "./components/Map/Map";
 import AdminUsers from "./pages/AdminUsers";
 import AdminCars from "./pages/AdminCars";
+import AdminCarsId from "./pages/AdminCarsId";
+import AdminUserId from "./pages/AdminUserId";
 import AdminTerminal from "./pages/AdminTerminal";
 import AdminTerminalId from "./pages/AdminTerminalId";
 import Inscription from "./components/Inscription";
@@ -27,11 +29,31 @@ const router = createBrowserRouter([
     },
   },
   {
+    path: "/admin/user/:id",
+    element: <AdminUserId />,
+    loader: ({ params }) => {
+      return connexion
+        .get(`/profils/${params.id}`)
+        .then((res) => res.data)
+        .catch((err) => console.error(err));
+    },
+  },
+  {
     path: "/admin/car",
     element: <AdminCars />,
     loader: () => {
       return connexion
         .get("/cars")
+        .then((res) => res.data)
+        .catch((err) => console.error(err));
+    },
+  },
+  {
+    path: "/admin/car/:id",
+    element: <AdminCarsId />,
+    loader: ({ params }) => {
+      return connexion
+        .get(`/cars/${params.id}`)
         .then((res) => res.data)
         .catch((err) => console.error(err));
     },

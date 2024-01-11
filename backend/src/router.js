@@ -57,11 +57,13 @@ router.get("/terminals/:id", terminalControllers.read);
 /* ***************************Profil********************************************** */
 
 router.get("/profils", profilControllers.browse);
+router.get("/profils/:id", profilControllers.read);
 
 /* ***************************CAR********************************************** */
 const carControllers = require("./controllers/carControllers");
 
 router.get("/cars", carControllers.browse);
+router.get("/cars/:id", carControllers.read);
 
 /* ************************************************************************* */
 

@@ -1,18 +1,17 @@
--- Active: 1698236999326@@127.0.0.1@3306@greendrive
 CREATE TABLE state (
   id INT PRIMARY KEY AUTO_INCREMENT,
-  label VARCHAR(255) NULL
+  label varchar(255) NULL
 );
 
 CREATE TABLE connectic (
   id INT PRIMARY KEY AUTO_INCREMENT,
-  plugType VARCHAR(255) NULL
+  plugType varchar(255) NULL
 );
 
 CREATE TABLE user (
   id INT PRIMARY KEY AUTO_INCREMENT,
-  mail VARCHAR(255) NOT NULL,
-  password VARCHAR(255) NOT NULL,
+  mail varchar(255) NULL,
+  password varchar(255) NULL,
   isAdmin boolean NULL
 );
 
@@ -60,13 +59,10 @@ CREATE TABLE reservations (
 
 CREATE TABLE profil (
   id INT PRIMARY KEY AUTO_INCREMENT,
-  lastname VARCHAR(255) NOT NULL,
-  firstname VARCHAR(255) NOT NULL,
-  birthdate VARCHAR(255) NOT NULL,
-  gender ENUM("Male", "Female", "Non-Binary", "Other") NOT NULL,
-  postalCode VARCHAR(255) NOT NULL,
-  city VARCHAR(255) NOT NULL,
+  name varchar(255),
+  lastname varchar(255),
+  birthdate varchar(255),
+  image varchar(255),
   user_id INT NOT NULL,
   CONSTRAINT fk_profil_user FOREIGN KEY (user_id) REFERENCES user(id)
 );
-

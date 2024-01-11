@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import React from "react";
 import Car1 from "../assets/Car1.jpg";
 import "./headerHome.css";
@@ -16,7 +17,7 @@ function HeaderHome() {
           </div>
           <div className="buttonsContainer">
             <button type="button" className="button1">
-              S'inscrire
+              <Link to="/inscription">S'inscrire</Link>
             </button>
             <div className="buttonsSignContainer">
               <button type="button" className="buttonDeco">
