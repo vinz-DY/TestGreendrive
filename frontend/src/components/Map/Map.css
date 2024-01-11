@@ -1,0 +1,22 @@
+.leaflet-container {
+  height: 60vh;
+  margin-top: 5vh;
+}
+
+.geolocationButton {
+  margin-top: 10px;
+  background: #91ca3f;
+  border: 1px solid #91ca3f;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+}
+
+.geolocationButton:hover {
+  margin-top: 10px;
+  background: white;
+  border: 1px solid #91ca3f;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #91ca3f;
+}

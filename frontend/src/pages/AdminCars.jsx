@@ -1,7 +1,8 @@
 import React from "react";
+import DisplayCards from "../components/DisplayCards";
 
 function AdminCars() {
-  return <div>AdminCars</div>;
+  return <DisplayCards basePath="/cars" />;
 }
 
 export default AdminCars;

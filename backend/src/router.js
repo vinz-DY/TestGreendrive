@@ -47,10 +47,21 @@ router.get("/profil/:id", profilControllers.read);
 router.post("/profil", validateProfil, profilControllers.add);
 
 /* ************************************************************************* */
+/* *******************terminal****************************************************** */
 
-/* ************************************************************************* */
+const terminalControllers = require("./controllers/terminalControllers");
 
-/* ************************************************************************* */
+router.get("/terminals", terminalControllers.browse);
+router.get("/terminals/:id", terminalControllers.read);
+
+/* ***************************Profil********************************************** */
+
+router.get("/profils", profilControllers.browse);
+
+/* ***************************CAR********************************************** */
+const carControllers = require("./controllers/carControllers");
+
+router.get("/cars", carControllers.browse);
 
 /* ************************************************************************* */
 

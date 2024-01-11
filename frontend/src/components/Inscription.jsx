@@ -55,18 +55,21 @@ function Inscription() {
   };
 
   return (
-    <div>
+    <div className="inscription">
       {inscriptionSuccess ? (
         <p>{inscriptionMessage}</p>
       ) : (
         <>
-          <header>
-            <h1>A toi, protecteur/protectrice de la planète</h1>
-            <img src={Logo} className="Logo" alt="GreenDrive" />
+          <header className="inscriptionHeader">
+            <h1 className="inscriptionTitle">
+              A toi, protecteur/protectrice de la planète
+            </h1>
+            <img src={Logo} className="inscriptionLogo" alt="GreenDrive" />
           </header>
           <form onSubmit={postUser}>
-            <label>
+            <label className="inscriptionLabel">
               <input
+                className="inscriptionInput"
                 type="email"
                 name="mail"
                 placeholder="Adresse Mail"
@@ -75,8 +78,9 @@ function Inscription() {
                 onChange={handleUser}
               />
             </label>
-            <label>
+            <label className="inscriptionLabel">
               <input
+                className="inscriptionInput"
                 type={showPassword ? "text" : "password"}
                 required
                 name="password"
@@ -85,8 +89,9 @@ function Inscription() {
                 onChange={handleUser}
               />
             </label>
-            <label>
+            <label className="inscriptionLabel">
               <input
+                className="inscriptionInput"
                 type={showPassword ? "text" : "password"}
                 required
                 name="passwordConfirmation"
@@ -94,13 +99,21 @@ function Inscription() {
                 onChange={handleUser}
               />
             </label>
-            <p>Le mot de passe doit faire minimum 8 caractères.</p>
-            <button type="button" onClick={handleTogglePassword}>
+            <p className="inscriptionText">
+              Le mot de passe doit faire minimum 8 caractères.
+            </p>
+            <button
+              type="button"
+              className="inscriptionButton"
+              onClick={handleTogglePassword}
+            >
               {showPassword
                 ? "Masquer le mot de passe"
                 : "Afficher le mot de passe"}
             </button>
-            <button type="submit">Inscription</button>
+            <button type="submit" className="inscriptionButton">
+              Inscription
+            </button>
           </form>
         </>
       )}

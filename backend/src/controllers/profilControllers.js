@@ -8,7 +8,7 @@ const browse = async (req, res, next) => {
     const profils = await tables.profil.readAll();
 
     // Respond with the profils in JSON format
-    res.json(profils);
+    res.status(200).json(profils);
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);
@@ -23,7 +23,7 @@ const read = async (req, res, next) => {
 
     // If the profil is not found, respond with HTTP 404 (Not Found)
     // Otherwise, respond with the profil in JSON format
-    if (profil == null) {
+    if (profil === 0) {
       res.sendStatus(404);
     } else {
       res.json(profil);
