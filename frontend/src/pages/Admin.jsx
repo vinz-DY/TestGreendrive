@@ -1,6 +1,6 @@
 import React from "react";
 import NavBorne from "../components/NavBorne";
-import NavUtilisateur from "../components/NavUtilisateur";
+import NavUtilisateur from "../components/NavUser";
 import NavVehicule from "../components/NavVehicule";
 
 function Admin() {
