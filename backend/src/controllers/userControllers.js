@@ -1,4 +1,3 @@
-/* eslint-disable no-restricted-syntax */
 // Import access to database tables
 const tables = require("../tables");
 const hash = require("../services/hash");
@@ -46,7 +45,6 @@ const add = async (req, res, next) => {
   try {
     // Insert the user into the database
     const hashPassword = await hash(req.body.password);
-    console.log(hashPassword);
     await tables.user.create(req.body.mail, hashPassword);
 
     // Respond with HTTP 201 (Created) and the ID of the newly inserted user
