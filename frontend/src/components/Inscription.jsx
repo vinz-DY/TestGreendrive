@@ -1,10 +1,9 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import { useState } from "react";
-// eslint-disable-next-line spaced-comment
-/*import connexion from "../services/connexion";*/
 import "./Inscription.css";
+import { ToastContainer, toast } from "react-toastify";
 import connexion from "../services/connexion";
 import Logo from "../assets/Logo GreenSave.png";
+import "react-toastify/dist/ReactToastify.css";
 
 const userType = {
   mail: "",
@@ -32,11 +31,15 @@ function Inscription() {
   const postUser = async (event) => {
     event.preventDefault();
 
+    const showToastErrorMessage = () => {
+      toast.error("Les mots de passe ne correspondent pas !", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    };
+
     if (user.password !== user.passwordConfirmation) {
       setInscriptionSuccess(false);
-      // eslint-disable-next-line no-alert
-      alert("Les mots de passe ne correspondent pas !");
-      // eslint-disable-next-line no-useless-return
+      showToastErrorMessage(user.passwordConfirmation);
       return;
     }
 
@@ -48,8 +51,6 @@ function Inscription() {
       );
       setUser(userType);
     } catch (error) {
-      // eslint-disable-next-line no-restricted-syntax
-      console.log(error);
       setInscriptionSuccess(false);
     }
   };
@@ -67,7 +68,7 @@ function Inscription() {
             <img src={Logo} className="inscriptionLogo" alt="GreenDrive" />
           </header>
           <form onSubmit={postUser}>
-            <label className="inscriptionLabel">
+            <label className="inscriptionLabel" aria-label="email">
               <input
                 className="inscriptionInput"
                 type="email"
@@ -78,7 +79,7 @@ function Inscription() {
                 onChange={handleUser}
               />
             </label>
-            <label className="inscriptionLabel">
+            <label className="inscriptionLabel" aria-label="password">
               <input
                 className="inscriptionInput"
                 type={showPassword ? "text" : "password"}
@@ -89,7 +90,7 @@ function Inscription() {
                 onChange={handleUser}
               />
             </label>
-            <label className="inscriptionLabel">
+            <label className="inscriptionLabel" aria-label="password">
               <input
                 className="inscriptionInput"
                 type={showPassword ? "text" : "password"}
@@ -97,6 +98,7 @@ function Inscription() {
                 name="passwordConfirmation"
                 placeholder="Confirmation du mot de passe"
                 onChange={handleUser}
+                value={user.passwordConfirmation}
               />
             </label>
             <p className="inscriptionText">
@@ -117,6 +119,7 @@ function Inscription() {
           </form>
         </>
       )}
+      <ToastContainer />
     </div>
   );
 }

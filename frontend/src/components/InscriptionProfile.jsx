@@ -1,8 +1,9 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import { useState } from "react";
-// eslint-disable-next-line spaced-comment
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import connexion from "../services/connexion";
 import "./Inscription.css";
+import Logo from "../assets/Logo GreenSave.png";
 
 const profilType = {
   lastname: "",
@@ -36,10 +37,21 @@ function InscriptionProfile() {
   const postprofil = async (event) => {
     event.preventDefault();
 
+    const showToastErrorAge = () => {
+      toast.error("Vous devez avoir 18 ans ou plus pour vous inscrire !", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    };
+
+    const showToastErrorMessage = () => {
+      toast.error("Une ou plusieurs erreurs bloquent l'inscription !", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    };
+
     if (profilBirthdate > eighteenYears) {
       setInscriptionSuccess(false);
-      // eslint-disable-next-line no-alert
-      alert("Vous devez avoir 18 ans ou plus pour vous inscrire !");
+      showToastErrorAge(profil.birthdate);
       return;
     }
 
@@ -49,8 +61,6 @@ function InscriptionProfile() {
       setInscriptionMessage("Inscription réussie ! Félicitations !");
       setprofil(profilType);
     } catch (error) {
-      // eslint-disable-next-line no-restricted-syntax
-      console.log(error);
       setInscriptionSuccess(false);
     }
 
@@ -60,22 +70,26 @@ function InscriptionProfile() {
       setprofil(profilType);
     } catch (error) {
       setInscriptionSuccess(false);
-      // eslint-disable-next-line no-alert
-      alert("Il y a eu une ou plusieurs erreurs pendant l'inscription !");
-      console.error(error);
+      showToastErrorMessage();
     }
   };
 
   return (
-    <div>
+    <div className="inscription">
       {inscriptionSuccess ? (
         <p>{inscriptionMessage}</p>
       ) : (
         <>
-          <h1>Inscription</h1>
+          <header className="inscriptionHeader">
+            <h1 className="inscriptionTitle">
+              A toi, protecteur/protectrice de la planète
+            </h1>
+            <img src={Logo} className="inscriptionLogo" alt="GreenDrive" />
+          </header>
           <form onSubmit={postprofil}>
-            <label>
+            <label className="inscriptionLabel" aria-label="lastname">
               <input
+                className="inscriptionInput"
                 type="text"
                 name="lastname"
                 placeholder="Nom"
@@ -84,8 +98,9 @@ function InscriptionProfile() {
                 onChange={handleprofil}
               />
             </label>
-            <label>
+            <label className="inscriptionLabel" aria-label="firstname">
               <input
+                className="inscriptionInput"
                 type="text"
                 name="firstname"
                 placeholder="Prénom"
@@ -94,8 +109,9 @@ function InscriptionProfile() {
                 onChange={handleprofil}
               />
             </label>
-            <label>
+            <label className="inscriptionLabel" aria-label="gender">
               <select
+                className="inscriptionInput"
                 required
                 name="gender"
                 value={profil.gender}
@@ -108,8 +124,9 @@ function InscriptionProfile() {
                 <option value="Other">Autre</option>
               </select>
             </label>
-            <label>
+            <label className="inscriptionLabel" aria-label="birthdate">
               <input
+                className="inscriptionInput"
                 type="date"
                 name="birthdate"
                 required
@@ -117,8 +134,9 @@ function InscriptionProfile() {
                 onChange={handleprofil}
               />
             </label>
-            <label>
+            <label className="inscriptionLabel" aria-label="postalCode">
               <input
+                className="inscriptionInput"
                 type="number"
                 required
                 name="postalCode"
@@ -127,8 +145,9 @@ function InscriptionProfile() {
                 onChange={handleprofil}
               />
             </label>
-            <label>
+            <label className="inscriptionLabel" aria-label="city">
               <input
+                className="inscriptionInput"
                 type="text"
                 required
                 name="city"
@@ -137,10 +156,13 @@ function InscriptionProfile() {
                 onChange={handleprofil}
               />
             </label>
-            <button type="submit">Inscription</button>
+            <button type="submit" className="inscriptionButton">
+              Inscription
+            </button>
           </form>
         </>
       )}
+      <ToastContainer />
     </div>
   );
 }

@@ -10,7 +10,7 @@ const browse = async (req, res, next) => {
     const users = await tables.user.readAll();
 
     // Respond with the users in JSON format
-    res.json(users);
+    res.status(200).json(users);
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);
@@ -25,10 +25,10 @@ const read = async (req, res, next) => {
 
     // If the user is not found, respond with HTTP 404 (Not Found)
     // Otherwise, respond with the user in JSON format
-    if (user == null) {
+    if (user.length === 0) {
       res.sendStatus(404);
     } else {
-      res.json(user);
+      res.status(200).json(user);
     }
   } catch (err) {
     // Pass any errors to the error-handling middleware
