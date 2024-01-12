@@ -1,5 +1,4 @@
 import React from "react";
-
 import DisplayCardsId from "../components/DisplayCardsId";
 
 function AdminCarsId() {
