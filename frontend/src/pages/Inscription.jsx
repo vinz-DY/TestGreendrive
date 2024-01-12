@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import connexion from "../services/connexion";
+import HeaderInscription from "../components/HeaderInscription";
 import "../components/Inscription.css";
 import "react-toastify/dist/ReactToastify.css";
-import HeaderInscription from "../components/HeaderInscription";
 
 const userType = {
   mail: "",

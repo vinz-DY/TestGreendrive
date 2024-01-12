@@ -93,7 +93,7 @@ const router = createBrowserRouter([
     element: <Inscription />,
   },
   {
-    path: "/inscription_profil",
+    path: "/inscription-profil",
     element: <InscriptionProfile />,
   },
 ]);
