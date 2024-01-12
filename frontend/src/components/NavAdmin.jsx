@@ -2,8 +2,8 @@ import React from "react";
 import NavBorne from "./NavBorne";
 import NavUser from "./NavUser";
 import NavVehicule from "./NavVehicule";
-import "./NavAdmin.css";
 import AdminImage from "../assets/yavuz.png";
+import "./NavAdmin.css";
 
 function NavAdmin() {
   return (
