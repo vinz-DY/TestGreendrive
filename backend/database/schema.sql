@@ -10,7 +10,7 @@ CREATE TABLE connectic (
 
 CREATE TABLE user (
   id INT PRIMARY KEY AUTO_INCREMENT,
-  mail varchar(255) NULL,
+  mail varchar(255) UNIQUE,
   password varchar(255) NULL,
   isAdmin boolean NULL
 );
