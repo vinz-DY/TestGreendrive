@@ -1,8 +1,8 @@
 import { useState } from "react";
-import "./Inscription.css";
 import { ToastContainer, toast } from "react-toastify";
 import connexion from "../services/connexion";
 import Logo from "../assets/Logo GreenSave.png";
+import "./Inscription.css";
 import "react-toastify/dist/ReactToastify.css";
 
 const userType = {
