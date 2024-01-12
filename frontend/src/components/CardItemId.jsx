@@ -25,7 +25,7 @@ function CardItemId({ data }) {
         <h2 className="CardItem_h2">{data.name}</h2>
         <h2 className="CardItem_h2">{data.lastname}</h2>
         <h2 className="CardItem_h2">{data.birthdate}</h2>
-        <h2 className="CardItem_h2">{data.user_id}</h2>
+        {/* <h2 className="CardItem_h2">{data.user_id}</h2> */}
         <h2 className="CardItem_h2">{data.brand}</h2>
         <h2 className="CardItem_h2">{data.engine}</h2>
         <h2 className="CardItem_h2">{data.fonction_id}</h2>

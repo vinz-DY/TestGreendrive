@@ -10,4 +10,6 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  background-color: #fdfdfb;
+  border-right: solid 0.5px #eeeeeb;
 }
