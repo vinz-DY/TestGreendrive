@@ -10,8 +10,8 @@ import AdminCarsId from "./pages/AdminCarsId";
 import AdminUserId from "./pages/AdminUserId";
 import AdminTerminal from "./pages/AdminTerminal";
 import AdminTerminalId from "./pages/AdminTerminalId";
-import Inscription from "./components/Inscription";
-import InscriptionProfile from "./components/InscriptionProfile";
+import Inscription from "./pages/Inscription";
+import InscriptionProfile from "./pages/Inscription_Profile";
 
 const router = createBrowserRouter([
   {

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import connexion from "../services/connexion";
-import Logo from "../assets/Logo GreenSave.png";
-import "./Inscription.css";
+import "../components/Inscription.css";
 import "react-toastify/dist/ReactToastify.css";
+import HeaderInscription from "../components/HeaderInscription";
 
 const userType = {
   mail: "",
@@ -61,12 +61,7 @@ function Inscription() {
         <p>{inscriptionMessage}</p>
       ) : (
         <>
-          <header className="inscriptionHeader">
-            <h1 className="inscriptionTitle">
-              A toi, protecteur/protectrice de la planète
-            </h1>
-            <img src={Logo} className="inscriptionLogo" alt="GreenDrive" />
-          </header>
+          <HeaderInscription />
           <form onSubmit={postUser}>
             <label className="inscriptionLabel" aria-label="email">
               <input

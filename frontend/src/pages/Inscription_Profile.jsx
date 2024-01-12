@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import connexion from "../services/connexion";
-import Logo from "../assets/Logo GreenSave.png";
-import "./Inscription.css";
+import HeaderInscription from "../components/HeaderInscription";
+import "../components/Inscription.css";
 import "react-toastify/dist/ReactToastify.css";
 
 const profilType = {
@@ -80,12 +80,7 @@ function InscriptionProfile() {
         <p>{inscriptionMessage}</p>
       ) : (
         <>
-          <header className="inscriptionHeader">
-            <h1 className="inscriptionTitle">
-              A toi, protecteur/protectrice de la planète
-            </h1>
-            <img src={Logo} className="inscriptionLogo" alt="GreenDrive" />
-          </header>
+          <HeaderInscription />
           <form onSubmit={postprofil}>
             <label className="inscriptionLabel" aria-label="lastname">
               <input
