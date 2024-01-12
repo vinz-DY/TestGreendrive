@@ -14,7 +14,6 @@ import Inscription from "./pages/Inscription";
 import InscriptionProfile from "./pages/Inscription_Profile";
 import Admin from "./pages/Admin";
 
-
 const router = createBrowserRouter([
   {
     path: "/",
