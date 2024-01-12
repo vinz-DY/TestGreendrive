@@ -5,11 +5,9 @@ import "./NavCard.css";
 
 function NavVehicule() {
   return (
-    <Link to="/admin/car">
-      <div className="nav_container">
-        <img className="nav_img" src={VehiculeImage} alt="Borne" />
-        <p className="nav_text"> Véhicules</p>
-      </div>
+    <Link className="nav_container" to="/admin/car">
+      <img className="nav_img" src={VehiculeImage} alt="Borne" />
+      <p className="nav_text"> Véhicules</p>
     </Link>
   );
 }

@@ -8,7 +8,7 @@ function CardItemId({ data }) {
   };
 
   return (
-    <div className="CardItem">
+    <div className="CardItem CardItemId">
       <div className="CardItem_card">
         <img className="CardItem_img" src={data.image} alt="borne" />
       </div>

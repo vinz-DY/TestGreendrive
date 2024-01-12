@@ -5,11 +5,9 @@ import "./NavCard.css";
 
 function NavBorne() {
   return (
-    <Link to="/admin/terminal">
-      <div className="nav_container">
-        <img className="nav_img" src={BorneImage} alt="Borne" />
-        <p className="nav_text"> Toutes les Bornes</p>
-      </div>
+    <Link className="nav_container" to="/admin/terminal">
+      <img className="nav_img" src={BorneImage} alt="Borne" />
+      <p className="nav_text"> Toutes les Bornes</p>
     </Link>
   );
 }

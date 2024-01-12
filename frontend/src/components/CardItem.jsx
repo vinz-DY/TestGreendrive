@@ -4,9 +4,6 @@ import PropTypes from "prop-types";
 import "./CardItem.css";
 
 function CardItem({ data }) {
-  const handleGoBack = () => {
-    window.history.back();
-  };
   return (
     <div className="CardItem">
       <Link className="CardItem_card" to={`${data.id}`}>
@@ -22,9 +19,6 @@ function CardItem({ data }) {
         <h2 className="CardItem_h2">{data.city}</h2>
         <h2 className="CardItem_h2">{data.name}</h2>
         <h2 className="CardItem_h2">{data.brand}</h2>
-        <button className="CardItem_back" type="button" onClick={handleGoBack}>
-          retour
-        </button>
       </div>
     </div>
   );
