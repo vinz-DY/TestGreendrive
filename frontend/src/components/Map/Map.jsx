@@ -4,7 +4,7 @@ import MarkerClusterGroup from "react-leaflet-cluster";
 import { ToastContainer, toast } from "react-toastify";
 import { useLoaderData } from "react-router-dom";
 import PropTypes from "prop-types";
-import axios from "axios"; // Importez Axios
+import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 import "leaflet/dist/leaflet.css";
 import "./Map.css";
@@ -16,7 +16,7 @@ function MarkersMap({ terminalsData }) {
   const mapRef = useRef(null);
   const location = useGeoLocation();
   const [cityInput, setCityInput] = useState("");
-  const [searchedCityMarker, setSearchedCityMarker] = useState(null); // Nouvel état
+  const [searchedCityMarker, setSearchedCityMarker] = useState(null);
 
   const showToastErrorMessage = (message) => {
     toast.error(message, {
@@ -85,7 +85,7 @@ function MarkersMap({ terminalsData }) {
             <MarkerComponent key={marker.id} marker={marker} />
           ))}
         </MarkerClusterGroup>
-        {searchedCityMarker && ( // Affiche le marqueur de la ville recherchée si les coordonnées sont disponibles
+        {searchedCityMarker && (
           <Marker position={searchedCityMarker.coordinates}>
             <Popup>
               <h2>{searchedCityMarker.displayName}</h2>
