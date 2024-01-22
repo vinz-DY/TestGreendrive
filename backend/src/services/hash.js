@@ -10,7 +10,7 @@ const hash = async (password) => {
   try {
     return await argon2.hash(password, options);
   } catch (err) {
-    console.info(err);
+    console.error(err);
     throw new Error("Something's wrong !");
   }
 };

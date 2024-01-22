@@ -37,9 +37,21 @@ function Inscription() {
       });
     };
 
+    const showToastPasswordMessage = () => {
+      toast.error("Le mot de passe doit faire 8 caractères minimum !", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    };
+
     if (user.password !== user.passwordConfirmation) {
       setInscriptionSuccess(false);
       showToastErrorMessage(user.passwordConfirmation);
+      return;
+    }
+
+    if (user.password.length < 8) {
+      setInscriptionSuccess(false);
+      showToastPasswordMessage(user.password);
       return;
     }
 

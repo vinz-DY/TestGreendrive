@@ -1,7 +1,7 @@
 const Joi = require("joi");
 
 const schema = Joi.object({
-  mail: Joi.string().min(5).max(50).required(),
+  mail: Joi.string().email().required(),
   password: Joi.string().min(8).max(20).required(),
   passwordConfirmation: Joi.string().min(8).max(20).required(),
 });

@@ -62,14 +62,6 @@ function InscriptionProfile() {
       setprofil(profilType);
     } catch (error) {
       setInscriptionSuccess(false);
-    }
-
-    try {
-      setInscriptionSuccess(true);
-      setInscriptionMessage("Inscription réussie ! Félicitations!");
-      setprofil(profilType);
-    } catch (error) {
-      setInscriptionSuccess(false);
       showToastErrorMessage();
     }
   };
