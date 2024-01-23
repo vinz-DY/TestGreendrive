@@ -4,10 +4,11 @@ const tables = require("../tables");
 // The B of BREAD - Browse (Read All) operation
 const browse = async (req, res, next) => {
   try {
-    // Fetch all cars from the database
-    const cars = await tables.car.readAll();
+    const searchTerm = req.query.searchTerm || "";
 
-    // Respond with the cars in JSON format
+    const cars = await tables.car.readAll(searchTerm);
+
+    // Respond with the filtered cars in JSON format
     res.status(200).json(cars);
   } catch (err) {
     // Pass any errors to the error-handling middleware

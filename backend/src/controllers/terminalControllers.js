@@ -4,8 +4,9 @@ const tables = require("../tables");
 // The B of BREAD - Browse (Read All) operation
 const browse = async (req, res, next) => {
   try {
+    const searchTerm = req.query.searchTerm || "";
     // Fetch all terminals from the database
-    const terminals = await tables.terminal.readAll();
+    const terminals = await tables.terminal.readAll(searchTerm);
 
     // Respond with the terminals in JSON format
     res.status(200).json(terminals);
