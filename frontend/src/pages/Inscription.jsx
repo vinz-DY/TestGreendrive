@@ -44,12 +44,12 @@ function Inscription() {
     };
 
     if (user.password !== user.passwordConfirmation) {
-      showToastErrorMessage(user.passwordConfirmation);
+      showToastErrorMessage();
       return;
     }
 
     if (user.password.length < 8) {
-      showToastPasswordMessage(user.password);
+      showToastPasswordMessage();
       return;
     }
 

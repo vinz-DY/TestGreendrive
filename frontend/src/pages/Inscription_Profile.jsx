@@ -50,7 +50,7 @@ function InscriptionProfile() {
     };
 
     if (profilBirthdate > eighteenYears) {
-      showToastErrorAge(profil.birthdate);
+      showToastErrorAge();
       return;
     }
 
