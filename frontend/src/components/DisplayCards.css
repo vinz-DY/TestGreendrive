@@ -8,6 +8,7 @@
   flex-wrap: wrap;
   justify-content: space-around;
   gap: 3rem;
+  max-height: 400px;
 }
 .DisplayCardsId {
   display: flex;
