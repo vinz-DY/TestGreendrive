@@ -1,14 +1,15 @@
 // Import access to database tables
 const tables = require("../tables");
+const hash = require("../services/hash");
 
 // The B of BREAD - Browse (Read All) operation
 const browse = async (req, res, next) => {
   try {
-    // Fetch all profils from the database
-    const profils = await tables.profil.readAll();
+    // Fetch all users from the database
+    const users = await tables.user.readAll();
 
-    // Respond with the profils in JSON format
-    res.status(200).json(profils);
+    // Respond with the users in JSON format
+    res.status(200).json(users);
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);
@@ -18,18 +19,18 @@ const browse = async (req, res, next) => {
 // The R of BREAD - Read operation
 const read = async (req, res, next) => {
   try {
-    // Fetch a specific profil from the database based on the provided ID
-    const profil = await tables.profil.read(req.params.id);
+    // Fetch a specific user from the database based on the provided ID
+    const user = await tables.user.read(req.params.id);
 
-    //     // If the profil is not found, respond with HTTP 404 (Not Found)
-    //     // Otherwise, respond with the profil in JSON format
-    if (profil.length === 0) {
+    // If the user is not found, respond with HTTP 404 (Not Found)
+    // Otherwise, respond with the user in JSON format
+    if (user.length === 0) {
       res.sendStatus(404);
     } else {
-      res.status(200).json(profil);
+      res.status(200).json(user);
     }
   } catch (err) {
-    //     // Pass any errors to the error-handling middleware
+    // Pass any errors to the error-handling middleware
     next(err);
   }
 };
@@ -39,15 +40,15 @@ const read = async (req, res, next) => {
 
 // The A of BREAD - Add (Create) operation
 const add = async (req, res, next) => {
-  // Extract the profil data from the request body
-  const profil = req.body;
+  // Extract the user data from the request body
 
   try {
-    // Insert the profil into the database
-    const insertId = await tables.profil.create(profil);
+    // Insert the user into the database
+    const hashPassword = await hash(req.body.password);
+    await tables.user.create(req.body.mail, hashPassword);
 
-    // Respond with HTTP 201 (Created) and the ID of the newly inserted profil
-    res.status(201).json({ insertId });
+    // Respond with HTTP 201 (Created) and the ID of the newly inserted user
+    res.status(201).json("OK");
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);

@@ -1,0 +1,61 @@
+.inscription {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.inscriptionTitle {
+  text-align: center;
+  color: #333;
+  margin: 0;
+}
+
+.inscriptionLabel {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #555;
+}
+
+.inscriptionHeader {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.inscriptionLogo {
+  display: flex;
+  margin-right: 30px;
+  margin-bottom: 30px;
+  width: 30%;
+}
+
+.inscriptionInput {
+  width: 95%;
+  padding: 10px;
+  border: 1px solid #092d44;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  background-color: #d7f3ff;
+}
+
+.inscriptionText {
+  font-size: 13px;
+}
+
+.inscriptionButton {
+  padding: 10px;
+  background-color: #7cdb58;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 10px;
+  transition: 0.5s;
+}
+
+.inscriptionButton:hover {
+  background-color: #29a895;
+}

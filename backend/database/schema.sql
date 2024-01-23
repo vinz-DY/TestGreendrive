@@ -10,7 +10,7 @@ CREATE TABLE connectic (
 
 CREATE TABLE user (
   id INT PRIMARY KEY AUTO_INCREMENT,
-  mail varchar(255) NULL,
+  mail varchar(255) UNIQUE,
   password varchar(255) NULL,
   isAdmin boolean NULL
 );
@@ -66,4 +66,3 @@ CREATE TABLE profil (
   user_id INT NOT NULL,
   CONSTRAINT fk_profil_user FOREIGN KEY (user_id) REFERENCES user(id)
 );
-

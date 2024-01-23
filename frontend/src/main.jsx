@@ -10,6 +10,8 @@ import AdminCarsId from "./pages/AdminCarsId";
 import AdminUserId from "./pages/AdminUserId";
 import AdminTerminal from "./pages/AdminTerminal";
 import AdminTerminalId from "./pages/AdminTerminalId";
+import Inscription from "./pages/Inscription";
+import InscriptionProfile from "./pages/Inscription_Profile";
 import Admin from "./pages/Admin";
 
 const router = createBrowserRouter([
@@ -93,6 +95,14 @@ const router = createBrowserRouter([
         .then((response) => response.data)
         .catch((err) => console.error(err));
     },
+  },
+  {
+    path: "/inscription",
+    element: <Inscription />,
+  },
+  {
+    path: "/inscription-profil",
+    element: <InscriptionProfile />,
   },
 ]);
 
