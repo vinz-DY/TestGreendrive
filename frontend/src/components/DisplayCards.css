@@ -15,6 +15,21 @@
   margin-top: 4rem;
 }
 .searchbar {
-  width: 20rem;
-  height: 2rem;
+  width: 30rem;
+  height: 2.5rem;
+  border-radius: 1rem;
+  text-align: center;
+  border-color: #062f45;
+}
+
+.searchbar:focus {
+  outline-color: #047e83;
+}
+
+.adminCtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 2rem;
 }

@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import CardItem from "./CardItem";
 import "./DisplayCards.css";
 
-function DisplayCards({ basePath, tableName }) {
+function DisplayCards({ tableName }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredItems, setFilteredItems] = useState([]);
 
@@ -26,7 +26,7 @@ function DisplayCards({ basePath, tableName }) {
   }, [searchTerm, tableName]);
 
   return (
-    <div className="DisplayCards">
+    <div className="adminCtn">
       <input
         className="searchbar"
         type="text"
@@ -34,16 +34,16 @@ function DisplayCards({ basePath, tableName }) {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
-
-      {filteredItems.map((item) => (
-        <CardItem key={item.id} data={item} basePath={basePath} />
-      ))}
+      <div className="DisplayCards">
+        {filteredItems.map((item) => (
+          <CardItem key={item.id} data={item} />
+        ))}
+      </div>
     </div>
   );
 }
 
 DisplayCards.propTypes = {
-  basePath: PropTypes.string.isRequired,
   tableName: PropTypes.string.isRequired,
 };
 

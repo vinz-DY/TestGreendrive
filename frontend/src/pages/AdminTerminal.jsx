@@ -2,7 +2,7 @@ import React from "react";
 import DisplayCards from "../components/DisplayCards";
 
 function AdminTerminal() {
-  return <DisplayCards basePath="/base-path" tableName="terminals" />;
+  return <DisplayCards tableName="terminals" />;
 }
 
 export default AdminTerminal;
