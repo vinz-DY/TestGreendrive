@@ -7,10 +7,10 @@ import "react-toastify/dist/ReactToastify.css";
 
 const profilType = {
   lastname: "",
-  firstname: "",
+  name: "",
   gender: "",
-  birthdate: null,
-  postalCode: "",
+  birthdate: "",
+  postCode: "",
   city: "",
 };
 
@@ -55,7 +55,7 @@ function InscriptionProfile() {
     }
 
     try {
-      await connexion.post("/profil", profil);
+      await connexion.post("/profils", profil);
       setInscriptionSuccess(true);
       setInscriptionMessage("Inscription réussie ! Félicitations !");
       setprofil(profilType);
@@ -84,14 +84,14 @@ function InscriptionProfile() {
                 onChange={handleprofil}
               />
             </label>
-            <label className="inscriptionLabel" aria-label="firstname">
+            <label className="inscriptionLabel" aria-label="name">
               <input
                 className="inscriptionInput"
                 type="text"
-                name="firstname"
+                name="name"
                 placeholder="Prénom"
                 required
-                value={profil.firstname}
+                value={profil.name}
                 onChange={handleprofil}
               />
             </label>
@@ -104,8 +104,8 @@ function InscriptionProfile() {
                 onChange={handleprofil}
               >
                 <option value="">Vous êtes</option>
-                <option value="Male">Homme</option>
-                <option value="Female">Femme</option>
+                <option value="male">Homme</option>
+                <option value="female">Femme</option>
               </select>
             </label>
             <label className="inscriptionLabel" aria-label="birthdate">
@@ -118,14 +118,14 @@ function InscriptionProfile() {
                 onChange={handleprofil}
               />
             </label>
-            <label className="inscriptionLabel" aria-label="postalCode">
+            <label className="inscriptionLabel" aria-label="postCode">
               <input
                 className="inscriptionInput"
                 type="number"
                 required
-                name="postalCode"
+                name="postCode"
                 placeholder="Code Postal"
-                value={profil.postalCode}
+                value={profil.postCode}
                 onChange={handleprofil}
               />
             </label>
