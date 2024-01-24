@@ -12,7 +12,7 @@ CREATE TABLE user (
   id INT PRIMARY KEY AUTO_INCREMENT,
   mail varchar(255) UNIQUE,
   password varchar(255) NULL,
-  isAdmin boolean NULL
+  isAdmin boolean DEFAULT 0
 );
 
 CREATE TABLE terminal(
@@ -59,10 +59,13 @@ CREATE TABLE reservations (
 
 CREATE TABLE profil (
   id INT PRIMARY KEY AUTO_INCREMENT,
-  name varchar(255),
   lastname varchar(255),
+  name varchar(255),
+  gender varchar(255),
   birthdate varchar(255),
+  postCode  varchar(255),
+  cityProfil varchar(255),
   image varchar(255),
-  user_id INT NOT NULL,
+  user_id INT NOT NUll ,
   CONSTRAINT fk_profil_user FOREIGN KEY (user_id) REFERENCES user(id)
 );

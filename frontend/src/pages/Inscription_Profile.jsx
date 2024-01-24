@@ -106,8 +106,6 @@ function InscriptionProfile() {
                 <option value="">Vous êtes</option>
                 <option value="Male">Homme</option>
                 <option value="Female">Femme</option>
-                <option value="Non-Binary">Non-Binaire</option>
-                <option value="Other">Autre</option>
               </select>
             </label>
             <label className="inscriptionLabel" aria-label="birthdate">
