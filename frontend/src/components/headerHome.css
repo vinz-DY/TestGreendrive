@@ -1,0 +1,130 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.headerCar {
+  width: 1100px;
+}
+
+.leftContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.buttonsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.slogContainer {
+  margin-top: -20rem;
+  margin-left: 5rem;
+}
+
+p {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: #062f45;
+  font-size: 2.5rem;
+}
+
+.greenTitle {
+  color: #91ca3f;
+  font-size: 5rem;
+}
+
+.button1 {
+  font-size: 30px;
+  color: #71b216;
+  background-color: transparent;
+  border: solid 6px #91ca3f;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  cursor: pointer;
+}
+.button1:hover {
+  font-size: 30px;
+  color: white;
+  background-color: #91ca3f;
+  border: solid 6px white;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  transition: 0.1s ease;
+}
+
+.buttonCo {
+  color: white;
+  background-color: #91ca3f;
+  border: solid 2px #91ca3f;
+  padding: 0.6rem 0.4rem;
+  cursor: pointer;
+}
+.buttonCo:hover {
+  color: white;
+  background-color: #062f45;
+  border: solid 2px #91ca3f;
+  padding: 0.6rem 0.4rem;
+  cursor: pointer;
+}
+
+.buttonDeco {
+  background-color: transparent;
+  border: solid 2px #91ca3f;
+  padding: 0.6rem 0.4rem;
+  cursor: pointer;
+}
+.buttonDeco:hover {
+  color: white;
+  background-color: #91ca3f;
+  border: solid 2px white;
+  padding: 0.6rem 0.4rem;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1500px) {
+  .headerContainer {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20rem;
+  }
+  .headerCar {
+    max-width: 98%;
+    transition: 1s ease;
+  }
+}
+@media screen and (max-width: 1190px) {
+  .headerContainer {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20rem;
+  }
+  .headerCar {
+    max-width: 98%;
+    transition: 1s ease;
+  }
+  .leftContainer {
+    max-width: 98%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+  }
+}

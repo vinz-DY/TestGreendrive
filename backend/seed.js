@@ -1,10 +1,14 @@
-/* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
+// eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}]
 
 // Load environment variables from .env file
 require("dotenv").config();
 
 // Import Faker library for generating fake data
 const { faker } = require("@faker-js/faker");
+
+const terminal = require("./database/terminal");
+const connectic = require("./database/connectic");
+const state = require("./database/state");
 
 // Import database client
 const database = require("./database/client");
@@ -13,28 +17,91 @@ const seed = async () => {
   try {
     // Declare an array to store the query promises
     // See why here: https://eslint.org/docs/latest/rules/no-await-in-loop
-    const queries = [];
 
     /* ************************************************************************* */
-
     // Generating Seed Data
 
-    // Optional: Truncate tables (remove existing data)
-    await database.query("truncate item");
+    const queriesState = [];
+    for (let i = 0; i < state.length; i += 1) {
+      queriesState.push(database.query(state[i]));
+    }
 
-    // Insert fake data into the 'item' table
+    await Promise.all(queriesState);
+
+    const queriesConnectic = [];
+    for (let i = 0; i < connectic.length; i += 1) {
+      queriesConnectic.push(database.query(connectic[i]));
+    }
+    await Promise.all(queriesConnectic);
+
+    // .........INSERT TABLE USER ............................................
+    const queriesUser = [];
     for (let i = 0; i < 10; i += 1) {
-      queries.push(
-        database.query("insert into item(title) values (?)", [
-          faker.lorem.word(),
-        ])
+      queriesUser.push(
+        database.query(
+          "insert into user(mail, password, isAdmin) values (?,?,?)",
+          [
+            faker.internet.email(),
+            faker.internet.password(),
+            faker.datatype.boolean(),
+          ]
+        )
       );
     }
+    await Promise.all(queriesUser);
+
+    // .........INSERT TABLE Terminal ............................................
+    const queriesTerminal = [];
+
+    for (let i = 0; i < terminal.length; i += 1) {
+      queriesTerminal.push(database.query(terminal[i]));
+    }
+
+    await Promise.all(queriesTerminal);
+
+    // .........INSERT TABLE profil ............................................
+    const queriesProfil = [];
+    for (let i = 0; i < 10; i += 1) {
+      const userId = i + 1;
+      queriesProfil.push(
+        database.query(
+          "insert into profil(name, lastname, birthdate,image, user_id) values (?,?,?,?,?)",
+          [
+            faker.person.firstName(),
+            faker.person.lastName(),
+            faker.date.birthdate(),
+            faker.image.avatar(),
+            userId,
+          ]
+        )
+      );
+    }
+    await Promise.all(queriesProfil);
+
+    // .........INSERT TABLE car ............................................
+    const queriesCar = [];
+    for (let i = 0; i < 10; i += 1) {
+      const userId = i + 1;
+      const connecticId = Math.round(Math.random()) + 1;
+      queriesCar.push(
+        database.query(
+          "insert into car(licensePlate, brand, model,image, connectic_id, user_id) values (?,?,?,?,?,?)",
+          [
+            faker.vehicle.vrm(),
+            faker.vehicle.manufacturer(),
+            faker.vehicle.model(),
+            faker.image.urlLoremFlickr({ category: "car" }),
+            connecticId,
+            userId,
+          ]
+        )
+      );
+    }
+    await Promise.all(queriesCar);
 
     /* ************************************************************************* */
 
     // Wait for all the insertion queries to complete
-    await Promise.all(queries);
 
     // Close the database connection
     database.end();
