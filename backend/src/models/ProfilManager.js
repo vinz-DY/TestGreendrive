@@ -33,11 +33,20 @@ class ProfilManager extends AbstractManager {
     return rows;
   }
 
-  async readAll() {
-    // Execute the SQL SELECT query to retrieve all profils from the "profil" table
-    const [rows] = await this.database.query(`select * from ${this.table}`);
+  async readAll(searchTerm) {
+    let query = `SELECT * FROM ${this.table}`;
+    let params = [];
 
-    // Return the array of profils
+    if (searchTerm) {
+      query += ` WHERE name LIKE ?`;
+      params = [`%${searchTerm}%`];
+    } else {
+      query += " LIMIT 15";
+    }
+
+    const [rows] = await this.database.query(query, params);
+
+    // Return the array of cars
     return rows;
   }
 
