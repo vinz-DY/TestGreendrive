@@ -13,6 +13,7 @@ import AdminTerminalId from "./pages/AdminTerminalId";
 import Inscription from "./pages/Inscription";
 import InscriptionProfile from "./pages/Inscription_Profile";
 import Admin from "./pages/Admin";
+import FaqPage from "./pages/FaqPage";
 
 const router = createBrowserRouter([
   {
@@ -103,6 +104,10 @@ const router = createBrowserRouter([
   {
     path: "/inscription-profil",
     element: <InscriptionProfile />,
+  },
+  {
+    path: "/faq",
+    element: <FaqPage />,
   },
 ]);
 
