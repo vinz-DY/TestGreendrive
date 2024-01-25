@@ -66,6 +66,6 @@ CREATE TABLE profil (
   postCode  varchar(255),
   cityProfil varchar(255),
   image varchar(255),
-  user_id INT NOT NUll ,
+  user_id INT NOT NULL ,
   CONSTRAINT fk_profil_user FOREIGN KEY (user_id) REFERENCES user(id)
 );

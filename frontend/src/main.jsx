@@ -14,6 +14,7 @@ import Inscription from "./pages/Inscription";
 import InscriptionProfile from "./pages/Inscription_Profile";
 import Admin from "./pages/Admin";
 import AuthProvider from "./context/AuthContext";
+import LogIn from "./pages/LogIn";
 
 const router = createBrowserRouter([
   {
@@ -104,6 +105,10 @@ const router = createBrowserRouter([
   {
     path: "/inscription-profil",
     element: <InscriptionProfile />,
+  },
+  {
+    path: "/login",
+    element: <LogIn />,
   },
 ]);
 

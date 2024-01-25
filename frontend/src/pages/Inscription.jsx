@@ -1,11 +1,10 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import connexion from "../services/connexion";
 import HeaderInscription from "../components/HeaderInscription";
 import "../components/Inscription.css";
 import "react-toastify/dist/ReactToastify.css";
-import { AuthContext } from "../context/AuthContext";
 
 const userType = {
   mail: "",
@@ -18,7 +17,6 @@ function Inscription() {
   const [inscriptionSuccess, setInscriptionSuccess] = useState(false);
   const [inscriptionMessage, setInscriptionMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const { setuserId } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleUser = (event) => {
@@ -58,8 +56,7 @@ function Inscription() {
     }
 
     try {
-      const register = await connexion.post("/user", user);
-      setuserId(register.data.userId);
+      await connexion.post("/user", user);
       setInscriptionSuccess(true);
       setInscriptionMessage(
         "Inscription réussie ! Passons à l'étape suivante !"

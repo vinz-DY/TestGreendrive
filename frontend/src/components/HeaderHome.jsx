@@ -23,9 +23,11 @@ function HeaderHome() {
               <button type="button" className="buttonDeco">
                 deconnexion
               </button>
-              <button type="button" className="buttonCo">
-                connexion
-              </button>
+              <Link to="/login">
+                <button type="button" className="buttonCo">
+                  connexion
+                </button>
+              </Link>
             </div>
           </div>
         </div>
