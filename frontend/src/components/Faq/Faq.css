@@ -1,6 +1,7 @@
 .titre-faq {
   color: #91ca3f;
   margin-bottom: 50px;
+  margin-top: 50px;
 }
 
 .faq-container {
@@ -11,6 +12,7 @@
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   background-image: url("../../assets/carOpacity.png");
   background-repeat: no-repeat;
+  background-attachment: fixed;
   width: 100%;
 }
 
@@ -20,7 +22,7 @@
 }
 
 .sous-titre-faq {
-  margin-top: 50px;
+  margin-top: 15px;
   margin-bottom: 30px;
   color: #91ca3f;
 }
