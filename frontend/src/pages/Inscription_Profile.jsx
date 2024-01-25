@@ -11,21 +11,15 @@ const profilType = {
   gender: "",
   birthdate: "",
   postCode: "",
-  city: "",
+  cityProfil: "",
+  image: "",
+  user_id: null,
 };
 
 function InscriptionProfile() {
   const [profil, setprofil] = useState(profilType);
   const [inscriptionSuccess, setInscriptionSuccess] = useState(false);
   const [inscriptionMessage, setInscriptionMessage] = useState("");
-
-  const handleprofil = (event) => {
-    setprofil((previousState) => ({
-      ...previousState,
-      [event.target.name]: event.target.value,
-    }));
-  };
-
   const currentDate = new Date();
   const eighteenYears = new Date(
     currentDate.getFullYear() - 18,
@@ -34,34 +28,38 @@ function InscriptionProfile() {
   );
   const profilBirthdate = new Date(profil.birthdate);
 
+  const showToast = (message, type) => {
+    toast[type](message, {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+  };
+
+  const handleprofil = (event) => {
+    setprofil((previousState) => ({
+      ...previousState,
+      [event.target.name]: event.target.value,
+    }));
+  };
+
   const postprofil = async (event) => {
     event.preventDefault();
 
-    const showToastErrorAge = () => {
-      toast.error("Vous devez avoir 18 ans ou plus pour vous inscrire !", {
-        position: toast.POSITION.TOP_RIGHT,
-      });
-    };
-
-    const showToastErrorMessage = () => {
-      toast.error("Une ou plusieurs erreurs bloquent l'inscription !", {
-        position: toast.POSITION.TOP_RIGHT,
-      });
-    };
-
     if (profilBirthdate > eighteenYears) {
-      showToastErrorAge();
+      showToast(
+        "Vous devez avoir 18 ans ou plus pour vous inscrire !",
+        "error"
+      );
       return;
     }
 
     try {
-      await connexion.post("/profils", profil);
+      await connexion.post("/profils", { ...profil, user_id: 1 });
       setInscriptionSuccess(true);
       setInscriptionMessage("Inscription réussie ! Félicitations !");
       setprofil(profilType);
     } catch (error) {
       setInscriptionSuccess(false);
-      showToastErrorMessage();
+      showToast("Une ou plusieurs erreurs bloquent l'inscription !", "error");
     }
   };
 
@@ -129,14 +127,25 @@ function InscriptionProfile() {
                 onChange={handleprofil}
               />
             </label>
-            <label className="inscriptionLabel" aria-label="city">
+            <label className="inscriptionLabel" aria-label="cityProfil">
               <input
                 className="inscriptionInput"
                 type="text"
                 required
-                name="city"
+                name="cityProfil"
                 placeholder="Ville"
-                value={profil.city}
+                value={profil.cityProfil}
+                onChange={handleprofil}
+              />
+            </label>
+            <label className="inscriptionLabel" aria-label="image">
+              <input
+                className="inscriptionInput"
+                type="texte"
+                required
+                name="image"
+                placeholder="image"
+                value={profil.image}
                 onChange={handleprofil}
               />
             </label>
