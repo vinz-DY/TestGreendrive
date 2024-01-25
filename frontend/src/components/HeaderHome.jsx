@@ -9,11 +9,11 @@ function HeaderHome() {
       <div className="headerContainer">
         <div className="leftContainer">
           <div className="slogContainer">
-            <p>
+            <p className="Pindex">
               Avec <span className="greenTitle">GreenDrive</span>
             </p>
             <p className="Pindex">Partez en voyage avec votre véhicule</p>
-            <p>en toute serenité</p>
+            <p className="Pindex">en toute serenité</p>
           </div>
           <div className="buttonsContainer">
             <button type="button" className="button1">
