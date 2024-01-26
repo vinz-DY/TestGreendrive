@@ -55,6 +55,29 @@ const add = async (req, res, next) => {
   }
 };
 
+const log = async (req, res, next) => {
+  try {
+    const login = await tables.user.readByEmail(
+      req.body.mail,
+      req.body.password
+    );
+
+    if (login) {
+      res.status(200).json({
+        connected: {
+          id: login.id,
+          mail: login.mail,
+        },
+      });
+    } else {
+      res.sendStatus(403);
+    }
+  } catch (err) {
+    // If an error occurs during the login process, pass it to the next middleware
+    next(err);
+  }
+};
+
 // The D of BREAD - Destroy (Delete) operation
 // This operation is not yet implemented
 
@@ -64,5 +87,6 @@ module.exports = {
   read,
   // edit,
   add,
+  log,
   // destroy,
 };

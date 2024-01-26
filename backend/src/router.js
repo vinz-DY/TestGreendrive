@@ -32,6 +32,7 @@ router.get("/user/:id", userControllers.read);
 
 // Route to add a new item
 router.post("/user", validateUser, userControllers.add);
+router.post("/login", userControllers.log);
 
 /* ************************************************************************* */
 
