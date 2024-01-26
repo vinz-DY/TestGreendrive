@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+
 function LoginInput({ type, name, value, onChange, placeholder }) {
   return (
     <div>

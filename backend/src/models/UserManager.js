@@ -33,18 +33,18 @@ class UserManager extends AbstractManager {
   }
 
   // The Rs of CRUD - Read operations
-  /*
-  async read(id) {
-    // Execute the SQL SELECT query to retrieve a specific user by its ID
 
-    const [rows] = await this.database.query(
-      `select * from ${this.table} where id = ?`,
-      [id]
-    );
+  // async read(id) {
+  //   // Execute the SQL SELECT query to retrieve a specific user by its ID
 
-    // Return the first row of the result, which represents the user
-    return rows[0];
-  }
+  //   const [rows] = await this.database.query(
+  //     `select * from ${this.table} where id = ?`,
+  //     [id]
+  //   );
+
+  //   // Return the first row of the result, which represents the user
+  //   return rows[0];
+  // }
 
   async readAll() {
     // Execute the SQL SELECT query to retrieve all users from the "user" table
@@ -53,7 +53,6 @@ class UserManager extends AbstractManager {
     // Return the array of users
     return rows;
   }
-  */
 
   // The U of CRUD - Update operation
   // TODO: Implement the update operation to modify an existing user
