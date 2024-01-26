@@ -31,7 +31,8 @@ router.get("/user/:id", userControllers.read);
 */
 
 // Route to add a new item
-router.post("/user", validateUser, userControllers.add);
+router.post("/users", validateUser, userControllers.add);
+router.get("/users", userControllers.browse);
 
 /* ************************************************************************* */
 
@@ -42,7 +43,7 @@ const validateProfil = require("./validators/validateProfil");
 // Route to get a list of items
 
 // Route to add a new item
-router.post("/profil", validateProfil, profilControllers.add);
+router.post("/profils", validateProfil, profilControllers.add);
 
 /* ************************************************************************* */
 /* *******************terminal****************************************************** */
