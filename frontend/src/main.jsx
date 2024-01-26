@@ -21,6 +21,28 @@ const router = createBrowserRouter([
     element: <App />,
   },
   {
+    path: "/faq",
+    element: <FaqPage />,
+  },
+  {
+    path: "/map",
+    element: <Map />,
+    loader: () => {
+      return connexion
+        .get("/terminals")
+        .then((response) => response.data)
+        .catch((err) => console.error(err));
+    },
+  },
+  {
+    path: "/inscription",
+    element: <Inscription />,
+  },
+  {
+    path: "/inscription-profil",
+    element: <InscriptionProfile />,
+  },
+  {
     path: "/admin",
     element: <Admin />,
     children: [
@@ -85,29 +107,6 @@ const router = createBrowserRouter([
         },
       },
     ],
-  },
-
-  {
-    path: "/map",
-    element: <Map />,
-    loader: () => {
-      return connexion
-        .get("/terminals")
-        .then((response) => response.data)
-        .catch((err) => console.error(err));
-    },
-  },
-  {
-    path: "/inscription",
-    element: <Inscription />,
-  },
-  {
-    path: "/inscription-profil",
-    element: <InscriptionProfile />,
-  },
-  {
-    path: "/faq",
-    element: <FaqPage />,
   },
 ]);
 
