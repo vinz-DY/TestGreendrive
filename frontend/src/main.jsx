@@ -13,8 +13,9 @@ import AdminTerminalId from "./pages/AdminTerminalId";
 import Inscription from "./pages/Inscription";
 import InscriptionProfile from "./pages/Inscription_Profile";
 import Admin from "./pages/Admin";
-import LogIn from "./pages/LogIn";
+import FaqPage from "./pages/Faq/FaqPage";
 import AuthProvider from "./context/AuthContext";
+import LogIn from "./pages/LogIn";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,28 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <LogIn />,
+  },
+  {
+    path: "/faq",
+    element: <FaqPage />,
+  },
+  {
+    path: "/map",
+    element: <Map />,
+    loader: () => {
+      return connexion
+        .get("/terminals")
+        .then((response) => response.data)
+        .catch((err) => console.error(err));
+    },
+  },
+  {
+    path: "/inscription",
+    element: <Inscription />,
+  },
+  {
+    path: "/inscription-profil",
+    element: <InscriptionProfile />,
   },
   {
     path: "/admin",
@@ -91,24 +114,9 @@ const router = createBrowserRouter([
       },
     ],
   },
-
   {
-    path: "/map",
-    element: <Map />,
-    loader: () => {
-      return connexion
-        .get("/terminals")
-        .then((response) => response.data)
-        .catch((err) => console.error(err));
-    },
-  },
-  {
-    path: "/inscription",
-    element: <Inscription />,
-  },
-  {
-    path: "/inscription-profil",
-    element: <InscriptionProfile />,
+    path: "/login",
+    element: <LogIn />,
   },
 ]);
 
