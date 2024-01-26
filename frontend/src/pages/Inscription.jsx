@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 import connexion from "../services/connexion";
 import HeaderInscription from "../components/HeaderInscription";
 import "../components/Inscription.css";
@@ -16,6 +17,7 @@ function Inscription() {
   const [inscriptionSuccess, setInscriptionSuccess] = useState(false);
   const [inscriptionMessage, setInscriptionMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   const handleUser = (event) => {
     setUser((previousState) => ({
@@ -59,6 +61,9 @@ function Inscription() {
       setInscriptionMessage(
         "Inscription réussie ! Passons à l'étape suivante !"
       );
+      setTimeout(() => {
+        navigate("/login");
+      }, 3000);
       setUser(userType);
     } catch (error) {
       setInscriptionSuccess(false);
