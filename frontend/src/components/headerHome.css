@@ -34,7 +34,31 @@
   margin-left: 5rem;
 }
 
-p {
+@media screen and (max-width: 630px) {
+  .greenTitle {
+    color: #91ca3f;
+    font-size: 3rem !important;
+  }
+}
+@media screen and (max-width: 430px) {
+  .greenTitle {
+    color: #91ca3f;
+    font-size: 3rem !important;
+  }
+  .Pindex {
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    color: #062f45;
+    font-size: 2rem !important;
+    margin-right: 1rem;
+  }
+  .slogContainer {
+    margin-top: -20rem;
+    margin-left: 3rem;
+    margin-right: 1rem;
+  }
+}
+
+.Pindex {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   color: #062f45;
   font-size: 2.5rem;

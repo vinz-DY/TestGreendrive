@@ -7,14 +7,14 @@ const ItemManager = require("./models/ItemManager");
 const TerminalManager = require("./models/TerminalManager");
 const ProfilManager = require("./models/ProfilManager");
 const CarManager = require("./models/CarManager");
-const userManager = require("./models/userManager");
+const UserManager = require("./models/UserManager");
 
 const managers = [
   ItemManager,
   TerminalManager,
   ProfilManager,
   CarManager,
-  userManager,
+  UserManager,
   // Add other managers here
 ];
 
