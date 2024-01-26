@@ -17,7 +17,6 @@ import FaqPage from "./pages/FaqPage";
 import AuthProvider from "./context/AuthContext";
 import LogIn from "./pages/LogIn";
 
-
 const router = createBrowserRouter([
   {
     path: "/",
