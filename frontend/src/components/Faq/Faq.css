@@ -1,4 +1,4 @@
-.titre-faq {
+.title-faq {
   color: #91ca3f;
   margin-bottom: 50px;
   margin-top: 50px;
@@ -22,13 +22,13 @@
   max-width: 95%;
 }
 
-.sous-titre-faq {
+.subtitle-faq {
   margin-top: 15px;
   margin-bottom: 30px;
   color: #91ca3f;
 }
 
-.rubrique-questions {
+.questions-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -40,7 +40,7 @@
   background-color: rgb(255, 255, 255);
 }
 
-.rubrique-charte {
+.rules-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -52,7 +52,7 @@
   background-color: rgb(255, 255, 255);
 }
 
-.rubrique-informations {
+.informations-container {
   display: flex;
   flex-direction: column;
   align-items: center;

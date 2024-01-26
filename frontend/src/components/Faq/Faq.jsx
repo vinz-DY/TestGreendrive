@@ -4,9 +4,9 @@ import "./Faq.css";
 function Faq() {
   return (
     <div className="faq-container">
-      <h1 className="titre-faq">La FAQ de GreenDrive</h1>
-      <div className="rubrique-questions">
-        <h2 className="sous-titre-faq">QUESTIONS</h2>
+      <h1 className="title-faq">La FAQ de GreenDrive</h1>
+      <div className="questions-container">
+        <h2 className="subtitle-faq">QUESTIONS</h2>
         <p className="questions-faq">
           Par quel biais régler ma facture pour recharger mon véhicule ?
         </p>
@@ -34,8 +34,8 @@ function Faq() {
           nécessaire à la recharge de votre véhicule).
         </p>
       </div>
-      <div className="rubrique-charte">
-        <h2 className="sous-titre-faq">
+      <div className="rules-container">
+        <h2 className="subtitle-faq">
           CHARTE DE BONNE CONDUITE DE LA RECHARGE
         </h2>
         <p className="questions-faq">
@@ -65,8 +65,8 @@ function Faq() {
           pas les places réservées aux véhicules électriques.
         </p>
       </div>
-      <div className="rubrique-informations">
-        <h2 className="sous-titre-faq">MODIFICATIONS INFORMATIONS DU PROFIL</h2>
+      <div className="informations-container">
+        <h2 className="subtitle-faq">MODIFICATIONS INFORMATIONS DU PROFIL</h2>
         <p className="questions-faq">
           Si vous souhaitez modifier des informations sur votre profil, il
           faudra :
