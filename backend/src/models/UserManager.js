@@ -1,6 +1,6 @@
 const AbstractManager = require("./AbstractManager");
 
-class userManager extends AbstractManager {
+class UserManager extends AbstractManager {
   constructor() {
     // Call the constructor of the parent class (AbstractManager)
     // and pass the table name "user" as configuration
@@ -57,4 +57,4 @@ class userManager extends AbstractManager {
   // }
 }
 
-module.exports = userManager;
+module.exports = UserManager;
