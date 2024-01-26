@@ -13,7 +13,7 @@ import AdminTerminalId from "./pages/AdminTerminalId";
 import Inscription from "./pages/Inscription";
 import InscriptionProfile from "./pages/Inscription_Profile";
 import Admin from "./pages/Admin";
-import FaqPage from "./pages/FaqPage";
+import FaqPage from "./pages/Faq/FaqPage";
 import AuthProvider from "./context/AuthContext";
 import LogIn from "./pages/LogIn";
 
