@@ -1,32 +1,57 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import connexion from "../../services/connexion";
 import "./Resa.css";
 
 const start = {
-  startTime: "",
+  startTime: new Date(),
   car_id: null,
   terminal_id: null,
 };
 
+const formatDateTime = (date) => {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  const hours = String(date.getHours()).padStart(2, "0");
+  const minutes = String(date.getMinutes()).padStart(2, "0");
+
+  return `${year}-${month}-${day} ${hours}:${minutes}`;
+};
+
 function Resa() {
-  const timeSlots = [
-    "2024-02-02 09:00",
-    "2024-02-02 09:30",
-    "2024-02-02 10:00",
-    "2024-02-02 10:30",
-    "2024-02-02 11:00",
-    "2024-02-02 11:30",
-  ];
   const [selectedTime, setSelectedTime] = useState(start);
+  const [selectedDate, setSelectedDate] = useState(formatDateTime(new Date()));
+  const [timeOptions, setTimeOptions] = useState([]);
+
+  const generateTimeOptions = () => {
+    const selectedDateTime = new Date(selectedDate);
+    const currentHour = selectedDateTime.getHours();
+
+    const options = [];
+    for (let hour = currentHour; hour < 24; hour += 1) {
+      for (let minute = 0; minute < 60; minute += 30) {
+        const time = new Date(selectedDateTime);
+        time.setHours(hour, minute, 0, 0);
+
+        if (time > new Date()) {
+          options.push(time);
+        }
+      }
+    }
+
+    setTimeOptions(options);
+  };
+
+  useEffect(() => {
+    generateTimeOptions();
+  }, [selectedDate]);
+
+  const handleDateChange = (e) => {
+    setSelectedDate(e.target.value);
+  };
 
   const handleTimeClick = (clickedTime) => {
-    const isAvailable = timeSlots.includes(clickedTime);
-
-    if (isAvailable) {
-      setSelectedTime({ ...selectedTime, startTime: clickedTime });
-    } else {
-      console.info(`La tranche horaire ${clickedTime} n'est pas disponible.`);
-    }
+    setSelectedTime({ ...selectedTime, startTime: clickedTime });
   };
 
   const sendReservationToDatabase = async () => {
@@ -35,13 +60,13 @@ function Resa() {
         ...selectedTime,
         car_id: 1,
         terminal_id: 1,
-        // D'autres données de réservation si nécessaire
+        startTime: formatDateTime(selectedTime.startTime),
       });
 
       if (response.status === 200) {
         console.info("Réservation enregistrée avec succès!");
-        // Vous pouvez effectuer d'autres actions ici
-        setSelectedTime(start); // Réinitialisez l'état après la réservation réussie
+        setSelectedTime(start);
+        generateTimeOptions();
       } else {
         console.error("Erreur lors de la réservation");
       }
@@ -50,33 +75,33 @@ function Resa() {
     }
   };
 
-  // useEffect(() => {
-  //   // Mettez à jour les classes des boutons après que selectedTime a changé
-  //   const buttons = document.querySelectorAll(".time-slot");
-  //   buttons.forEach((button) => {
-  //     const time = button.getAttribute("data-time");
-  //     const isAvailable = timeSlots.includes(time);
-
-  //     if (selectedTime.startTime === time) {
-  //       button.classList.add("selected");
-  //     } else if (isAvailable) {
-  //       button.classList.remove("selected");
-  //     }
-  //   });
-  // }, [selectedTime, timeSlots]);
-
   return (
     <div>
       <h1>Système de Réservation</h1>
       <div>
+        <label htmlFor="datePicker">Choisissez la date de réservation: </label>
+        <input
+          type="date"
+          id="datePicker"
+          value={selectedDate}
+          onChange={handleDateChange}
+        />
+      </div>
+      <div>
+        <label htmlFor="timeDropdown">
+          Choisissez l'horaire de réservation:{" "}
+        </label>
         <select
           id="timeDropdown"
-          onChange={(e) => handleTimeClick(e.target.value)}
-          value={selectedTime.startTime}
+          onChange={(e) => handleTimeClick(new Date(e.target.value))}
+          value={selectedTime.startTime.toISOString()}
         >
-          {timeSlots.map((time) => (
-            <option key={time} value={time}>
-              {time}
+          {timeOptions.map((time) => (
+            <option key={time.toISOString()} value={time.toISOString()}>
+              {time.toLocaleTimeString([], {
+                hour: "2-digit",
+                minute: "2-digit",
+              })}
             </option>
           ))}
         </select>
