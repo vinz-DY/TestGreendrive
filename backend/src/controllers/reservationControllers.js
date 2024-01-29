@@ -23,10 +23,10 @@ const read = async (req, res, next) => {
 
     // If the reservation is not found, respond with HTTP 404 (Not Found)
     // Otherwise, respond with the reservation in JSON format
-    if (reservation == null) {
+    if (reservation.length === 0) {
       res.sendStatus(404);
     } else {
-      res.json(reservation);
+      res.status(200).json(reservation);
     }
   } catch (err) {
     // Pass any errors to the error-handling middleware
