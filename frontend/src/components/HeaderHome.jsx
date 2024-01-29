@@ -16,9 +16,11 @@ function HeaderHome() {
             <p className="Pindex">en toute serenité</p>
           </div>
           <div className="buttonsContainer">
-            <button type="button" className="button1">
-              <Link to="/inscription">S'inscrire</Link>
-            </button>
+            <Link to="/inscription">
+              <button type="button" className="button1">
+                S'inscrire
+              </button>
+            </Link>
             <div className="buttonsSignContainer">
               <button type="button" className="buttonDeco">
                 deconnexion

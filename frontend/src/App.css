@@ -18,6 +18,9 @@
 a:visited {
   color: #062f45;
 }
+a:visited:hover {
+  color: white;
+}
 
 @media screen and (max-width: 630px) {
   .menuCardCtn {
