@@ -64,7 +64,12 @@ const carControllers = require("./controllers/carControllers");
 router.get("/cars", carControllers.browse);
 router.get("/cars/:id", carControllers.read);
 
-/* ************************************************************************* */
+/* ***************************RESERVATION************************************ */
+
+const reservationControllers = require("./controllers/reservationControllers");
+
+router.get("/reservations", reservationControllers.browse);
+router.post("/reservations", reservationControllers.add);
 
 /* ************************************************************************* */
 
