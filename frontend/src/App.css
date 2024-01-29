@@ -15,6 +15,10 @@
   margin-bottom: 14rem;
 }
 
+a:visited {
+  color: #062f45;
+}
+
 @media screen and (max-width: 630px) {
   .menuCardCtn {
     display: flex;

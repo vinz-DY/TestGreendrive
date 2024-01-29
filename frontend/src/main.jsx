@@ -16,6 +16,7 @@ import Admin from "./pages/Admin";
 import FaqPage from "./pages/Faq/FaqPage";
 import AuthProvider from "./context/AuthContext";
 import LogIn from "./pages/LogIn";
+import Reservation from "./pages/Reservation";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: "/faq",
     element: <FaqPage />,
+  },
+  {
+    path: "/reservation",
+    element: <Reservation />,
   },
   {
     path: "/map",

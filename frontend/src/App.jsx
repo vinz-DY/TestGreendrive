@@ -3,7 +3,8 @@ import HeaderHome from "./components/HeaderHome";
 import MenuCard from "./components/MenuCard";
 import Footer from "./components/Footer";
 import "./App.css";
-import MenuCardAdmin from "./components/MenuCards/MenuCardAdmin";
+import MenuCardResa from "./components/MenuCards/MenuCardResa";
+import MenuCardFaq from "./components/MenuCards/MenuCardFaq";
 
 function App() {
   return (
@@ -13,8 +14,11 @@ function App() {
         <Link to="/map">
           <MenuCard />
         </Link>
-        <Link to="/admin">
-          <MenuCardAdmin />
+        <Link to="/reservation">
+          <MenuCardResa />
+        </Link>
+        <Link to="/faq">
+          <MenuCardFaq />
         </Link>
       </div>
       <Footer />
