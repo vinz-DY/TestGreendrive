@@ -76,39 +76,49 @@ function Resa() {
   };
 
   return (
-    <div>
-      <h1>Système de Réservation</h1>
-      <div>
-        <label htmlFor="datePicker">Choisissez la date de réservation: </label>
-        <input
-          type="date"
-          id="datePicker"
-          value={selectedDate}
-          onChange={handleDateChange}
-        />
+    <div className="reservation-page">
+      <h1 className="reservation-title">Réserver un créneau</h1>
+      <div className="reservation-container">
+        <div className="reservation-infos">
+          <input
+            className="terminal-address"
+            type="text"
+            placeholder="Adresse de la borne"
+          />
+          <input
+            className="input-date"
+            type="date"
+            id="datePicker"
+            value={selectedDate}
+            onChange={handleDateChange}
+          />
+
+          <select
+            className="select-hour"
+            id="timeDropdown"
+            onChange={(e) => handleTimeClick(new Date(e.target.value))}
+            value={selectedTime.startTime.toISOString()}
+          >
+            {timeOptions.map((time) => (
+              <option key={time.toISOString()} value={time.toISOString()}>
+                {time.toLocaleTimeString([], {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="reservation-button">
+          <button
+            className="confirm-button"
+            type="button"
+            onClick={sendReservationToDatabase}
+          >
+            Confirmer
+          </button>
+        </div>
       </div>
-      <div>
-        <label htmlFor="timeDropdown">
-          Choisissez l'horaire de réservation:
-        </label>
-        <select
-          id="timeDropdown"
-          onChange={(e) => handleTimeClick(new Date(e.target.value))}
-          value={selectedTime.startTime.toISOString()}
-        >
-          {timeOptions.map((time) => (
-            <option key={time.toISOString()} value={time.toISOString()}>
-              {time.toLocaleTimeString([], {
-                hour: "2-digit",
-                minute: "2-digit",
-              })}
-            </option>
-          ))}
-        </select>
-      </div>
-      <button type="button" onClick={sendReservationToDatabase}>
-        Confirmer la réservation
-      </button>
     </div>
   );
 }

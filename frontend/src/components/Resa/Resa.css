@@ -1,0 +1,78 @@
+.reservation-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 100px;
+  margin-top: 50px;
+}
+
+.reservation-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 250px;
+  box-shadow: 0px 1px 12px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 1rem 0;
+}
+
+.reservation-title {
+  color: #062f45;
+}
+
+.reservation-infos {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.terminal-address {
+  padding: 0.3rem 2rem;
+  border-radius: 0.3rem;
+  border: 1px solid black;
+  background: #d7f3ee;
+  color: rgb(117, 117, 117);
+}
+
+.input-date {
+  padding: 0.2rem 2rem;
+  border-radius: 0.3rem;
+  border: 1px solid black;
+  background: #d7f3ee;
+  color: rgb(117, 117, 117);
+}
+
+.select-hour {
+  padding: 0.2rem 3.6rem;
+  border-radius: 0.3rem;
+  border: 1px solid black;
+  background: #d7f3ee;
+  color: rgb(117, 117, 117);
+}
+
+.reservation-button {
+  display: flex;
+  gap: 10px;
+}
+
+.reservation-button button {
+  background: white;
+  color: #062f45;
+  border: 1px solid #91ca3f;
+}
+
+.reservation-button button:hover {
+  background: #91ca3f;
+  border: 1px solid white;
+  color: white;
+}
+
+.confirm-button {
+  padding: 0rem 0.8rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
