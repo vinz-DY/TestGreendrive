@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import connexion from "../../services/connexion";
 import "./Resa.css";
 
@@ -15,7 +15,7 @@ function Resa() {
     "2024-02-02 10:00",
     "2024-02-02 10:30",
     "2024-02-02 11:00",
-    "2024-02-02 11:30", // Ajoutez d'autres tranches horaires
+    "2024-02-02 11:30",
   ];
   const [selectedTime, setSelectedTime] = useState(start);
 
@@ -26,14 +26,6 @@ function Resa() {
       setSelectedTime({ ...selectedTime, startTime: clickedTime });
     } else {
       console.info(`La tranche horaire ${clickedTime} n'est pas disponible.`);
-      // Ajoutez la classe "not-available" au bouton non disponible
-      const buttons = document.querySelectorAll(".time-slot");
-      buttons.forEach((button) => {
-        const time = button.getAttribute("data-time");
-        if (time === clickedTime) {
-          button.classList.add("not-available");
-        }
-      });
     }
   };
 
@@ -58,38 +50,36 @@ function Resa() {
     }
   };
 
-  useEffect(() => {
-    // Mettez à jour les classes des boutons après que selectedTime a changé
-    const buttons = document.querySelectorAll(".time-slot");
-    buttons.forEach((button) => {
-      const time = button.getAttribute("data-time");
-      const isAvailable = timeSlots.includes(time);
+  // useEffect(() => {
+  //   // Mettez à jour les classes des boutons après que selectedTime a changé
+  //   const buttons = document.querySelectorAll(".time-slot");
+  //   buttons.forEach((button) => {
+  //     const time = button.getAttribute("data-time");
+  //     const isAvailable = timeSlots.includes(time);
 
-      if (selectedTime.startTime === time) {
-        button.classList.add("selected");
-      } else if (isAvailable) {
-        button.classList.remove("selected");
-      }
-    });
-  }, [selectedTime, timeSlots]);
+  //     if (selectedTime.startTime === time) {
+  //       button.classList.add("selected");
+  //     } else if (isAvailable) {
+  //       button.classList.remove("selected");
+  //     }
+  //   });
+  // }, [selectedTime, timeSlots]);
 
   return (
     <div>
       <h1>Système de Réservation</h1>
       <div>
-        {timeSlots.map((time) => (
-          <button
-            type="button"
-            key={time}
-            onClick={() => handleTimeClick(time)}
-            className={`time-slot ${
-              timeSlots.includes(time) ? "available" : "not-available"
-            }`}
-            data-time={time}
-          >
-            {time}
-          </button>
-        ))}
+        <select
+          id="timeDropdown"
+          onChange={(e) => handleTimeClick(e.target.value)}
+          value={selectedTime.startTime}
+        >
+          {timeSlots.map((time) => (
+            <option key={time} value={time}>
+              {time}
+            </option>
+          ))}
+        </select>
       </div>
       <button type="button" onClick={sendReservationToDatabase}>
         Confirmer la réservation
