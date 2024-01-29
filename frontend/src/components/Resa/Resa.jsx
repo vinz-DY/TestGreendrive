@@ -89,7 +89,7 @@ function Resa() {
       </div>
       <div>
         <label htmlFor="timeDropdown">
-          Choisissez l'horaire de réservation:{" "}
+          Choisissez l'horaire de réservation:
         </label>
         <select
           id="timeDropdown"
