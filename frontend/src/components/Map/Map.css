@@ -1,22 +1,44 @@
 .leaflet-container {
-  height: 60vh;
+  height: 80vh;
   margin-top: 5vh;
 }
 
 .geolocationButton {
-  margin-top: 10px;
   background: #91ca3f;
   border: 1px solid #91ca3f;
   border-radius: 5px;
   cursor: pointer;
   color: white;
+  padding: 3px;
 }
 
 .geolocationButton:hover {
-  margin-top: 10px;
   background: white;
   border: 1px solid #91ca3f;
   border-radius: 5px;
   cursor: pointer;
   color: #91ca3f;
+}
+
+.search-input {
+  padding: 2px;
+  margin-right: 5px;
+}
+
+.search-button {
+  padding: 2px;
+}
+
+.search-button:hover {
+  background: #91ca3f;
+  border: 2px solid #91ca3f;
+  cursor: pointer;
+  color: white;
+}
+
+.location-container {
+  display: flex;
+  gap: 1rem;
+  margin-left: 1rem;
+  margin-top: 5px;
 }
