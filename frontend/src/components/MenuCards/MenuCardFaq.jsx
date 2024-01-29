@@ -1,5 +1,5 @@
 import React from "react";
-import MenuFaq from "../../assets/menuFaq.jpg";
+import MenuFaq from "../../assets/menuFaqPic.jpg";
 import "../menuCard.css";
 
 function MenuCardFaq() {
