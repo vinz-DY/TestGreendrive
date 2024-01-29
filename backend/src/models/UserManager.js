@@ -21,11 +21,11 @@ class UserManager extends AbstractManager {
     return result.insertId;
   }
 
-  async readByEmail(mail, password) {
+  async readByEmail(mail) {
     // Execute the SQL SELECT query to retrieve a specific user by its ID
     const [rows] = await client.query(
-      `SELECT * FROM ${this.table} WHERE mail = ? AND password = ?`,
-      [mail, password]
+      `SELECT * FROM ${this.table} WHERE mail = ?`,
+      [mail]
     );
 
     // Return the first row of the result, which represents the user

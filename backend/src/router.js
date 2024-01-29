@@ -21,6 +21,7 @@ router.post("/items", itemControllers.add);
 // Import userControllers module for handling item-related operations
 const userControllers = require("./controllers/userControllers");
 const validateUser = require("./validators/validateUser");
+// const checkCredentials = require("./middleware/checkCredentials");
 
 // Route to get a list of items
 /*

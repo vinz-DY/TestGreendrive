@@ -26,20 +26,31 @@ function LogIn() {
 
   const handleRequest = async (e) => {
     e.preventDefault();
+
     try {
       const valid = await connexion.post(`/login`, credentials);
-
       if (valid) {
-        setConnected(valid.data.connected);
-        setMsg("valid");
-        setTimeout(() => {
-          navigate("/inscription-profil");
-        }, 3000);
-      } else {
-        setMsg("invalid");
-        setTimeout(() => {
-          navigate("/");
-        }, 3000);
+        const connectedUser = valid.data.connected;
+        if (connectedUser.role === 0) {
+          setConnected(valid.data.connected);
+          if (!connectedUser.profil) {
+            setMsg("firstLogin");
+            setTimeout(() => {
+              navigate("/inscription-profil");
+            }, 2000);
+          } else {
+            setMsg("valid");
+            setTimeout(() => {
+              navigate("/");
+            }, 2000);
+          }
+        } else if (connectedUser.role === 1) {
+          setConnected(valid.data.connected);
+          setMsg("admin");
+          setTimeout(() => {
+            navigate("/admin");
+          }, 2000);
+        }
       }
     } catch (error) {
       setMsg("invalid");

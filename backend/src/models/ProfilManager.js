@@ -42,6 +42,17 @@ class ProfilManager extends AbstractManager {
     return rows;
   }
 
+  async readByAuth(id) {
+    // Execute the SQL SELECT query to retrieve a specific profil by its ID
+    const [rows] = await this.database.query(
+      `select * from ${this.table} where user_id = ?`,
+      [id]
+    );
+
+    // Return the first row of the result, which represents the profil
+    return rows;
+  }
+
   async readAll(searchTerm) {
     let query = `SELECT * FROM ${this.table}`;
     let params = [];
