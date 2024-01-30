@@ -3,7 +3,8 @@ const { verifyToken } = require("../services/jwt");
 const checkCredentials = (req, res, next) => {
   try {
     const decode = verifyToken(req.cookies.auth);
-    if (decode.role === 1) {
+    if (decode.role === 1 || decode.role === 0) {
+      req.user = decode;
       next();
     } else {
       res.sendStatus(403);

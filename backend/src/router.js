@@ -21,7 +21,7 @@ router.post("/items", itemControllers.add);
 // Import userControllers module for handling item-related operations
 const userControllers = require("./controllers/userControllers");
 const validateUser = require("./validators/validateUser");
-// const checkCredentials = require("./middleware/checkCredentials");
+const checkCredentials = require("./middleware/checkCredentials");
 
 // Route to get a list of items
 /*
@@ -46,7 +46,12 @@ const validateProfil = require("./validators/validateProfil");
 // Route to get a list of items
 
 // Route to add a new item
-router.post("/profils", validateProfil, profilControllers.add);
+router.post(
+  "/profils",
+  validateProfil,
+  checkCredentials,
+  profilControllers.add
+);
 
 /* ************************************************************************* */
 /* *******************terminal****************************************************** */
@@ -58,7 +63,7 @@ router.get("/terminals/:id", terminalControllers.read);
 
 /* ***************************Profil********************************************** */
 
-router.get("/profils", profilControllers.browse);
+router.get("/profils", checkCredentials, profilControllers.browse);
 router.get("/profils/:id", profilControllers.read);
 
 /* ***************************CAR********************************************** */

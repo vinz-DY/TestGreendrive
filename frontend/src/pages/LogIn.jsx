@@ -37,19 +37,19 @@ function LogIn() {
             setMsg("firstLogin");
             setTimeout(() => {
               navigate("/inscription-profil");
-            }, 2000);
+            }, 1000);
           } else {
             setMsg("valid");
             setTimeout(() => {
               navigate("/");
-            }, 2000);
+            }, 1000);
           }
         } else if (connectedUser.role === 1) {
           setConnected(valid.data.connected);
           setMsg("admin");
           setTimeout(() => {
             navigate("/admin");
-          }, 2000);
+          }, 1000);
         }
       }
     } catch (error) {
