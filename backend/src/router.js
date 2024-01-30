@@ -69,7 +69,7 @@ router.get("/profils/:id", profilControllers.read);
 /* ***************************CAR********************************************** */
 const carControllers = require("./controllers/carControllers");
 
-router.get("/cars", carControllers.browse);
+router.get("/cars", checkCredentials, carControllers.browse);
 router.get("/cars/:id", carControllers.read);
 
 /* ************************************************************************* */

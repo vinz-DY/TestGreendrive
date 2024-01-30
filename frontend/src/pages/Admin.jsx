@@ -6,8 +6,8 @@ import "./Admin.css";
 
 function Admin() {
   const { connected } = useContext(AuthContext);
-  if (connected.role === 1) {
-    return <Navigate to="/admin" replace />;
+  if (connected.connected.role !== 1) {
+    return <Navigate to="/" replace />;
   }
   return (
     <div className="Admin_container">

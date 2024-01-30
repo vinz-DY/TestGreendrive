@@ -30,9 +30,9 @@ function LogIn() {
     try {
       const valid = await connexion.post(`/login`, credentials);
       if (valid) {
-        const connectedUser = valid.data.connected;
-        if (connectedUser.role === 0) {
-          setConnected(valid.data.connected);
+        const connectedUser = valid.data;
+        if (connectedUser.connected.role === 0) {
+          setConnected(connectedUser);
           if (!connectedUser.profil) {
             setMsg("firstLogin");
             setTimeout(() => {
@@ -44,8 +44,8 @@ function LogIn() {
               navigate("/");
             }, 1000);
           }
-        } else if (connectedUser.role === 1) {
-          setConnected(valid.data.connected);
+        } else if (connectedUser.connected.role === 1) {
+          setConnected(connectedUser);
           setMsg("admin");
           setTimeout(() => {
             navigate("/admin");
