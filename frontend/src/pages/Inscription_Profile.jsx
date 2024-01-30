@@ -52,7 +52,7 @@ function InscriptionProfile() {
     }
 
     try {
-      await connexion.post("/profils", { ...profil });
+      await connexion.post("/profils", profil);
       setInscriptionSuccess(true);
       setInscriptionMessage("Inscription réussie ! Félicitations !");
       setprofil(profilType);

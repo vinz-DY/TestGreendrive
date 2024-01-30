@@ -19,7 +19,7 @@ const verify = async (password, hashed) => {
   try {
     return await argon2.verify(hashed, password, options);
   } catch (error) {
-    throw new Error("mot de passe incorrect");
+    throw new Error("identifiants incorrect");
   }
 };
 

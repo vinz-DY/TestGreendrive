@@ -21,6 +21,7 @@ router.post("/items", itemControllers.add);
 // Import userControllers module for handling item-related operations
 const userControllers = require("./controllers/userControllers");
 const validateUser = require("./validators/validateUser");
+const validateLogin = require("./validators/validateLogin");
 const checkCredentials = require("./middleware/checkCredentials");
 
 // Route to get a list of items
@@ -33,7 +34,7 @@ router.get("/user/:id", userControllers.read);
 
 // Route to add a new item
 
-router.post("/login", userControllers.log);
+router.post("/login", validateLogin, userControllers.log);
 router.post("/users", validateUser, userControllers.add);
 router.get("/users", userControllers.browse);
 
