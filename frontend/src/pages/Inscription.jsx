@@ -62,9 +62,8 @@ function Inscription() {
         "Inscription réussie ! Passons à l'étape suivante !"
       );
       setTimeout(() => {
-        navigate("/inscription-profil");
-      }, 2000);
-
+        navigate("/login");
+      }, 3000);
       setUser(userType);
     } catch (error) {
       setInscriptionSuccess(false);
