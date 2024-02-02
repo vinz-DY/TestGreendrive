@@ -35,13 +35,15 @@ function HeaderHome() {
               </button>
             </Link>
             <div className="buttonsSignContainer">
-              <button
-                onClick={handleLogout}
-                type="button"
-                className="buttonDeco"
-              >
-                deconnexion
-              </button>
+              <a href="/">
+                <button
+                  onClick={handleLogout}
+                  type="button"
+                  className="buttonDeco"
+                >
+                  deconnexion
+                </button>
+              </a>
               <Link to="/login">
                 <button type="button" className="buttonCo">
                   connexion
