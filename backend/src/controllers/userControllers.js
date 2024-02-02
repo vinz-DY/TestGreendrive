@@ -82,6 +82,14 @@ const log = async (req, res, next) => {
   }
 };
 
+const logout = (req, res) => {
+  // Effacer le cookie d'authentification côté client
+  res.clearCookie("auth");
+
+  // Répondre avec succès
+  res.sendStatus(200);
+};
+
 // The D of BREAD - Destroy (Delete) operation
 // This operation is not yet implemented
 
@@ -92,5 +100,6 @@ module.exports = {
   // edit,
   add,
   log,
+  logout,
   // destroy,
 };
