@@ -41,7 +41,7 @@ function HeaderHome() {
                   type="button"
                   className="buttonDeco"
                 >
-                  deconnexion
+                  déconnexion
                 </button>
               </a>
               <Link to="/login">
