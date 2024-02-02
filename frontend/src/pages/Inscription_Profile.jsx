@@ -13,7 +13,6 @@ const profilType = {
   postCode: "",
   cityProfil: "",
   image: "",
-  user_id: null,
 };
 
 function InscriptionProfile() {
@@ -53,7 +52,7 @@ function InscriptionProfile() {
     }
 
     try {
-      await connexion.post("/profils", { ...profil, user_id: 1 });
+      await connexion.post("/profils", profil);
       setInscriptionSuccess(true);
       setInscriptionMessage("Inscription réussie ! Félicitations !");
       setprofil(profilType);

@@ -12,7 +12,6 @@ const schema = Joi.object({
   postCode: Joi.string().min(1).max(10).required(),
   cityProfil: Joi.string().min(1).max(100).required(),
   image: Joi.string(),
-  user_id: Joi.number().integer().optional(),
 });
 
 const validateProfil = (req, res, next) => {

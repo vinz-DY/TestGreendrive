@@ -1,6 +1,7 @@
 // Import access to database tables
 const tables = require("../tables");
-const hash = require("../services/hash");
+const { hash, verify } = require("../services/hash");
+const { createToken } = require("../services/jwt");
 
 // The B of BREAD - Browse (Read All) operation
 const browse = async (req, res, next) => {
@@ -55,6 +56,32 @@ const add = async (req, res, next) => {
   }
 };
 
+const log = async (req, res, next) => {
+  try {
+    const user = await tables.user.readByEmail(req.body.mail);
+    if (user) {
+      const check = await verify(req.body.password, user.password);
+      if (check) {
+        delete user.password;
+        const profil = await tables.profil.readByAuth(user.id);
+        res
+          .cookie("auth", createToken(user), { httpOnly: true })
+          .status(200)
+          .json({
+            connected: { id: user.id, mail: user.mail, role: user.role },
+            profil: profil[0] ? { ...profil[0] } : false,
+          });
+      } else {
+        res.sendStatus(403);
+      }
+    } else {
+      res.sendStatus(403);
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
 // The D of BREAD - Destroy (Delete) operation
 // This operation is not yet implemented
 
@@ -64,5 +91,6 @@ module.exports = {
   read,
   // edit,
   add,
+  log,
   // destroy,
 };

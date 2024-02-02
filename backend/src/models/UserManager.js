@@ -1,4 +1,5 @@
 const AbstractManager = require("./AbstractManager");
+const client = require("../../database/client");
 
 class UserManager extends AbstractManager {
   constructor() {
@@ -18,6 +19,17 @@ class UserManager extends AbstractManager {
 
     // Return the ID of the newly inserted user
     return result.insertId;
+  }
+
+  async readByEmail(mail) {
+    // Execute the SQL SELECT query to retrieve a specific user by its ID
+    const [rows] = await client.query(
+      `SELECT * FROM ${this.table} WHERE mail = ?`,
+      [mail]
+    );
+
+    // Return the first row of the result, which represents the user
+    return rows[0];
   }
 
   // The Rs of CRUD - Read operations
