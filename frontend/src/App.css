@@ -10,7 +10,9 @@
 
 .menuCardCtn {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
+  gap: 2rem;
   margin-top: 8rem;
   margin-bottom: 14rem;
 }
