@@ -1,6 +1,7 @@
 // Load the express module to create a web application
 
 const express = require("express");
+const path = require("node:path");
 
 const app = express();
 
@@ -87,6 +88,9 @@ const router = require("./router");
 
 // Mount the API routes under the "/api" endpoint
 app.use("/api", router);
+app.use("/public/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../", req.originalUrl));
+});
 
 /* ************************************************************************* */
 

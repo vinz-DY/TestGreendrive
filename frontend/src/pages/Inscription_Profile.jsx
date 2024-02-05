@@ -19,13 +19,13 @@ function InscriptionProfile() {
   const [profil, setprofil] = useState(profilType);
   const [inscriptionSuccess, setInscriptionSuccess] = useState(false);
   const [inscriptionMessage, setInscriptionMessage] = useState("");
+
   const currentDate = new Date();
   const eighteenYears = new Date(
     currentDate.getFullYear() - 18,
     currentDate.getMonth(),
     currentDate.getDate()
   );
-  const profilBirthdate = new Date(profil.birthdate);
 
   const showToast = (message, type) => {
     toast[type](message, {
@@ -34,14 +34,25 @@ function InscriptionProfile() {
   };
 
   const handleprofil = (event) => {
-    setprofil((previousState) => ({
-      ...previousState,
-      [event.target.name]: event.target.value,
-    }));
+    const { name, files, value } = event.target;
+
+    if (name === "image" && files && files.length > 0) {
+      setprofil((previousState) => ({
+        ...previousState,
+        [name]: files[0],
+      }));
+    } else {
+      setprofil((previousState) => ({
+        ...previousState,
+        [name]: value,
+      }));
+    }
   };
 
   const postprofil = async (event) => {
     event.preventDefault();
+
+    const profilBirthdate = new Date(profil.birthdate);
 
     if (profilBirthdate > eighteenYears) {
       showToast(
@@ -51,8 +62,19 @@ function InscriptionProfile() {
       return;
     }
 
+    const form = new FormData();
+    form.append("lastname", profil.lastname);
+    form.append("name", profil.name);
+    form.append("gender", profil.gender);
+    form.append("birthdate", profil.birthdate);
+    form.append("postCode", profil.postCode);
+    form.append("cityProfil", profil.cityProfil);
+    form.append("image", profil.image);
+
     try {
-      await connexion.post("/profils", profil);
+      await connexion.post("/profils", form, {
+        headers: { "content-Type": "multipart/formdata" },
+      });
       setInscriptionSuccess(true);
       setInscriptionMessage("Inscription réussie ! Félicitations !");
       setprofil(profilType);
@@ -140,11 +162,10 @@ function InscriptionProfile() {
             <label className="inscriptionLabel" aria-label="image">
               <input
                 className="inscriptionInput"
-                type="texte"
+                type="file"
+                accept="image/*"
                 required
                 name="image"
-                placeholder="image"
-                value={profil.image}
                 onChange={handleprofil}
               />
             </label>
