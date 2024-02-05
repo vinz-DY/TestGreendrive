@@ -31,7 +31,10 @@
 }
 
 .terminal-address {
-  padding: 0.3rem 2rem;
+  text-align: center;
+  max-width: 10.3rem;
+  overflow: hidden;
+  padding: 0.3rem 0;
   border-radius: 0.3rem;
   border: 1px solid black;
   background: #d7f3ee;

@@ -22,6 +22,8 @@ function Resa() {
   const [selectedTime, setSelectedTime] = useState(start);
   const [selectedDate, setSelectedDate] = useState(formatDateTime(new Date()));
   const [timeOptions, setTimeOptions] = useState([]);
+  const [selectedTerminal, setSelectedTerminal] = useState(null);
+  const [terminalOptions, setTerminalOptions] = useState([]);
 
   const generateTimeOptions = () => {
     const selectedDateTime = new Date(selectedDate);
@@ -44,6 +46,25 @@ function Resa() {
 
   useEffect(() => {
     generateTimeOptions();
+  }, [selectedDate]);
+
+  useEffect(() => {
+    // Charger les options du terminal depuis votre API et mettre à jour l'état terminalOptions
+    // Remplacez le chemin d'accès et le nom de la méthode par ceux correspondant à votre API
+    const fetchTerminalOptions = async () => {
+      try {
+        const response = await connexion.get("/terminals");
+        setTerminalOptions(response.data); // Assurez-vous que la structure de réponse correspond à vos besoins
+      } catch (error) {
+        console.error(
+          "Erreur lors de la récupération des options de terminal:",
+          error
+        );
+      }
+    };
+
+    generateTimeOptions();
+    fetchTerminalOptions();
   }, [selectedDate]);
 
   const handleDateChange = (e) => {
@@ -79,45 +100,53 @@ function Resa() {
     <div className="reservation-page">
       <h1 className="reservation-title">Réserver un créneau</h1>
       <div className="reservation-container">
-        <div className="reservation-infos">
-          <input
-            className="terminal-address"
-            type="text"
-            placeholder="Adresse de la borne"
-          />
-          <input
-            className="input-date"
-            type="date"
-            id="datePicker"
-            value={selectedDate}
-            onChange={handleDateChange}
-          />
-
+        <label>
           <select
-            className="select-hour"
-            id="timeDropdown"
-            onChange={(e) => handleTimeClick(new Date(e.target.value))}
-            value={selectedTime.startTime.toISOString()}
+            className="terminal-address"
+            onChange={(e) => setSelectedTerminal(e.target.value)}
+            value={selectedTerminal}
           >
-            {timeOptions.map((time) => (
-              <option key={time.toISOString()} value={time.toISOString()}>
-                {time.toLocaleTimeString([], {
-                  hour: "2-digit",
-                  minute: "2-digit",
-                })}
+            <option value={null}>Borne</option>
+            {terminalOptions.map((terminal) => (
+              <option key={terminal.id} value={terminal.adresseStation}>
+                {terminal.adresseStation}
               </option>
             ))}
           </select>
-        </div>
-        <div className="reservation-button">
-          <button
-            className="confirm-button"
-            type="button"
-            onClick={sendReservationToDatabase}
-          >
-            Confirmer
-          </button>
-        </div>
+        </label>
+
+        <input
+          className="input-date"
+          type="date"
+          id="datePicker"
+          value={selectedDate}
+          onChange={handleDateChange}
+        />
+
+        <select
+          className="select-hour"
+          id="timeDropdown"
+          onChange={(e) => handleTimeClick(new Date(e.target.value))}
+          value={selectedTime.startTime.toISOString()}
+        >
+          {timeOptions.map((time) => (
+            <option key={time.toISOString()} value={time.toISOString()}>
+              {time.toLocaleTimeString([], {
+                hour: "2-digit",
+                minute: "2-digit",
+              })}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div className="reservation-button">
+        <button
+          className="confirm-button"
+          type="button"
+          onClick={sendReservationToDatabase}
+        >
+          Confirmer
+        </button>
       </div>
     </div>
   );
