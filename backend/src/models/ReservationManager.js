@@ -25,7 +25,7 @@ class ReservationManager extends AbstractManager {
   async read(id) {
     // Execute the SQL SELECT query to retrieve a specific reservation by its ID
     const [rows] = await this.database.query(
-      `select * from ${this.table} where id = ?`,
+      `select reservation.*, terminal.adresseStation as terminal_adresseStation from ${this.table} LEFT JOIN terminal ON reservation.terminal_id = terminal.id where reservation.id = ?`,
       [id]
     );
 
