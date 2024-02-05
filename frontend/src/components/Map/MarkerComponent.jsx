@@ -14,6 +14,9 @@ function MarkerComponent({ marker }) {
           <li>Puissance maximale: {marker.power}</li>
           <li>Accès à la borne: {marker.acces_recharge}</li>
         </ul>
+        <button type="button" className="search-button">
+          Réserver
+        </button>
       </Popup>
     </Marker>
   );
