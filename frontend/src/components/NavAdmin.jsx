@@ -36,7 +36,7 @@ function NavAdmin() {
             type="button"
             className="buttonDecoAdmin"
           >
-            Déconnection
+            Déconnexion
           </button>
         </Link>
       </div>
