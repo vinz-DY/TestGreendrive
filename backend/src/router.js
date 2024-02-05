@@ -1,6 +1,21 @@
 const express = require("express");
+const multer = require("multer");
 
 const router = express.Router();
+const storage = multer.diskStorage({
+  destination(req, file, callback) {
+    callback(null, "public/assets/images");
+  },
+  filename(req, file, callback) {
+    const arrayFile = file.originalname.split(".");
+    const extension = arrayFile.pop();
+    callback(null, `${arrayFile[0]}_${Date.now()}.${extension}`);
+  },
+});
+
+const upload = multer({
+  storage,
+});
 
 /* ************************************************************************* */
 // Define Your API Routes Here
@@ -50,6 +65,7 @@ const validateProfil = require("./validators/validateProfil");
 // Route to add a new item
 router.post(
   "/profils",
+  upload.single("image"),
   validateProfil,
   checkCredentials,
   profilControllers.add

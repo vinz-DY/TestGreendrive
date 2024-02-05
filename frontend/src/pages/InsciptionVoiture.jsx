@@ -7,12 +7,11 @@ import "react-toastify/dist/ReactToastify.css";
 
 const profilType = {
   lastname: "",
-  name: "",
+  firstname: "",
   gender: "",
-  birthdate: "",
-  postCode: "",
-  cityProfil: "",
-  image: "",
+  birthdate: null,
+  postalCode: "",
+  city: "",
 };
 
 function InscriptionProfile() {
@@ -20,67 +19,49 @@ function InscriptionProfile() {
   const [inscriptionSuccess, setInscriptionSuccess] = useState(false);
   const [inscriptionMessage, setInscriptionMessage] = useState("");
 
+  const handleprofil = (event) => {
+    setprofil((previousState) => ({
+      ...previousState,
+      [event.target.name]: event.target.value,
+    }));
+  };
+
   const currentDate = new Date();
   const eighteenYears = new Date(
     currentDate.getFullYear() - 18,
     currentDate.getMonth(),
     currentDate.getDate()
   );
-
-  const showToast = (message, type) => {
-    toast[type](message, {
-      position: toast.POSITION.TOP_RIGHT,
-    });
-  };
-
-  const handleprofil = (event) => {
-    const { name, files, value } = event.target;
-
-    if (name === "image" && files && files.length > 0) {
-      setprofil((previousState) => ({
-        ...previousState,
-        [name]: files[0],
-      }));
-    } else {
-      setprofil((previousState) => ({
-        ...previousState,
-        [name]: value,
-      }));
-    }
-  };
+  const profilBirthdate = new Date(profil.birthdate);
 
   const postprofil = async (event) => {
     event.preventDefault();
 
-    const profilBirthdate = new Date(profil.birthdate);
+    const showToastErrorAge = () => {
+      toast.error("Vous devez avoir 18 ans ou plus pour vous inscrire !", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    };
+
+    const showToastErrorMessage = () => {
+      toast.error("Une ou plusieurs erreurs bloquent l'inscription !", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    };
 
     if (profilBirthdate > eighteenYears) {
-      showToast(
-        "Vous devez avoir 18 ans ou plus pour vous inscrire !",
-        "error"
-      );
+      showToastErrorAge();
       return;
     }
 
-    const form = new FormData();
-    form.append("lastname", profil.lastname);
-    form.append("name", profil.name);
-    form.append("gender", profil.gender);
-    form.append("birthdate", profil.birthdate);
-    form.append("postCode", profil.postCode);
-    form.append("cityProfil", profil.cityProfil);
-    form.append("image", profil.image);
-
     try {
-      await connexion.post("/profils", form, {
-        headers: { "content-Type": "multipart/formdata" },
-      });
+      await connexion.post("/profil", profil);
       setInscriptionSuccess(true);
       setInscriptionMessage("Inscription réussie ! Félicitations !");
       setprofil(profilType);
     } catch (error) {
       setInscriptionSuccess(false);
-      showToast("Une ou plusieurs erreurs bloquent l'inscription !", "error");
+      showToastErrorMessage();
     }
   };
 
@@ -103,14 +84,14 @@ function InscriptionProfile() {
                 onChange={handleprofil}
               />
             </label>
-            <label className="inscriptionLabel" aria-label="name">
+            <label className="inscriptionLabel" aria-label="firstname">
               <input
                 className="inscriptionInput"
                 type="text"
-                name="name"
+                name="firstname"
                 placeholder="Prénom"
                 required
-                value={profil.name}
+                value={profil.firstname}
                 onChange={handleprofil}
               />
             </label>
@@ -123,8 +104,10 @@ function InscriptionProfile() {
                 onChange={handleprofil}
               >
                 <option value="">Vous êtes</option>
-                <option value="male">Homme</option>
-                <option value="female">Femme</option>
+                <option value="Male">Homme</option>
+                <option value="Female">Femme</option>
+                <option value="Non-Binary">Non-Binaire</option>
+                <option value="Other">Autre</option>
               </select>
             </label>
             <label className="inscriptionLabel" aria-label="birthdate">
@@ -137,35 +120,25 @@ function InscriptionProfile() {
                 onChange={handleprofil}
               />
             </label>
-            <label className="inscriptionLabel" aria-label="postCode">
+            <label className="inscriptionLabel" aria-label="postalCode">
               <input
                 className="inscriptionInput"
                 type="number"
                 required
-                name="postCode"
+                name="postalCode"
                 placeholder="Code Postal"
-                value={profil.postCode}
+                value={profil.postalCode}
                 onChange={handleprofil}
               />
             </label>
-            <label className="inscriptionLabel" aria-label="cityProfil">
+            <label className="inscriptionLabel" aria-label="city">
               <input
                 className="inscriptionInput"
                 type="text"
                 required
-                name="cityProfil"
+                name="city"
                 placeholder="Ville"
-                value={profil.cityProfil}
-                onChange={handleprofil}
-              />
-            </label>
-            <label className="inscriptionLabel" aria-label="image">
-              <input
-                className="inscriptionInput"
-                type="file"
-                accept="image/*"
-                required
-                name="image"
+                value={profil.city}
                 onChange={handleprofil}
               />
             </label>
