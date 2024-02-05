@@ -89,7 +89,7 @@ function Resa() {
         setSelectedTime(start);
         generateTimeOptions();
       } else {
-        console.error("Erreur lors de la réservation");
+        console.error("Erreur lors de la réservation", response);
       }
     } catch (error) {
       console.error("Erreur lors de la requête vers l'API:", error);
