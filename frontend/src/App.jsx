@@ -5,7 +5,8 @@ import HeaderHome from "./components/HeaderHome";
 import Footer from "./components/Footer";
 import MenuCard from "./components/MenuCard";
 import MenuCardResa from "./components/MenuCards/MenuCardResa";
-import MenuCardFaq from "./components/MenuCards/MenuCardFaq";
+import MenuResa from "./assets/menuReservation.jpg";
+import MenuFaq from "./assets/menuFaqPic.jpg";
 import "./App.css";
 
 function App() {
@@ -20,10 +21,18 @@ function App() {
         {connected && connected.connected.role === 0 && (
           <>
             <Link to="/reservation">
-              <MenuCardResa />
+              <MenuCardResa
+                title="Réservations"
+                img={MenuResa}
+                alt="menu des reservations"
+              />
             </Link>
             <Link to="/faq">
-              <MenuCardFaq />
+              <MenuCardResa
+                title="Informations"
+                img={MenuFaq}
+                alt="menu informations"
+              />
             </Link>
           </>
         )}

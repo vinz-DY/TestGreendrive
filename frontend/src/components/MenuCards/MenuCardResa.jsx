@@ -1,16 +1,22 @@
 import React from "react";
-import MenuResa from "../../assets/menuReservation.jpg";
+import PropTypes from "prop-types";
 import "../menuCard.css";
 
-function MenuCardResa() {
+function MenuCardResa({ img, title, alt }) {
   return (
     <div className="menuContainer">
-      <img className="menuImage" src={MenuResa} alt="Menu Réservation" />
+      <img className="menuImage" src={img} alt={alt} />
       <div className="cardTextContent">
-        <h2 className="menuMapTitle">Reservations</h2>
+        <h2 className="menuMapTitle">{title}</h2>
       </div>
     </div>
   );
 }
+
+MenuCardResa.propTypes = {
+  img: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
+};
 
 export default MenuCardResa;
