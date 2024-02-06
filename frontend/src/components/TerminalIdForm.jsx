@@ -18,11 +18,10 @@ function TerminalIdForm() {
 
   const { id } = useParams();
 
-  const handleTerminalChange = (event) => {
-    const { name, value } = event.target;
+  const handleTerminalChange = (e) => {
     setTerminal((prevTerminal) => ({
       ...prevTerminal,
-      [name]: value,
+      [e.target.name]: e.target.value,
     }));
   };
 
@@ -37,12 +36,7 @@ function TerminalIdForm() {
   const putTerminal = async (event) => {
     event.preventDefault();
     try {
-      await connexion.put(`/terminals/${id}`, terminal, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-
+      await connexion.put(`/terminals/${id}`, terminal);
       setTerminal({
         city: "",
         adresseStation: "",
@@ -106,7 +100,7 @@ function TerminalIdForm() {
           <input
             className="inscriptionInput"
             type="text"
-            name="access_recharge"
+            name="acces_recharge"
             placeholder="Accès recharge"
             required
             value={terminal.acces_recharge}

@@ -53,20 +53,20 @@ class TerminalManager extends AbstractManager {
   // The U of CRUD - Update operation
   async update(id, terminal) {
     const [result] = await this.database.query(
-      `UPDATE ${this.table} SET city = ?, adresseStation = ?, xlongitude = ?, ylatitude = ?, power =?, acces_recharge = ?, access = ?, localisation = ?, region = ?, image = ?, connectic_id= ?, state_id = ? WHERE id = ?`,
+      `UPDATE ${this.table} SET city = ?, adresseStation = ?, acces_recharge = ?, access = ?, localisation = ? WHERE id = ?`,
       [
         terminal.city,
         terminal.adresseStation,
-        terminal.xlongitude,
-        terminal.ylatitude,
-        terminal.power,
+        // terminal.xlongitude,
+        // terminal.ylatitude,
+        // terminal.power,
         terminal.acces_recharge,
         terminal.access,
         terminal.localisation,
-        terminal.region,
-        terminal.image,
-        terminal.connectic_id,
-        terminal.state_id,
+        // terminal.region,
+        // terminal.image,
+        // terminal.connectic_id,
+        // terminal.state_id,
         id,
       ]
     );
