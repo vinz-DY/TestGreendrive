@@ -30,7 +30,7 @@ class TerminalManager extends AbstractManager {
     );
 
     // Return the first row of the result, which represents the terminal
-    return rows;
+    return rows[0];
   }
 
   async readAll(searchTerm) {
