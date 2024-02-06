@@ -80,11 +80,11 @@ function Resa() {
       const response = await connexion.post("/reservations", {
         ...selectedTime,
         car_id: 1,
-        terminal_id: 1,
+        terminal_id: selectedTerminal,
         startTime: formatDateTime(selectedTime.startTime),
       });
 
-      if (response.status === 200) {
+      if (response.status === 201) {
         console.info("Réservation enregistrée avec succès!");
         setSelectedTime(start);
         generateTimeOptions();
@@ -108,7 +108,7 @@ function Resa() {
           >
             <option value={null}>Borne</option>
             {terminalOptions.map((terminal) => (
-              <option key={terminal.id} value={terminal.adresseStation}>
+              <option key={terminal.id} value={terminal.id}>
                 {terminal.adresseStation}
               </option>
             ))}
