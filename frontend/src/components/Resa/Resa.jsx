@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import connexion from "../../services/connexion";
+import "react-toastify/dist/ReactToastify.css";
 import "./Resa.css";
 
 const start = {
