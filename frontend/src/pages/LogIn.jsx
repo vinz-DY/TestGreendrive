@@ -3,7 +3,9 @@ import { useNavigate } from "react-router-dom";
 import connexion from "../services/connexion";
 import { AuthContext } from "../context/AuthContext";
 import LoginInput from "../components/LoginInput";
+import HeaderInscription from "../components/HeaderInscription";
 import "./LogIn.css";
+import "../components/Inscription.css";
 
 const user = {
   mail: "",
@@ -73,7 +75,10 @@ function LogIn() {
           </p>
         )}
       </div>
-      <div className="contain-form-login">
+      <div className="contain-form-login inscription">
+        <div>
+          <HeaderInscription />
+        </div>
         <h2>Connectez-vous</h2>
         <div className="form-container">
           <form onSubmit={handleRequest} className="form-login">
@@ -98,7 +103,7 @@ function LogIn() {
               />
             </div>
             <div className="contain-submit-login">
-              <button type="submit" className="button-submit">
+              <button type="submit" className="button-submit inscriptionButton">
                 Se connecter
               </button>
             </div>
