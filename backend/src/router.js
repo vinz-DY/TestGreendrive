@@ -97,7 +97,13 @@ router.post(
   carControllers.add
 );
 
-/* ************************************************************************* */
+/* ***************************RESERVATION************************************ */
+
+const reservationControllers = require("./controllers/reservationControllers");
+
+router.get("/reservations", reservationControllers.browse);
+router.get("/reservations/:id", reservationControllers.read);
+router.post("/reservations", reservationControllers.add);
 
 /* ************************************************************************* */
 
