@@ -59,7 +59,7 @@ function Inscription() {
       await connexion.post("/users", user);
       setInscriptionSuccess(true);
       setInscriptionMessage(
-        "Inscription réussie ! Passons à l'étape suivantepour!"
+        "Inscription réussie ! Passons à l'étape suivante!"
       );
       setTimeout(() => {
         navigate("/login");
