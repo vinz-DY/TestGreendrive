@@ -12,14 +12,6 @@ function AdminTerminalId() {
         <div>
           <DisplayCardsId basePath="/terminals/:id" items={items} />
         </div>
-        <div className="adminTerminalBtnCtn">
-          <button className="adminTerminalBtn" type="button">
-            Modifier
-          </button>
-          <button className="adminTerminalBtn adminTerminalBtn2" type="button">
-            Supprimer
-          </button>
-        </div>
       </div>
       <div>
         <TerminalIdForm basePath="/terminals/:id" />

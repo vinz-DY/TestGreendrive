@@ -13,7 +13,6 @@ function TerminalIdForm() {
     acces_recharge: "",
     access: "",
     localisation: "",
-    // image: null,
   });
 
   const { id } = useParams();
@@ -24,14 +23,6 @@ function TerminalIdForm() {
       [e.target.name]: e.target.value,
     }));
   };
-
-  //   const handleFileChange = (event) => {
-  //     const { name, files } = event.target;
-  //     setTerminal((prevTerminal) => ({
-  //       ...prevTerminal,
-  //       [name]: files[0],
-  //     }));
-  //   };
 
   const putTerminal = async (event) => {
     event.preventDefault();
