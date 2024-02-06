@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
 import connexion from "../../services/connexion";
 import "./Resa.css";
 
@@ -49,12 +50,10 @@ function Resa() {
   }, [selectedDate]);
 
   useEffect(() => {
-    // Charger les options du terminal depuis votre API et mettre à jour l'état terminalOptions
-    // Remplacez le chemin d'accès et le nom de la méthode par ceux correspondant à votre API
     const fetchTerminalOptions = async () => {
       try {
         const response = await connexion.get("/terminals");
-        setTerminalOptions(response.data); // Assurez-vous que la structure de réponse correspond à vos besoins
+        setTerminalOptions(response.data);
       } catch (error) {
         console.error(
           "Erreur lors de la récupération des options de terminal:",
@@ -85,13 +84,15 @@ function Resa() {
       });
 
       if (response.status === 201) {
-        console.info("Réservation enregistrée avec succès!");
+        toast.success("Réservation enregistrée avec succès!");
         setSelectedTime(start);
         generateTimeOptions();
       } else {
+        toast.error("Erreur lors de la réservation");
         console.error("Erreur lors de la réservation", response);
       }
     } catch (error) {
+      toast.error("Erreur lors de la requête vers l'API");
       console.error("Erreur lors de la requête vers l'API:", error);
     }
   };
@@ -148,6 +149,7 @@ function Resa() {
           Confirmer
         </button>
       </div>
+      <ToastContainer />
     </div>
   );
 }
