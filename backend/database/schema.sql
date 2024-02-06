@@ -48,13 +48,13 @@ CREATE TABLE car (
 );
 
 
-CREATE TABLE reservations (
+CREATE TABLE reservation (
   id INT PRIMARY KEY AUTO_INCREMENT,
   startTime datetime NULL,
   car_id INT NOT NULL,
-   CONSTRAINT fk_reservations_car FOREIGN KEY (car_id) REFERENCES car(id),
+   CONSTRAINT fk_reservation_car FOREIGN KEY (car_id) REFERENCES car(id),
   terminal_id INT NOT NULL,
- CONSTRAINT fk_reservations_terminal FOREIGN KEY (terminal_id) REFERENCES terminal(id)
+ CONSTRAINT fk_reservation_terminal FOREIGN KEY (terminal_id) REFERENCES terminal(id)
 );
 
 

@@ -39,7 +39,7 @@ class ProfilManager extends AbstractManager {
     );
 
     // Return the first row of the result, which represents the profil
-    return rows;
+    return rows[0];
   }
 
   async readByAuth(id) {

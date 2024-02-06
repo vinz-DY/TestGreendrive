@@ -1,6 +1,6 @@
 const AbstractManager = require("./AbstractManager");
 
-class carManager extends AbstractManager {
+class CarManager extends AbstractManager {
   constructor() {
     // Call the constructor of the parent class (AbstractManager)
     // and pass the table name "car" as configuration
@@ -39,7 +39,7 @@ class carManager extends AbstractManager {
     );
 
     // Return the first row of the result, which represents the car
-    return rows;
+    return rows[0];
   }
 
   async readAll(searchTerm) {
@@ -74,4 +74,4 @@ class carManager extends AbstractManager {
   // }
 }
 
-module.exports = carManager;
+module.exports = CarManager;

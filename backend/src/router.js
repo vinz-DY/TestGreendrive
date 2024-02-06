@@ -78,6 +78,7 @@ const terminalControllers = require("./controllers/terminalControllers");
 
 router.get("/terminals", terminalControllers.browse);
 router.get("/terminals/:id", terminalControllers.read);
+router.put("/terminals/:id", terminalControllers.edit);
 
 /* ***************************Profil********************************************** */
 
@@ -96,7 +97,13 @@ router.post(
   carControllers.add
 );
 
-/* ************************************************************************* */
+/* ***************************RESERVATION************************************ */
+
+const reservationControllers = require("./controllers/reservationControllers");
+
+router.get("/reservations", reservationControllers.browse);
+router.get("/reservations/:id", reservationControllers.read);
+router.post("/reservations", reservationControllers.add);
 
 /* ************************************************************************* */
 

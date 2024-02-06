@@ -10,6 +10,7 @@ import "leaflet/dist/leaflet.css";
 import "./Map.css";
 import MarkerComponent from "./MarkerComponent";
 import useGeoLocation from "./useGeoLocation";
+import Resa from "../Resa/Resa";
 
 function MarkersMap({ terminalsData }) {
   const ZOOM_LEVEL = 9;
@@ -93,26 +94,34 @@ function MarkersMap({ terminalsData }) {
           </Marker>
         )}
       </MapContainer>
-      <div className="geoLocationButton">
-        <button
-          className="geolocationButton"
-          type="button"
-          onClick={showMyLocation}
-        >
-          Localisez-moi
-        </button>
+      <div className="location-container">
+        <div className="geoLocationButton">
+          <button
+            className="geolocationButton"
+            type="button"
+            onClick={showMyLocation}
+          >
+            Localisez-moi
+          </button>
+        </div>
+        <div className="citySearch">
+          <input
+            className="search-input"
+            type="text"
+            placeholder="Entrez le nom de la ville"
+            value={cityInput}
+            onChange={(e) => setCityInput(e.target.value)}
+          />
+          <button
+            className="search-button"
+            type="button"
+            onClick={handleCitySearch}
+          >
+            Rechercher
+          </button>
+        </div>
       </div>
-      <div className="citySearch">
-        <input
-          type="text"
-          placeholder="Entrez le nom de la ville"
-          value={cityInput}
-          onChange={(e) => setCityInput(e.target.value)}
-        />
-        <button type="button" onClick={handleCitySearch}>
-          Rechercher
-        </button>
-      </div>
+      <Resa />
       <ToastContainer />
     </div>
   );
