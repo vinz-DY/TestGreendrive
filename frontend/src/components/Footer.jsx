@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { SlSocialFacebook } from "react-icons/sl";
 import {
   TiSocialLinkedin,
@@ -29,9 +30,9 @@ function Footer() {
         >
           <TiSocialLinkedin className="socialIcon" />
         </a>
-        <a aria-label="logoGreen" href="/" rel="noreferrer">
+        <Link to="/" aria-label="logoGreen" rel="noreferrer">
           <img src={LogoGreen} alt="logo du site" className=" logoGreen" />
-        </a>
+        </Link>
         <a
           aria-label="instagram"
           href="https://www.instagram.com/"
