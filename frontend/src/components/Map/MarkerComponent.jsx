@@ -8,6 +8,7 @@ function MarkerComponent({ marker }) {
       <Popup>
         <h2>Informations sur la borne</h2>
         <ul>
+          <li>ID: {marker.id}</li>
           <li>Adresse: {marker.city}</li>
           <li>Acessibilité: {marker.access}</li>
           <li>Type de prise: {marker.connectic_id}</li>
