@@ -39,7 +39,7 @@ const seed = async () => {
     for (let i = 0; i < 10; i += 1) {
       queriesUser.push(
         database.query(
-          "insert into user(mail, password, isAdmin) values (?,?,?)",
+          "insert into user(mail, password, role) values (?,?,?)",
           [
             faker.internet.email(),
             faker.internet.password(),

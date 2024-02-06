@@ -17,11 +17,17 @@ import FaqPage from "./pages/Faq/FaqPage";
 import AuthProvider from "./context/AuthContext";
 import LogIn from "./pages/LogIn";
 import Resa from "./components/Resa/Resa";
+import Reservation from "./pages/Reservation";
+import InscriptionCar from "./pages/InsciptionCar";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+  },
+  {
+    path: "/login",
+    element: <LogIn />,
   },
   {
     path: "/faq",
@@ -30,6 +36,14 @@ const router = createBrowserRouter([
   {
     path: "/resa",
     element: <Resa />,
+  },
+  {
+    path: "/reservation",
+    element: <Reservation />,
+  },
+  {
+    path: "/inscriptionvoiture",
+    element: <InscriptionCar />,
   },
   {
     path: "/map",

@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../assets/Logo GreenSave.png";
+import Logogreen from "../assets/logo_greendrive.png";
 
 function HeaderInscription() {
   return (
@@ -8,7 +8,7 @@ function HeaderInscription() {
         <h1 className="inscriptionTitle">
           A toi, protecteur/protectrice de la planète
         </h1>
-        <img src={Logo} className="inscriptionLogo" alt="GreenDrive" />
+        <img src={Logogreen} className="inscriptionLogo" alt="GreenDrive" />
       </header>
     </div>
   );

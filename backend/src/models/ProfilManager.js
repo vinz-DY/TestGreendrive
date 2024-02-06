@@ -9,7 +9,7 @@ class ProfilManager extends AbstractManager {
 
   // The C of CRUD - Create operation
 
-  async create(profil) {
+  async create(profil, userId, file) {
     // Execute the SQL INSERT query to add a new profil to the "profil" table
     const [result] = await this.database.query(
       `insert into ${this.table} (lastname, name, gender, birthdate, postCode, cityProfil, image, user_id  ) values (?, ?, ?, ?, ?, ?, ?, ?)`,
@@ -20,8 +20,8 @@ class ProfilManager extends AbstractManager {
         profil.birthdate,
         profil.postCode,
         profil.cityProfil,
-        profil.image,
-        profil.user_id,
+        file.path,
+        userId,
       ]
     );
 
@@ -35,6 +35,17 @@ class ProfilManager extends AbstractManager {
     // Execute the SQL SELECT query to retrieve a specific profil by its ID
     const [rows] = await this.database.query(
       `select * from ${this.table} where id = ?`,
+      [id]
+    );
+
+    // Return the first row of the result, which represents the profil
+    return rows;
+  }
+
+  async readByAuth(id) {
+    // Execute the SQL SELECT query to retrieve a specific profil by its ID
+    const [rows] = await this.database.query(
+      `select * from ${this.table} where user_id = ?`,
       [id]
     );
 
