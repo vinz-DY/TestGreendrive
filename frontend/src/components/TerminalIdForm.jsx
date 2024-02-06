@@ -122,17 +122,6 @@ function TerminalIdForm() {
             onChange={handleTerminalChange}
           />
         </label>
-        {/* <label className="inscriptionLabel" aria-label="image">
-          Image:
-          <input
-            className="inscriptionInput"
-            type="file"
-            accept="image/*"
-            required
-            name="image"
-            onChange={handleFileChange}
-          />
-        </label> */}
         <button type="submit" className="inscriptionButton">
           Modifier
         </button>
