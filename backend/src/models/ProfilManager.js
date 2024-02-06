@@ -20,7 +20,7 @@ class ProfilManager extends AbstractManager {
         profil.birthdate,
         profil.postCode,
         profil.cityProfil,
-        file.path,
+        file.filename,
         userId,
       ]
     );

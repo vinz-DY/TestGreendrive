@@ -6,7 +6,13 @@ function CardItemId({ data }) {
   return (
     <div className="CardItem CardItemId">
       <div className="CardItem_card">
-        <img className="CardItem_img" src={data.image} alt="borne" />
+        <img
+          className="CardItem_img"
+          src={`${import.meta.env.VITE_BACKEND_URL}/public/assets/images/${
+            data.image
+          }`}
+          alt="poster"
+        />
       </div>
 
       <div className="CardItem_text">
