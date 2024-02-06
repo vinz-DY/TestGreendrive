@@ -78,7 +78,9 @@ function InscriptionProfile() {
         headers: { "content-Type": "multipart/formdata" },
       });
       setInscriptionSuccess(true);
-      setInscriptionMessage("Inscription réussie ! Félicitations !");
+      setInscriptionMessage(
+        "Inscription profil réussie ! Félicitations passons à la voiture !"
+      );
       setTimeout(() => {
         navigate("/inscriptionvoiture");
       }, 3000);
