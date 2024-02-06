@@ -8,7 +8,7 @@
 }
 
 .CardItem {
-  border: solid 4px #062f45;
+  border: solid 3px #062f45;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
