@@ -42,10 +42,10 @@ const read = async (req, res, next) => {
 const add = async (req, res, next) => {
   // Extract the profil data from the request body
   const profil = req.body;
-
+  const userId = req.user.id;
   try {
     // Insert the profil into the database
-    const insertId = await tables.profil.create(profil);
+    const insertId = await tables.profil.create(profil, userId, req.file);
 
     // Respond with HTTP 201 (Created) and the ID of the newly inserted profil
     res.status(201).json({ insertId });

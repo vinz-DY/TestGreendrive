@@ -1,0 +1,13 @@
+.contain-validation-errorconnexion {
+  height: 120px;
+  margin-top: 50px;
+}
+
+.validation {
+  font-weight: bold;
+}
+
+.errorconnexion {
+  color: #a30000;
+  font-weight: bold;
+}

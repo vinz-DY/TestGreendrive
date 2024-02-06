@@ -1,6 +1,7 @@
 // Load the express module to create a web application
 
 const express = require("express");
+const path = require("node:path");
 
 const app = express();
 
@@ -32,6 +33,7 @@ app.use(
     origin: [
       process.env.FRONTEND_URL, // keep this one, after checking the value in `backend/.env`
     ],
+    credentials: true,
   })
 );
 
@@ -68,8 +70,9 @@ app.use(express.json());
 
 // Then, require the module and use it as middleware in your Express application:
 
-// const cookieParser = require("cookie-parser");
-// app.use(cookieParser());
+const cookieParser = require("cookie-parser");
+
+app.use(cookieParser());
 
 // Once `cookie-parser` is set up, you can read and set cookies in your routes.
 // For example, to set a cookie named "username" with the value "john":
@@ -85,6 +88,9 @@ const router = require("./router");
 
 // Mount the API routes under the "/api" endpoint
 app.use("/api", router);
+app.use("/public/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../", req.originalUrl));
+});
 
 /* ************************************************************************* */
 

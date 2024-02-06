@@ -1,3 +1,4 @@
+-- SQLBook: Code
 CREATE TABLE state (
   id INT PRIMARY KEY AUTO_INCREMENT,
   label varchar(255) NULL
@@ -12,7 +13,7 @@ CREATE TABLE user (
   id INT PRIMARY KEY AUTO_INCREMENT,
   mail varchar(255) UNIQUE,
   password varchar(255) NULL,
-  isAdmin boolean DEFAULT 0
+  role boolean DEFAULT 0
 );
 
 CREATE TABLE terminal(
