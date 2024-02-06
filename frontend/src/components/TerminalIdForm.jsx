@@ -10,14 +10,10 @@ function TerminalIdForm() {
   const [terminal, setTerminal] = useState({
     city: "",
     adresseStation: "",
-    // xlongitude: "",
-    // xlatitude: "",
     acces_recharge: "",
     access: "",
     localisation: "",
-    image: null,
-    connectic_id: null,
-    state_id: null,
+    // image: null,
   });
 
   const { id } = useParams();
@@ -30,20 +26,36 @@ function TerminalIdForm() {
     }));
   };
 
-  const handleFileChange = (event) => {
-    const { name, files } = event.target;
-    setTerminal((prevTerminal) => ({
-      ...prevTerminal,
-      [name]: files[0],
-    }));
-  };
+  //   const handleFileChange = (event) => {
+  //     const { name, files } = event.target;
+  //     setTerminal((prevTerminal) => ({
+  //       ...prevTerminal,
+  //       [name]: files[0],
+  //     }));
+  //   };
 
-  const handleSubmit = async (event) => {
+  const putTerminal = async (event) => {
     event.preventDefault();
     try {
+      await connexion.put(`/terminals/${id}`, terminal, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      setTerminal({
+        city: "",
+        adresseStation: "",
+        acces_recharge: "",
+        access: "",
+        localisation: "",
+      });
+
       console.info("Données du terminal soumises :", terminal);
+      toast.success("Terminal modifié avec succès !");
     } catch (error) {
       console.error("Erreur lors de la soumission du terminal :", error);
+      toast.error("Erreur lors de la modification du terminal");
     }
   };
 
@@ -64,7 +76,7 @@ function TerminalIdForm() {
   return (
     <div className="inscription">
       <HeaderInscription />
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={putTerminal}>
         <label className="inscriptionLabel" aria-label="city">
           Ville:
           <input
@@ -89,48 +101,24 @@ function TerminalIdForm() {
             onChange={handleTerminalChange}
           />
         </label>
-        {/* <label className="inscriptionLabel" aria-label="xlongitude">
-          Longitude:
-          <input
-            className="inscriptionInput"
-            type="text"
-            name="xlongitude"
-            placeholder="Longitude"
-            required
-            value={terminal.xlongitude}
-            onChange={handleTerminalChange}
-          />
-        </label> */}
-        {/* <label className="inscriptionLabel" aria-label="xlatitude">
-          Latitude:
-          <input
-            className="inscriptionInput"
-            type="text"
-            name="xlatitude"
-            placeholder="Latitude"
-            required
-            value={terminal.xlatitude}
-            onChange={handleTerminalChange}
-          />
-        </label> */}
         <label className="inscriptionLabel" aria-label="acces_recharge">
           Accès recharge:
           <input
             className="inscriptionInput"
             type="text"
-            name="acces_recharge"
+            name="access_recharge"
             placeholder="Accès recharge"
             required
             value={terminal.acces_recharge}
             onChange={handleTerminalChange}
           />
         </label>
-        <label className="inscriptionLabel" aria-label="acces">
+        <label className="inscriptionLabel" aria-label="access">
           Accès:
           <input
             className="inscriptionInput"
             type="text"
-            name="acces"
+            name="access"
             placeholder="Accès"
             required
             value={terminal.access}
@@ -149,7 +137,7 @@ function TerminalIdForm() {
             onChange={handleTerminalChange}
           />
         </label>
-        <label className="inscriptionLabel" aria-label="image">
+        {/* <label className="inscriptionLabel" aria-label="image">
           Image:
           <input
             className="inscriptionInput"
@@ -159,7 +147,7 @@ function TerminalIdForm() {
             name="image"
             onChange={handleFileChange}
           />
-        </label>
+        </label> */}
         <button type="submit" className="inscriptionButton">
           Modifier
         </button>
