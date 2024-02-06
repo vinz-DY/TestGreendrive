@@ -111,7 +111,7 @@ function Resa() {
             <option value={null}>Borne</option>
             {terminalOptions.map((terminal) => (
               <option key={terminal.id} value={terminal.id}>
-                {terminal.adresseStation}
+                {terminal.id}- {terminal.adresseStation}
               </option>
             ))}
           </select>
