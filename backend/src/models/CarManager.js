@@ -9,11 +9,20 @@ class carManager extends AbstractManager {
 
   // The C of CRUD - Create operation
 
-  async create(car) {
+  async create(car, userId, file) {
+    // Vérifiez si 'connectic' est défini
+
     // Execute the SQL INSERT query to add a new car to the "car" table
     const [result] = await this.database.query(
-      `insert into ${this.table} (title) values (?)`,
-      [car.title]
+      `insert into ${this.table} (licensePlate, brand, model, image, connectic_id, user_id) values (?,?,?,?,?,?)`,
+      [
+        car.licensePlate,
+        car.brand,
+        car.model,
+        file.path,
+        car.connectic_id,
+        userId,
+      ]
     );
 
     // Return the ID of the newly inserted car

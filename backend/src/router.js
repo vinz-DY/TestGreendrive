@@ -89,6 +89,12 @@ const carControllers = require("./controllers/carControllers");
 
 router.get("/cars", checkCredentials, carControllers.browse);
 router.get("/cars/:id", carControllers.read);
+router.post(
+  "/cars",
+  upload.single("image"),
+  checkCredentials,
+  carControllers.add
+);
 
 /* ************************************************************************* */
 

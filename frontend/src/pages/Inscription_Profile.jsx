@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import connexion from "../services/connexion";
 import HeaderInscription from "../components/HeaderInscription";
@@ -19,6 +20,7 @@ function InscriptionProfile() {
   const [profil, setprofil] = useState(profilType);
   const [inscriptionSuccess, setInscriptionSuccess] = useState(false);
   const [inscriptionMessage, setInscriptionMessage] = useState("");
+  const navigate = useNavigate();
 
   const currentDate = new Date();
   const eighteenYears = new Date(
@@ -77,6 +79,9 @@ function InscriptionProfile() {
       });
       setInscriptionSuccess(true);
       setInscriptionMessage("Inscription réussie ! Félicitations !");
+      setTimeout(() => {
+        navigate("/inscriptionvoiture");
+      }, 3000);
       setprofil(profilType);
     } catch (error) {
       setInscriptionSuccess(false);
