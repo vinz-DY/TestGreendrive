@@ -10,10 +10,10 @@ function TerminalIdForm() {
   const [terminal, setTerminal] = useState({
     city: "",
     adresseStation: "",
-    xlongitude: "",
-    xlatitude: "",
+    // xlongitude: "",
+    // xlatitude: "",
     acces_recharge: "",
-    acces: "",
+    access: "",
     localisation: "",
     image: null,
     connectic_id: null,
@@ -89,7 +89,7 @@ function TerminalIdForm() {
             onChange={handleTerminalChange}
           />
         </label>
-        <label className="inscriptionLabel" aria-label="xlongitude">
+        {/* <label className="inscriptionLabel" aria-label="xlongitude">
           Longitude:
           <input
             className="inscriptionInput"
@@ -100,8 +100,8 @@ function TerminalIdForm() {
             value={terminal.xlongitude}
             onChange={handleTerminalChange}
           />
-        </label>
-        <label className="inscriptionLabel" aria-label="xlatitude">
+        </label> */}
+        {/* <label className="inscriptionLabel" aria-label="xlatitude">
           Latitude:
           <input
             className="inscriptionInput"
@@ -112,7 +112,7 @@ function TerminalIdForm() {
             value={terminal.xlatitude}
             onChange={handleTerminalChange}
           />
-        </label>
+        </label> */}
         <label className="inscriptionLabel" aria-label="acces_recharge">
           Accès recharge:
           <input
@@ -133,7 +133,7 @@ function TerminalIdForm() {
             name="acces"
             placeholder="Accès"
             required
-            value={terminal.acces}
+            value={terminal.access}
             onChange={handleTerminalChange}
           />
         </label>
