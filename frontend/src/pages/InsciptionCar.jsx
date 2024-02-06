@@ -95,7 +95,7 @@ function InscriptionCar() {
                 className="inscriptionInput"
                 type="text"
                 name="model"
-                placeholder="model"
+                placeholder="Modèle"
                 required
                 value={car.model}
                 onChange={handlecar}
@@ -119,7 +119,7 @@ function InscriptionCar() {
                 value={car.connectic_id}
                 onChange={handlecar}
               >
-                <option value="">Sélectionnez le type de connection</option>
+                <option value="">Sélectionnez le type de connexion</option>
                 <option value="1">EF</option>
                 <option value="2">T2</option>
               </select>
