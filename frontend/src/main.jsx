@@ -17,6 +17,7 @@ import FaqPage from "./pages/Faq/FaqPage";
 import AuthProvider from "./context/AuthContext";
 import LogIn from "./pages/LogIn";
 import Reservation from "./pages/Reservation";
+import InscriptionCar from "./pages/InsciptionCar";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
   {
     path: "/reservation",
     element: <Reservation />,
+  },
+  {
+    path: "/inscriptionvoiture",
+    element: <InscriptionCar />,
   },
   {
     path: "/map",
