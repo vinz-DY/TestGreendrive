@@ -78,16 +78,25 @@ const destroy = async (req, res, next) => {
   const terminalId = req.params.id;
   try {
     // Insert the terminal into the database
-    await tables.terminal.delete(terminalId);
-    // Check the result of the deletion
-    // Respond with HTTP 200 (OK) and a success message
-    res.sendStatus(204);
-    // Respond with HTTP 404 (Not Found) if the terminal was not found
+    const result = await tables.terminal.delete(terminalId);
+    if (result && result.affectedRows <= 0) {
+      res.sendStatus(404);
+    } else {
+      res.status(204).json(terminalId);
+    }
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);
   }
 };
+
+// Check the result of the deletion
+// Respond with HTTP 200 (OK) and a success message
+
+// Respond with HTTP 404 (Not Found) if the terminal was not found
+
+// Pass any errors to the error-handling middleware
+
 // Ready to export the controller functions
 module.exports = {
   browse,
