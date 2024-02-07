@@ -1,10 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./Inscription.css";
 
 function LoginInput({ type, name, value, onChange, placeholder }) {
   return (
     <div>
       <input
+        className="inscriptionInput loginInput"
         type={type}
         name={name}
         value={value}

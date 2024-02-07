@@ -1,17 +1,19 @@
 .inscription {
-  max-width: 600px;
+  width: 600px;
+  max-width: 80%;
   margin: auto;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background: white;
+  margin-top: 1rem;
 }
 
 .inscriptionTitle {
   text-align: center;
   color: #333;
-  margin: 0;
+  margin-bottom: 1rem;
 }
 
 .inscriptionLabel {
@@ -23,18 +25,20 @@
 
 .inscriptionHeader {
   display: flex;
+  justify-content: center;
   flex-direction: row-reverse;
+  width: 550px;
+  max-width: 100%;
 }
 
 .inscriptionLogo {
   display: flex;
-  margin-right: 30px;
-  margin-bottom: 30px;
   width: 30%;
+  margin-bottom: 1rem;
 }
 
 .inscriptionInput {
-  width: 95%;
+  width: 100%;
   padding: 10px;
   border: 1px solid #092d44;
   margin-bottom: 10px;
@@ -59,4 +63,17 @@
 
 .inscriptionButton:hover {
   background-color: #29a895;
+}
+
+@media screen and (max-width: 970px) {
+  .inscriptionHeader {
+    font-size: 10px;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    width: 100%;
+  }
+  .inscriptionLogo {
+    width: 30%;
+  }
 }
