@@ -5,7 +5,7 @@ const tables = require("../tables");
 const browse = async (req, res, next) => {
   try {
     // Fetch all reservations from the database
-    const reservations = await tables.reservation.readAll();
+    const reservations = await tables.reservation.readAll(req.user.id);
 
     // Respond with the reservations in JSON format
     res.json(reservations);
@@ -41,10 +41,10 @@ const read = async (req, res, next) => {
 const add = async (req, res, next) => {
   // Extract the reservation data from the request body
   const reservation = req.body;
-
+  const userId = req.user.id;
   try {
     // Insert the reservation into the database
-    const insertId = await tables.reservation.create(reservation);
+    const insertId = await tables.reservation.create(reservation, userId);
 
     // Respond with HTTP 201 (Created) and the ID of the newly inserted reservation
     res.status(201).json({ insertId });

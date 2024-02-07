@@ -6,7 +6,6 @@ import "./Resa.css";
 
 const start = {
   startTime: new Date(),
-  car_id: null,
   terminal_id: null,
 };
 
@@ -25,6 +24,7 @@ function Resa() {
   const [selectedDate, setSelectedDate] = useState(formatDateTime(new Date()));
   const [timeOptions, setTimeOptions] = useState([]);
   const [selectedTerminal, setSelectedTerminal] = useState(null);
+  // const [selectedUser] = useState(null);
   const [terminalOptions, setTerminalOptions] = useState([]);
 
   const generateTimeOptions = () => {
@@ -79,7 +79,6 @@ function Resa() {
     try {
       const response = await connexion.post("/reservations", {
         ...selectedTime,
-        car_id: 1,
         terminal_id: selectedTerminal,
         startTime: formatDateTime(selectedTime.startTime),
       });
