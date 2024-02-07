@@ -44,6 +44,26 @@ function TerminalIdForm() {
     }
   };
 
+  const deleteTerminal = async (event) => {
+    event.preventDefault();
+    try {
+      await connexion.delete(`/terminals/${id}`, terminal);
+      setTerminal({
+        city: "",
+        adresseStation: "",
+        acces_recharge: "",
+        access: "",
+        localisation: "",
+      });
+
+      console.info("Données du terminal soumises :", terminal);
+      toast.success("Terminal effacé !");
+    } catch (error) {
+      console.error("Erreur lors de la soumission du terminal :", error);
+      toast.error("Erreur lors de l 'effacement du terminal");
+    }
+  };
+
   const handleLoadData = async () => {
     try {
       const response = await connexion.get(`/terminals/${id}`);
@@ -122,13 +142,26 @@ function TerminalIdForm() {
             onChange={handleTerminalChange}
           />
         </label>
+        <button
+          type="button"
+          className="inscriptionButton"
+          onClick={handleLoadData}
+        >
+          Charger
+        </button>
+
         <button type="submit" className="inscriptionButton">
           Modifier
         </button>
+
+        <button
+          type="submit"
+          onClick={deleteTerminal}
+          className="inscriptionButton"
+        >
+          Supprimer
+        </button>
       </form>
-      <button type="button" onClick={handleLoadData}>
-        Charger
-      </button>
 
       <ToastContainer />
     </div>
