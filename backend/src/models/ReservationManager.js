@@ -12,8 +12,8 @@ class ReservationManager extends AbstractManager {
   async create(reservation) {
     // Execute the SQL INSERT query to add a new reservation to the "reservation" table
     const [result] = await this.database.query(
-      `insert into ${this.table} (startTime, car_id, terminal_id) values (?, ?, ?)`,
-      [reservation.startTime, reservation.car_id, reservation.terminal_id]
+      `insert into ${this.table} (startTime, user_id, terminal_id) values (?, ?, ?)`,
+      [reservation.startTime, reservation.user_id, reservation.terminal_id]
     );
 
     // Return the ID of the newly inserted reservation
