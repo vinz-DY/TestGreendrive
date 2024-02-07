@@ -76,7 +76,9 @@ function Inscription() {
         <p>{inscriptionMessage}</p>
       ) : (
         <>
-          <HeaderInscription />
+          <div className="HeaderInscritionCss">
+            <HeaderInscription />
+          </div>
           <form onSubmit={postUser}>
             <label className="inscriptionLabel" aria-label="email">
               <input

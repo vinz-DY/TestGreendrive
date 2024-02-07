@@ -3,7 +3,9 @@ import { useNavigate } from "react-router-dom";
 import connexion from "../services/connexion";
 import { AuthContext } from "../context/AuthContext";
 import LoginInput from "../components/LoginInput";
+import HeaderInscription from "../components/HeaderInscription";
 import "./LogIn.css";
+import "../components/Inscription.css";
 
 const user = {
   mail: "",
@@ -59,7 +61,40 @@ function LogIn() {
   };
 
   return (
-    <>
+    <div className="contain-form-login inscription">
+      <div className="HeaderInscritionCss">
+        <HeaderInscription />
+      </div>
+      <h2>Connectez-vous</h2>
+      <div className="form-container">
+        <form onSubmit={handleRequest} className="form-login">
+          <div className="contain-input">
+            <LoginInput
+              type="mail"
+              name="mail"
+              required
+              onChange={handleCredentials}
+              value={credentials.mail}
+              placeholder="Votre email"
+            />
+          </div>
+          <div className="contain-input">
+            <LoginInput
+              type="password"
+              name="password"
+              required
+              onChange={handleCredentials}
+              value={credentials.password}
+              placeholder="Votre mot de passe"
+            />
+          </div>
+          <div className="contain-submit-login">
+            <button type="submit" className="button-submit inscriptionButton">
+              Se connecter
+            </button>
+          </div>
+        </form>
+      </div>
       <div className="contain-validation-errorconnexion">
         {msg === "valid" && (
           <p className="validation">
@@ -73,39 +108,7 @@ function LogIn() {
           </p>
         )}
       </div>
-      <div className="contain-form-login">
-        <h2>Connectez-vous</h2>
-        <div className="form-container">
-          <form onSubmit={handleRequest} className="form-login">
-            <div className="contain-input">
-              <LoginInput
-                type="mail"
-                name="mail"
-                required
-                onChange={handleCredentials}
-                value={credentials.mail}
-                placeholder="Votre email"
-              />
-            </div>
-            <div className="contain-input">
-              <LoginInput
-                type="password"
-                name="password"
-                required
-                onChange={handleCredentials}
-                value={credentials.password}
-                placeholder="Votre mot de passe"
-              />
-            </div>
-            <div className="contain-submit-login">
-              <button type="submit" className="button-submit">
-                Se connecter
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </>
+    </div>
   );
 }
 
