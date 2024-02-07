@@ -27,9 +27,9 @@ function CardItemId({ data }) {
         <h2 className="CardItem_h2">{data.name}</h2>
         <h2 className="CardItem_h2">{data.lastname}</h2>
         <h2 className="CardItem_h2">{data.birthdate}</h2>
+        <h2 className="CardItem_h2">{data.licensePlate}</h2>
         <h2 className="CardItem_h2">{data.brand}</h2>
-        <h2 className="CardItem_h2">{data.engine}</h2>
-        <h2 className="CardItem_h2">{data.fonction_id}</h2>
+        <h2 className="CardItem_h2">{data.model}</h2>
       </div>
     </div>
   );
@@ -50,9 +50,9 @@ CardItemId.propTypes = {
     lastname: PropTypes.string,
     birthdate: PropTypes.string,
     user_id: PropTypes.number,
+    licensePlate: PropTypes.string,
     brand: PropTypes.string,
-    engine: PropTypes.string,
-    fonction_id: PropTypes.string,
+    model: PropTypes.string,
   }).isRequired,
 };
 

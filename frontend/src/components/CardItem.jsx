@@ -12,7 +12,7 @@ function CardItem({ data }) {
           src={`${import.meta.env.VITE_BACKEND_URL}/public/assets/images/${
             data.image
           }`}
-          alt="borne"
+          alt="poster"
           style={{ cursor: "pointer" }}
         />
       </Link>
