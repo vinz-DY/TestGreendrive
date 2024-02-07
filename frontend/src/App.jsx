@@ -15,11 +15,11 @@ function App() {
     <div className="homeContainer">
       <HeaderHome />
       <div className="menuCardCtn">
-        <Link to="/map">
-          <MenuCard />
-        </Link>
         {connected && connected.connected.role === 0 && (
           <>
+            <Link to="/map">
+              <MenuCard />
+            </Link>
             <Link to="/reservation">
               <MenuCardResa
                 title="Réservations"
@@ -27,15 +27,15 @@ function App() {
                 alt="menu des reservations"
               />
             </Link>
-            <Link to="/faq">
-              <MenuCardResa
-                title="Informations"
-                img={MenuFaq}
-                alt="menu informations"
-              />
-            </Link>
           </>
         )}
+        <Link to="/faq">
+          <MenuCardResa
+            title="Informations"
+            img={MenuFaq}
+            alt="menu informations"
+          />
+        </Link>
       </div>
       <Footer />
     </div>
