@@ -23,7 +23,7 @@ function NavAdmin() {
   return (
     <div className="navAdmin_container">
       <div>
-        <img className="adminPic" src={AdminImage} alt="photo_admin" />
+        <img src={AdminImage} alt="photo_admin" />
         <h3 className="adminH3">Admin Mr Kutuk</h3>
       </div>
       <div className="CardAdminCtn">
