@@ -9,16 +9,25 @@ class ProfilManager extends AbstractManager {
 
   // The C of CRUD - Create operation
 
-  // async create(profil) {
-  // Execute the SQL INSERT query to add a new profil to the "profil" table
-  // const [result] = await this.database.query(
-  //   `insert into ${this.table} (title) values (?)`,
-  //   [profil.title]
-  // );
+  async create(profil, userId, file) {
+    // Execute the SQL INSERT query to add a new profil to the "profil" table
+    const [result] = await this.database.query(
+      `insert into ${this.table} (lastname, name, gender, birthdate, postCode, cityProfil, image, user_id  ) values (?, ?, ?, ?, ?, ?, ?, ?)`,
+      [
+        profil.lastname,
+        profil.name,
+        profil.gender,
+        profil.birthdate,
+        profil.postCode,
+        profil.cityProfil,
+        file.filename,
+        userId,
+      ]
+    );
 
-  // Return the ID of the newly inserted profil
-  //   return result.insertId;
-  // }
+    // Return the ID of the newly inserted profil
+    return result.insertId;
+  }
 
   // The Rs of CRUD - Read operations
 
@@ -26,6 +35,17 @@ class ProfilManager extends AbstractManager {
     // Execute the SQL SELECT query to retrieve a specific profil by its ID
     const [rows] = await this.database.query(
       `select * from ${this.table} where id = ?`,
+      [id]
+    );
+
+    // Return the first row of the result, which represents the profil
+    return rows[0];
+  }
+
+  async readByAuth(id) {
+    // Execute the SQL SELECT query to retrieve a specific profil by its ID
+    const [rows] = await this.database.query(
+      `select * from ${this.table} where user_id = ?`,
       [id]
     );
 

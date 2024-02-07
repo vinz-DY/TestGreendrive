@@ -13,11 +13,50 @@ import AdminTerminalId from "./pages/AdminTerminalId";
 import Inscription from "./pages/Inscription";
 import InscriptionProfile from "./pages/Inscription_Profile";
 import Admin from "./pages/Admin";
+import FaqPage from "./pages/Faq/FaqPage";
+import AuthProvider from "./context/AuthContext";
+import LogIn from "./pages/LogIn";
+import Reservation from "./pages/Reservation";
+import InscriptionCar from "./pages/InsciptionCar";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+  },
+  {
+    path: "/login",
+    element: <LogIn />,
+  },
+  {
+    path: "/faq",
+    element: <FaqPage />,
+  },
+  {
+    path: "/reservation",
+    element: <Reservation />,
+  },
+  {
+    path: "/inscriptionvoiture",
+    element: <InscriptionCar />,
+  },
+  {
+    path: "/map",
+    element: <Map />,
+    loader: () => {
+      return connexion
+        .get("/terminals")
+        .then((response) => response.data)
+        .catch((err) => console.error(err));
+    },
+  },
+  {
+    path: "/inscription",
+    element: <Inscription />,
+  },
+  {
+    path: "/inscription-profil",
+    element: <InscriptionProfile />,
   },
   {
     path: "/admin",
@@ -85,24 +124,9 @@ const router = createBrowserRouter([
       },
     ],
   },
-
   {
-    path: "/map",
-    element: <Map />,
-    loader: () => {
-      return connexion
-        .get("/terminals")
-        .then((response) => response.data)
-        .catch((err) => console.error(err));
-    },
-  },
-  {
-    path: "/inscription",
-    element: <Inscription />,
-  },
-  {
-    path: "/inscription-profil",
-    element: <InscriptionProfile />,
+    path: "/login",
+    element: <LogIn />,
   },
 ]);
 
@@ -110,6 +134,8 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>
 );

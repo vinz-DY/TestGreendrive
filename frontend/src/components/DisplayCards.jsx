@@ -1,6 +1,6 @@
-import axios from "axios";
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import connexion from "../services/connexion";
 import CardItem from "./CardItem";
 import "./DisplayCards.css";
 
@@ -11,10 +11,8 @@ function DisplayCards({ tableName }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `${
-            import.meta.env.VITE_BACKEND_URL
-          }/api/${tableName.toLowerCase()}?searchTerm=${searchTerm}`
+        const response = await connexion.get(
+          `/${tableName.toLowerCase()}?searchTerm=${searchTerm}`
         );
         setFilteredItems(response.data);
       } catch (error) {

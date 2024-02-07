@@ -8,7 +8,7 @@
 }
 
 .CardItem {
-  border: solid 4px #062f45;
+  border: solid 3px #062f45;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -19,6 +19,12 @@
   padding-top: 1rem;
   gap: 1rem;
   box-shadow: 0px 17px 25px 3px rgba(0, 0, 0, 0.45);
+  margin-top: 1rem;
+  transition: 0.5s all ease;
+}
+.CardItem:hover {
+  transform: scale(1.05);
+  transition: 0.5s all ease;
 }
 
 .CardItem_card {
@@ -29,6 +35,8 @@
 .CardItem_img {
   border: solid 3px #062f45;
   width: 250px;
+  height: 250px;
+  object-fit: cover;
   border-radius: 10%;
 }
 .CardItem_text {

@@ -39,7 +39,7 @@ const seed = async () => {
     for (let i = 0; i < 10; i += 1) {
       queriesUser.push(
         database.query(
-          "insert into user(mail, password, isAdmin) values (?,?,?)",
+          "insert into user(mail, password, role) values (?,?,?)",
           [
             faker.internet.email(),
             faker.internet.password(),
@@ -65,11 +65,14 @@ const seed = async () => {
       const userId = i + 1;
       queriesProfil.push(
         database.query(
-          "insert into profil(name, lastname, birthdate,image, user_id) values (?,?,?,?,?)",
+          "insert into profil(lastname, name, gender, birthdate, postCode, cityProfil, image, user_id) values (?,?,?,?,?,?,?,?)",
           [
-            faker.person.firstName(),
             faker.person.lastName(),
+            faker.person.firstName(),
+            faker.person.sex(),
             faker.date.birthdate(),
+            faker.address.zipCode(),
+            faker.address.city(),
             faker.image.avatar(),
             userId,
           ]

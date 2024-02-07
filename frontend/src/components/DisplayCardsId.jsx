@@ -1,21 +1,17 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
 import PropTypes from "prop-types";
 import CardItemId from "./CardItemId";
 import "./DisplayCards.css";
 
-function DisplayCardsId({ basePath }) {
-  const items = useLoaderData();
-
+function DisplayCardsId({ items, basePath }) {
   return (
     <div className="DisplayCardsId">
-      {items.map((item) => (
-        <CardItemId key={item.id} data={item} basePath={basePath} />
-      ))}
+      <CardItemId data={items} basePath={basePath} />
     </div>
   );
 }
 DisplayCardsId.propTypes = {
   basePath: PropTypes.string.isRequired,
+  items: PropTypes.string.isRequired,
 };
 export default DisplayCardsId;

@@ -1,6 +1,7 @@
 // Import access to database tables
 const tables = require("../tables");
-const hash = require("../services/hash");
+const { hash, verify } = require("../services/hash");
+const { createToken } = require("../services/jwt");
 
 // The B of BREAD - Browse (Read All) operation
 const browse = async (req, res, next) => {
@@ -45,14 +46,48 @@ const add = async (req, res, next) => {
   try {
     // Insert the user into the database
     const hashPassword = await hash(req.body.password);
-    await tables.user.create(req.body.mail, hashPassword);
+    const userId = await tables.user.create(req.body.mail, hashPassword);
 
     // Respond with HTTP 201 (Created) and the ID of the newly inserted user
-    res.status(201).json("OK");
+    res.status(201).json({ userId });
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);
   }
+};
+
+const log = async (req, res, next) => {
+  try {
+    const user = await tables.user.readByEmail(req.body.mail);
+    if (user) {
+      const check = await verify(req.body.password, user.password);
+      if (check) {
+        delete user.password;
+        const profil = await tables.profil.readByAuth(user.id);
+        res
+          .cookie("auth", createToken(user), { httpOnly: true })
+          .status(200)
+          .json({
+            connected: { id: user.id, mail: user.mail, role: user.role },
+            profil: profil[0] ? { ...profil[0] } : false,
+          });
+      } else {
+        res.sendStatus(403);
+      }
+    } else {
+      res.sendStatus(403);
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+const logout = (req, res) => {
+  // Effacer le cookie d'authentification côté client
+  res.clearCookie("auth");
+
+  // Répondre avec succès
+  res.sendStatus(200);
 };
 
 // The D of BREAD - Destroy (Delete) operation
@@ -64,5 +99,7 @@ module.exports = {
   read,
   // edit,
   add,
+  log,
+  logout,
   // destroy,
 };

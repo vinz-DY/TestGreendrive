@@ -8,11 +8,10 @@
   flex-wrap: wrap;
   justify-content: space-around;
   gap: 3rem;
-  max-height: 400px;
+  margin-bottom: 12rem;
 }
 .DisplayCardsId {
   display: flex;
-  margin-top: 4rem;
 }
 .searchbar {
   width: 30rem;
@@ -20,6 +19,7 @@
   border-radius: 1rem;
   text-align: center;
   border-color: #062f45;
+  transition: 1s all ease;
 }
 
 .searchbar:focus {
@@ -33,4 +33,11 @@
   align-items: center;
   gap: 2rem;
   margin-top: 2rem;
+}
+
+@media screen and (max-width: 530px) {
+  .searchbar {
+    width: 18rem;
+    transition: 1s all ease;
+  }
 }

@@ -10,9 +10,18 @@
 
 .menuCardCtn {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
+  gap: 2rem;
   margin-top: 8rem;
   margin-bottom: 14rem;
+}
+
+a:visited {
+  color: #062f45;
+}
+a:visited:hover {
+  color: none;
 }
 
 @media screen and (max-width: 630px) {

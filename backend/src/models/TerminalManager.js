@@ -30,7 +30,7 @@ class TerminalManager extends AbstractManager {
     );
 
     // Return the first row of the result, which represents the terminal
-    return rows;
+    return rows[0];
   }
 
   async readAll(searchTerm) {
@@ -51,6 +51,29 @@ class TerminalManager extends AbstractManager {
   }
 
   // The U of CRUD - Update operation
+  async update(id, terminal) {
+    const [result] = await this.database.query(
+      `UPDATE ${this.table} SET city = ?, adresseStation = ?, acces_recharge = ?, access = ?, localisation = ? WHERE id = ?`,
+      [
+        terminal.city,
+        terminal.adresseStation,
+        // terminal.xlongitude,
+        // terminal.ylatitude,
+        // terminal.power,
+        terminal.acces_recharge,
+        terminal.access,
+        terminal.localisation,
+        // terminal.region,
+        // terminal.image,
+        // terminal.connectic_id,
+        // terminal.state_id,
+        id,
+      ]
+    );
+
+    // Return the ID of the newly inserted terminal
+    return result.insertId;
+  }
   // TODO: Implement the update operation to modify an existing terminal
 
   // async update(terminal) {
@@ -58,11 +81,15 @@ class TerminalManager extends AbstractManager {
   // }
 
   // The D of CRUD - Delete operation
-  // TODO: Implement the delete operation to remove an terminal by its ID
+  async delete(id) {
+    // Execute the SQL DELETE query to delete a specific terminal by its ID
+    const result = await this.database.query(
+      `DELETE FROM ${this.table} WHERE id = ?`,
+      [id]
+    );
 
-  // async delete(id) {
-  //   ...
-  // }
+    // Check the affectedRows property to verify if the deletion was successful
+    return result.affectedRows;
+  }
 }
-
 module.exports = TerminalManager;

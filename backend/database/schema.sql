@@ -1,3 +1,4 @@
+-- SQLBook: Code
 CREATE TABLE state (
   id INT PRIMARY KEY AUTO_INCREMENT,
   label varchar(255) NULL
@@ -12,7 +13,7 @@ CREATE TABLE user (
   id INT PRIMARY KEY AUTO_INCREMENT,
   mail varchar(255) UNIQUE,
   password varchar(255) NULL,
-  isAdmin boolean NULL
+  role boolean DEFAULT 0
 );
 
 CREATE TABLE terminal(
@@ -47,22 +48,25 @@ CREATE TABLE car (
 );
 
 
-CREATE TABLE reservations (
+CREATE TABLE reservation (
   id INT PRIMARY KEY AUTO_INCREMENT,
   startTime datetime NULL,
   car_id INT NOT NULL,
-   CONSTRAINT fk_reservations_car FOREIGN KEY (car_id) REFERENCES car(id),
+   CONSTRAINT fk_reservation_car FOREIGN KEY (car_id) REFERENCES car(id),
   terminal_id INT NOT NULL,
- CONSTRAINT fk_reservations_terminal FOREIGN KEY (terminal_id) REFERENCES terminal(id)
+ CONSTRAINT fk_reservation_terminal FOREIGN KEY (terminal_id) REFERENCES terminal(id)
 );
 
 
 CREATE TABLE profil (
   id INT PRIMARY KEY AUTO_INCREMENT,
-  name varchar(255),
   lastname varchar(255),
+  name varchar(255),
+  gender varchar(255),
   birthdate varchar(255),
+  postCode  varchar(255),
+  cityProfil varchar(255),
   image varchar(255),
-  user_id INT NOT NULL,
+  user_id INT NOT NULL ,
   CONSTRAINT fk_profil_user FOREIGN KEY (user_id) REFERENCES user(id)
 );

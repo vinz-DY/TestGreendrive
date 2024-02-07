@@ -36,6 +36,22 @@ const read = async (req, res, next) => {
 };
 
 // The E of BREAD - Edit (Update) operation
+const edit = async (req, res, next) => {
+  // Extract the game data from the request body
+  const terminal = req.body;
+
+  try {
+    await tables.terminal.update(req.params.id, terminal);
+    // Insert the game into the database
+
+    // Respond with HTTP 201 (Created) and the ID of the newly inserted game
+    res.sendStatus(204);
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
+
 // This operation is not yet implemented
 
 // The A of BREAD - Add (Create) operation
@@ -57,13 +73,35 @@ const read = async (req, res, next) => {
 // };
 
 // The D of BREAD - Destroy (Delete) operation
-// This operation is not yet implemented
+const destroy = async (req, res, next) => {
+  // Extract the terminalId data from the request body
+  const terminalId = req.params.id;
+  try {
+    // Insert the terminal into the database
+    const result = await tables.terminal.delete(terminalId);
+    if (result && result.affectedRows <= 0) {
+      res.sendStatus(404);
+    } else {
+      res.status(204).json(terminalId);
+    }
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
+
+// Check the result of the deletion
+// Respond with HTTP 200 (OK) and a success message
+
+// Respond with HTTP 404 (Not Found) if the terminal was not found
+
+// Pass any errors to the error-handling middleware
 
 // Ready to export the controller functions
 module.exports = {
   browse,
   read,
-  // edit,
+  edit,
   // add,
-  // destroy,
+  destroy,
 };

@@ -1,6 +1,7 @@
 const AbstractManager = require("./AbstractManager");
+const client = require("../../database/client");
 
-class userManager extends AbstractManager {
+class UserManager extends AbstractManager {
   constructor() {
     // Call the constructor of the parent class (AbstractManager)
     // and pass the table name "user" as configuration
@@ -20,19 +21,30 @@ class userManager extends AbstractManager {
     return result.insertId;
   }
 
-  // The Rs of CRUD - Read operations
-  /*
-  async read(id) {
+  async readByEmail(mail) {
     // Execute the SQL SELECT query to retrieve a specific user by its ID
-
-    const [rows] = await this.database.query(
-      `select * from ${this.table} where id = ?`,
-      [id]
+    const [rows] = await client.query(
+      `SELECT * FROM ${this.table} WHERE mail = ?`,
+      [mail]
     );
 
     // Return the first row of the result, which represents the user
     return rows[0];
   }
+
+  // The Rs of CRUD - Read operations
+
+  // async read(id) {
+  //   // Execute the SQL SELECT query to retrieve a specific user by its ID
+
+  //   const [rows] = await this.database.query(
+  //     `select * from ${this.table} where id = ?`,
+  //     [id]
+  //   );
+
+  //   // Return the first row of the result, which represents the user
+  //   return rows[0];
+  // }
 
   async readAll() {
     // Execute the SQL SELECT query to retrieve all users from the "user" table
@@ -41,7 +53,6 @@ class userManager extends AbstractManager {
     // Return the array of users
     return rows;
   }
-  */
 
   // The U of CRUD - Update operation
   // TODO: Implement the update operation to modify an existing user
@@ -58,4 +69,4 @@ class userManager extends AbstractManager {
   // }
 }
 
-module.exports = userManager;
+module.exports = UserManager;

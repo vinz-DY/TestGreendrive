@@ -1,7 +1,20 @@
 import { Link } from "react-router-dom";
 import React from "react";
+import connexion from "../services/connexion";
 import Car1 from "../assets/Car1.jpg";
 import "./headerHome.css";
+
+const handleLogout = async () => {
+  try {
+    // Appeler la route de déconnexion côté serveur
+    await connexion.post("/logout");
+
+    // Rediriger ou mettre à jour l'état de l'application après la déconnexion
+    // (facultatif, en fonction de votre logique d'application)
+  } catch (error) {
+    console.error("Erreur lors de la déconnexion :", error);
+  }
+};
 
 function HeaderHome() {
   return (
@@ -16,16 +29,26 @@ function HeaderHome() {
             <p className="Pindex">en toute serenité</p>
           </div>
           <div className="buttonsContainer">
-            <button type="button" className="button1">
-              <Link to="/inscription">S'inscrire</Link>
-            </button>
+            <Link to="/inscription">
+              <button type="button" className="button1">
+                S'inscrire
+              </button>
+            </Link>
             <div className="buttonsSignContainer">
-              <button type="button" className="buttonDeco">
-                deconnexion
-              </button>
-              <button type="button" className="buttonCo">
-                connexion
-              </button>
+              <a href="/">
+                <button
+                  onClick={handleLogout}
+                  type="button"
+                  className="buttonDeco"
+                >
+                  déconnexion
+                </button>
+              </a>
+              <Link to="/login">
+                <button type="button" className="buttonCo">
+                  connexion
+                </button>
+              </Link>
             </div>
           </div>
         </div>
