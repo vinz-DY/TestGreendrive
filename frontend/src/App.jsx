@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
 import HeaderHome from "./components/HeaderHome";
-import Footer from "./components/Footer";
 import MenuCard from "./components/MenuCard";
 import MenuCardResa from "./components/MenuCards/MenuCardResa";
 import MenuResa from "./assets/menuReservation.jpg";
@@ -37,7 +36,6 @@ function App() {
           />
         </Link>
       </div>
-      <Footer />
     </div>
   );
 }

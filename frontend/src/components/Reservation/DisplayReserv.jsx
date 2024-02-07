@@ -48,7 +48,7 @@ function DisplayReserv() {
 
     const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
 
-    return `${day}/${month}/${year} à ${hours}:${formattedMinutes}`;
+    return ` ${day}/${month}/${year} à ${hours}:${formattedMinutes}`;
   };
 
   return (
