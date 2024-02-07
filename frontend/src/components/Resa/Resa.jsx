@@ -6,7 +6,6 @@ import "./Resa.css";
 
 const start = {
   startTime: new Date(),
-  user_id: null,
   terminal_id: null,
 };
 
@@ -80,7 +79,6 @@ function Resa() {
     try {
       const response = await connexion.post("/reservations", {
         ...selectedTime,
-        user_id: 1,
         terminal_id: selectedTerminal,
         startTime: formatDateTime(selectedTime.startTime),
       });
