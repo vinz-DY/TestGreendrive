@@ -8,7 +8,6 @@
   height: auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
   background-color: #fdfdfb;
   border-right: solid 3px #eeeeeb;
@@ -23,29 +22,42 @@
 }
 .CardAdminCtn {
   display: flex;
+  align-items: center;
   flex-direction: column;
   justify-content: center;
-}
-.adminPic {
-  margin-top: 13rem;
+  gap: 1rem;
 }
 
 @media screen and (max-width: 978px) {
   .navAdmin_container {
     height: auto;
+    width: 100%;
     display: flex;
     flex-direction: row;
     gap: 1rem;
+    justify-content: center;
     position: fixed;
     bottom: 0;
+    padding: 0.5rem;
+    background: transparent;
   }
   .CardAdminCtn {
     flex-direction: row;
-    align-items: center;
+    align-items: flex-end;
     gap: 1rem;
   }
 
   .adminPic {
     margin-top: 0rem;
+    display: none;
+  }
+  .adminH3 {
+    display: none;
+  }
+  .buttonDecoAdmin {
+    padding: 0.4rem 1rem;
+    font-size: 8px;
+    border: 0.1rem solid;
+    margin-bottom: 0.1rem;
   }
 }
