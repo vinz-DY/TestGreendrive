@@ -19,6 +19,7 @@
   border-radius: 1rem;
   text-align: center;
   border-color: #062f45;
+  transition: 1s all ease;
 }
 
 .searchbar:focus {
@@ -37,5 +38,6 @@
 @media screen and (max-width: 530px) {
   .searchbar {
     width: 18rem;
+    transition: 1s all ease;
   }
 }
