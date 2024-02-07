@@ -23,8 +23,10 @@
 }
 .CardAdminCtn {
   display: flex;
+  align-items: center;
   flex-direction: column;
   justify-content: center;
+  gap: 1rem;
 }
 .adminPic {
   margin-top: 13rem;
@@ -33,11 +35,13 @@
 @media screen and (max-width: 978px) {
   .navAdmin_container {
     height: auto;
+    width: 100%;
     display: flex;
     flex-direction: row;
     gap: 1rem;
     position: fixed;
     bottom: 0;
+    padding: 0.5rem;
   }
   .CardAdminCtn {
     flex-direction: row;
@@ -47,5 +51,14 @@
 
   .adminPic {
     margin-top: 0rem;
+    display: none;
+  }
+  .adminH3 {
+    display: none;
+  }
+  .buttonDecoAdmin {
+    padding: 0.4rem 0rem;
+    font-size: 10px;
+    border: 2px solid;
   }
 }
