@@ -19,7 +19,7 @@ class CarManager extends AbstractManager {
         car.licensePlate,
         car.brand,
         car.model,
-        file.path,
+        file.filename,
         car.connectic_id,
         userId,
       ]

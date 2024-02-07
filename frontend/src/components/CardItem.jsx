@@ -9,7 +9,9 @@ function CardItem({ data }) {
       <Link className="CardItem_card" to={`${data.id}`}>
         <img
           className="CardItem_img"
-          src={data.image}
+          src={`${import.meta.env.VITE_BACKEND_URL}/public/assets/images/${
+            data.image
+          }`}
           alt="borne"
           style={{ cursor: "pointer" }}
         />
