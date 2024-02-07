@@ -4,10 +4,6 @@ services:
   web:
     build: .
     container_name: ${PROJECT_NAME:-project}-web
-    volumes:
-      - .:/var/www
-      - ./docker-entry.sh:/etc/entrypoint.sh
-    entrypoint: [ "sh", "/etc/entrypoint.sh" ]
     env_file:
       - ../envs/.env-${GITHUB_REPOSITORY_NAME}
     environment:
@@ -19,6 +15,7 @@ services:
       DB_USER: ${USER_NAME}
       DB_PASSWORD: ${USER_PASSWORD}
       DB_NAME: ${DB_NAME}
+      VITE_BACKEND_URL: ""
     networks:
       - proxy
     labels:
