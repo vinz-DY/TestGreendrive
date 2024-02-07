@@ -27,9 +27,6 @@
   justify-content: center;
   gap: 1rem;
 }
-.adminPic {
-  /* margin-top: 13rem; */
-}
 
 @media screen and (max-width: 978px) {
   .navAdmin_container {
