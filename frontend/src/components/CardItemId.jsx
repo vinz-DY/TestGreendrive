@@ -16,20 +16,20 @@ function CardItemId({ data }) {
       </div>
 
       <div className="CardItem_text">
-        <h2 className="CardItem_h2">{data.id}</h2>
-        <h2 className="CardItem_h2">{data.city}</h2>
-        <h2 className="CardItem_h2">{data.adresseStation}</h2>
-        <h2 className="CardItem_h2">{data.power}</h2>
-        <h2 className="CardItem_h2">{data.acces_recharge}</h2>
-        <h2 className="CardItem_h2">{data.access}</h2>
-        <h2 className="CardItem_h2">{data.localisation}</h2>
-        <h2 className="CardItem_h2">{data.region}</h2>
-        <h2 className="CardItem_h2">{data.name}</h2>
-        <h2 className="CardItem_h2">{data.lastname}</h2>
-        <h2 className="CardItem_h2">{data.birthdate}</h2>
-        <h2 className="CardItem_h2">{data.brand}</h2>
-        <h2 className="CardItem_h2">{data.engine}</h2>
-        <h2 className="CardItem_h2">{data.fonction_id}</h2>
+        <p>{data.id}</p>
+        <p>{data.city}</p>
+        <p>{data.adresseStation}</p>
+        <p>{data.power}</p>
+        <p>{data.acces_recharge}</p>
+        <p>{data.access}</p>
+        <p>{data.localisation}</p>
+        <p>{data.region}</p>
+        <p>{data.name}</p>
+        <p>{data.lastname}</p>
+        <p>{data.birthdate}</p>
+        <p>{data.brand}</p>
+        <p>{data.model}</p>
+        <p>{data.licensePlate}</p>
       </div>
     </div>
   );
@@ -51,8 +51,8 @@ CardItemId.propTypes = {
     birthdate: PropTypes.string,
     user_id: PropTypes.number,
     brand: PropTypes.string,
-    engine: PropTypes.string,
-    fonction_id: PropTypes.string,
+    model: PropTypes.string,
+    licensePlate: PropTypes.string,
   }).isRequired,
 };
 
