@@ -18,7 +18,6 @@ import AuthProvider from "./context/AuthContext";
 import LogIn from "./pages/LogIn";
 import Reservation from "./pages/Reservation";
 import InscriptionCar from "./pages/InsciptionCar";
-import ProfilPage from "./pages/ProfilPage";
 
 const router = createBrowserRouter([
   {
@@ -58,16 +57,6 @@ const router = createBrowserRouter([
   {
     path: "/inscription-profil",
     element: <InscriptionProfile />,
-  },
-  {
-    path: "/profil",
-    element: <ProfilPage />,
-    loader: ({ params }) => {
-      return connexion
-        .get(`/profils/${params.id}`)
-        .then((res) => res.data)
-        .catch((err) => console.error(err));
-    },
   },
   {
     path: "/admin",
