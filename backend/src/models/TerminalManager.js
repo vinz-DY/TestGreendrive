@@ -81,9 +81,24 @@ class TerminalManager extends AbstractManager {
   // }
 
   // The D of CRUD - Delete operation
-  // TODO: Implement the delete operation to remove an terminal by its ID
+  async delete(id) {
+    try {
+      // Execute the SQL DELETE query to delete a specific terminal by its ID
+      const result = await this.database.query(
+        `DELETE FROM ${this.table} WHERE id = ?`,
+        [id]
+      );
 
-  // async delete(id) {
+      // Check the affectedRows property to verify if the deletion was successful
+      if (result && result.affectedRows > 0)
+        return { message: "Delete successful" };
+      return { message: "terminal not found" };
+    } catch (error) {
+      // Handle the error, log it, etc.
+      console.error("Error deleting terminal:", error.message);
+      return { message: "Error deleting terminal" };
+    }
+  }
   //   ...
   // }
 }
