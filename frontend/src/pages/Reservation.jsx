@@ -1,5 +1,8 @@
 import React from "react";
+import DisplayReserv from "../components/Reservation/DisplayReserv";
 
-export default function Reservation() {
-  return <div>Reservation</div>;
+function Reservation() {
+  return <DisplayReserv />;
 }
+
+export default Reservation;
