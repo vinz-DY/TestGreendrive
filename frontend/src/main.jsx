@@ -35,6 +35,12 @@ const router = createBrowserRouter([
   {
     path: "/reservation",
     element: <Reservation />,
+    loader: () => {
+      return connexion
+        .get("/reservations")
+        .then((response) => response.data)
+        .catch((err) => console.error(err));
+    },
   },
   {
     path: "/inscriptionvoiture",
