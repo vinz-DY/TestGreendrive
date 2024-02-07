@@ -39,7 +39,7 @@ function Profil() {
       });
 
       console.info("Données du profil soumises :", profil);
-      toast.success("profil modifié avec succès !");
+      toast.success("Profil modifié avec succès !");
     } catch (error) {
       console.error("Erreur lors de la soumission du profil :", error);
       toast.error("Erreur lors de la modification du profil");
@@ -61,7 +61,7 @@ function Profil() {
       });
 
       console.info("Données du profil soumises :", profil);
-      toast.success("profil effacé !");
+      toast.success("Profil effacé !");
     } catch (error) {
       console.error("Erreur lors de la soumission du profil :", error);
       toast.error("Erreur lors de l 'effacement du profil");
