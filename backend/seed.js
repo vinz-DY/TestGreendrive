@@ -4,11 +4,14 @@
 require("dotenv").config();
 
 // Import Faker library for generating fake data
-const { faker } = require("@faker-js/faker");
+// const { faker } = require("@faker-js/faker");
 
 const terminal = require("./database/terminal");
 const connectic = require("./database/connectic");
 const state = require("./database/state");
+const profil = require("./database/profil");
+const car = require("./database/car");
+const user = require("./database/user");
 
 // Import database client
 const database = require("./database/client");
@@ -34,21 +37,30 @@ const seed = async () => {
     }
     await Promise.all(queriesConnectic);
 
-    // .........INSERT TABLE USER ............................................
+    // // .........INSERT TABLE USER ............................................
     const queriesUser = [];
-    for (let i = 0; i < 10; i += 1) {
-      queriesUser.push(
-        database.query(
-          "insert into user(mail, password, role) values (?,?,?)",
-          [
-            faker.internet.email(),
-            faker.internet.password(),
-            faker.datatype.boolean(),
-          ]
-        )
-      );
+
+    for (let i = 0; i < user.length; i += 1) {
+      queriesUser.push(database.query(user[i]));
     }
+
     await Promise.all(queriesUser);
+
+    // // .........INSERT TABLE USER ............................................
+    // const queriesUser = [];
+    // for (let i = 0; i < 10; i += 1) {
+    //   queriesUser.push(
+    //     database.query(
+    //       "insert into user(mail, password, role) values (?,?,?)",
+    //       [
+    //         faker.internet.email(),
+    //         faker.internet.password(),
+    //         faker.datatype.boolean(),
+    //       ]
+    //     )
+    //   );
+    // }
+    // await Promise.all(queriesUser);
 
     // .........INSERT TABLE Terminal ............................................
     const queriesTerminal = [];
@@ -58,49 +70,65 @@ const seed = async () => {
     }
 
     await Promise.all(queriesTerminal);
-
-    // .........INSERT TABLE profil ............................................
+    // // .........INSERT TABLE profil ............................................
     const queriesProfil = [];
-    for (let i = 0; i < 10; i += 1) {
-      const userId = i + 1;
-      queriesProfil.push(
-        database.query(
-          "insert into profil(lastname, name, gender, birthdate, postCode, cityProfil, image, user_id) values (?,?,?,?,?,?,?,?)",
-          [
-            faker.person.lastName(),
-            faker.person.firstName(),
-            faker.person.sex(),
-            faker.date.birthdate(),
-            faker.address.zipCode(),
-            faker.address.city(),
-            faker.image.avatar(),
-            userId,
-          ]
-        )
-      );
-    }
-    await Promise.all(queriesProfil);
 
-    // .........INSERT TABLE car ............................................
-    const queriesCar = [];
-    for (let i = 0; i < 10; i += 1) {
-      const userId = i + 1;
-      const connecticId = Math.round(Math.random()) + 1;
-      queriesCar.push(
-        database.query(
-          "insert into car(licensePlate, brand, model,image, connectic_id, user_id) values (?,?,?,?,?,?)",
-          [
-            faker.vehicle.vrm(),
-            faker.vehicle.manufacturer(),
-            faker.vehicle.model(),
-            faker.image.urlLoremFlickr({ category: "car" }),
-            connecticId,
-            userId,
-          ]
-        )
-      );
+    for (let i = 0; i < profil.length; i += 1) {
+      queriesProfil.push(database.query(profil[i]));
     }
+
+    await Promise.all(queriesProfil);
+    // // .........INSERT TABLE profil Pour FAKER............................................
+    // const queriesProfil = [];
+    // for (let i = 0; i < 10; i += 1) {
+    //   const userId = i + 1;
+    //   queriesProfil.push(
+    //     database.query(
+    //       "insert into profil(lastname, name, gender, birthdate, postCode, cityProfil, image, user_id) values (?,?,?,?,?,?,?,?)",
+    //       [
+    //         faker.person.lastName(),
+    //         faker.person.firstName(),
+    //         faker.person.sex(),
+    //         faker.date.birthdate(),
+    //         faker.address.zipCode(),
+    //         faker.address.city(),
+    //         faker.image.avatar(),
+    //         userId,
+    //       ]
+    //     )
+    //   );
+    // }
+    // await Promise.all(queriesProfil);
+
+    // // .........INSERT TABLE car ............................................
+    const queriesCar = [];
+
+    for (let i = 0; i < car.length; i += 1) {
+      queriesCar.push(database.query(car[i]));
+    }
+
     await Promise.all(queriesCar);
+
+    // // .........INSERT TABLE car ............................................
+    // const queriesCar = [];
+    // for (let i = 0; i < 10; i += 1) {
+    //   const userId = i + 1;
+    //   const connecticId = Math.round(Math.random()) + 1;
+    //   queriesCar.push(
+    //     database.query(
+    //       "insert into car(licensePlate, brand, model,image, connectic_id, user_id) values (?,?,?,?,?,?)",
+    //       [
+    //         faker.vehicle.vrm(),
+    //         faker.vehicle.manufacturer(),
+    //         faker.vehicle.model(),
+    //         faker.image.urlLoremFlickr({ category: "car" }),
+    //         connecticId,
+    //         userId,
+    //       ]
+    //     )
+    //   );
+    // }
+    // await Promise.all(queriesCar);
 
     /* ************************************************************************* */
 

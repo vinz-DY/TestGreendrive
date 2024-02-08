@@ -40,6 +40,14 @@
   .adminTermBiggerCtn {
     display: flex;
     flex-direction: column;
-    margin-bottom: 20rem;
+    margin-bottom: 10rem;
+  }
+}
+
+@media screen and (max-width: 510px) {
+  .adminTermBiggerCtn {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
   }
 }

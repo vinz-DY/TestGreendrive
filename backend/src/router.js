@@ -102,9 +102,9 @@ router.post(
 
 const reservationControllers = require("./controllers/reservationControllers");
 
-router.get("/reservations", reservationControllers.browse);
-router.get("/reservations/:id", reservationControllers.read);
-router.post("/reservations", reservationControllers.add);
+router.get("/reservations", checkCredentials, reservationControllers.browse);
+router.get("/reservations/:id", checkCredentials, reservationControllers.read);
+router.post("/reservations", checkCredentials, reservationControllers.add);
 
 /* ************************************************************************* */
 
