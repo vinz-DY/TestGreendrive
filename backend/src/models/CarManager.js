@@ -34,7 +34,8 @@ class CarManager extends AbstractManager {
   async read(id) {
     // Execute the SQL SELECT query to retrieve a specific car by its ID
     const [rows] = await this.database.query(
-      `select * from ${this.table} where id = ?`,
+      `SELECT car.*, connectic.plugType as connectic_plugType FROM ${this.table} RIGHT JOIN connectic ON car.connectic_id = connectic.id
+      WHERE car.id = ?`,
       [id]
     );
 
