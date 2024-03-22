@@ -30,6 +30,7 @@ function CardItemId({ data }) {
         <p>{data.brand}</p>
         <p>{data.model}</p>
         <p>{data.licensePlate}</p>
+        <p>{data.connectic_plugType}</p>
       </div>
     </div>
   );
@@ -53,6 +54,7 @@ CardItemId.propTypes = {
     brand: PropTypes.string,
     model: PropTypes.string,
     licensePlate: PropTypes.string,
+    connectic_plugType: PropTypes.string,
   }).isRequired,
 };
 

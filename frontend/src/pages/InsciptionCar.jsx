@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import connexion from "../services/connexion";
 import HeaderInscription from "../components/HeaderInscription";
@@ -17,7 +17,23 @@ function InscriptionCar() {
   const [car, setcar] = useState(carType);
   const [inscriptionSuccess, setInscriptionSuccess] = useState(false);
   const [inscriptionMessage, setInscriptionMessage] = useState("");
+  const [connectics, setConnectics] = useState([]);
   const navigate = useNavigate();
+
+  const getconnectics = async () => {
+    try {
+      const myconnectics = await connexion
+        .get("/connectics")
+        .then((res) => res.data);
+      setConnectics(myconnectics);
+    } catch (error) {
+      console.error("Erreur ajout connectic", error);
+    }
+  };
+
+  useEffect(() => {
+    getconnectics();
+  }, []);
 
   const handlecar = (event) => {
     const { name, files, value } = event.target;
@@ -119,9 +135,12 @@ function InscriptionCar() {
                 value={car.connectic_id}
                 onChange={handlecar}
               >
-                <option value="">Sélectionnez le type de connexion</option>
-                <option value="1">EF</option>
-                <option value="2">T2</option>
+                <option value="">Sélectionne ta prise</option>
+                {connectics.map((connectic) => (
+                  <option key={connectic.id} value={connectic.id}>
+                    {connectic.plugType}
+                  </option>
+                ))}
               </select>
             </label>
             <button type="submit" className="inscriptionButton">
