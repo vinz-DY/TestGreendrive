@@ -107,5 +107,13 @@ router.get("/reservations/:id", checkCredentials, reservationControllers.read);
 router.post("/reservations", checkCredentials, reservationControllers.add);
 
 /* ************************************************************************* */
+/* ***************************CONNECTIC************************************ */
+
+const connecticControllers = require("./controllers/connecticControllers");
+
+router.get("/connectics", connecticControllers.browse);
+router.get("/connectics/:id", connecticControllers.read);
+
+/* ************************************************************************* */
 
 module.exports = router;
